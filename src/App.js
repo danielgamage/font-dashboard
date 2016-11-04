@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-intro">
+        <div className="Container">
           <TextBox text="Heading 1"/>
           <TextBox text="Paragraph content is wonderful and really just absolutely amazing."/>
         </div>

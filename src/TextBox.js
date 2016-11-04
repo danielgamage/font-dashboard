@@ -7,7 +7,7 @@ class TextBox extends Component {
     super(props);
     this.state = {
       fontFamily: 'sans-serif',
-      fontSize: '1rem',
+      fontSize: 16,
       color: '#333940',
     }
   }
@@ -27,19 +27,54 @@ class TextBox extends Component {
       return true
     })
   }
-
+  updateSize(e) {
+    this.setState({ fontSize: e.target.value })
+  }
+  updateColor(e) {
+    this.setState({ color: e.target.value })
+  }
+  updateRendering(e) {
+    this.setState({ fontSmoothing: e.target.value })
+  }
   render() {
+    let fontSmoothing;
+    if (this.state.fontSmoothing === "Grayscale") {
+      fontSmoothing = { webkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }
+    } else if (this.state.fontSmoothing === "None") {
+      fontSmoothing = { webkitFontSmoothing: "none", MozOsxFontSmoothing: "none"}
+    } else {
+      fontSmoothing = { webkitFontSmoothing: "subpixel-antialiased", MozOsxFontSmoothing: "auto" }
+    }
     let textStyle = {
       fontFamily: `"${this.state.fontFamily}", sans-serif`,
       fontSize: this.state.fontSize,
-      color: this.state.color
+      color: this.state.color,
+      ...fontSmoothing
     }
     return (
-      <div className="textbox">
+      <div className="TextItem">
         <textarea style={textStyle} className="text" defaultValue={this.props.text}></textarea>
-        <input type="file" onChange={this.readFile.bind(this)} />
-        <input type="range" min=1 max=300 onChange={this.updateSize.bind(this)}/>
-        <input type="color" onChange={this.updateColor.bind(this)}/>
+        <div className="ControlPanel">
+          <div className="Control">
+            <input type="file" onChange={this.readFile.bind(this)} />
+          </div>
+          <div className="Control">
+            <input type="range" min="4" max="300" value={this.state.fontSize} onChange={this.updateSize.bind(this)}/>
+            <output>{`${this.state.fontSize}px`}</output>
+          </div>
+          <div className="Control">
+            <input type="color" value={this.state.color} onChange={this.updateColor.bind(this)}/>
+            <output>{`${this.state.color}`}</output>
+          </div>
+          <div className="Control">
+            <select onChange={this.updateRendering.bind(this)}>
+              <option>Subpixel</option>
+              <option>Grayscale</option>
+              <option>None</option>
+            </select>
+            <output>{`${this.state.color}`}</output>
+          </div>
+        </div>
       </div>
     );
   }

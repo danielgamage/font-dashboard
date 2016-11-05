@@ -8,3 +8,12 @@
   display: block;
   padding: 1rem 2rem;
 }
+
+.Control label {
+  display: block;
+  text-align: left;
+}
+
+.Control output {
+  text-align: right;
+}

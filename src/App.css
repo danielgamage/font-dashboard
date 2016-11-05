@@ -1,8 +1,15 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
 .Container {
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.LayoutWrapper {
   margin: auto;
   width: 30rem;
   max-width: 100%;

@@ -10,14 +10,3 @@
   width: 100%;
   resize: none;
 }
-
-
-.ControlPanel {
-  position: fixed;
-  top: 0;
-  right: 0;
-}
-
-.Control {
-  display: block;
-}

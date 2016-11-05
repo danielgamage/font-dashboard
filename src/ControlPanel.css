@@ -1,0 +1,10 @@
+.ControlPanel {
+  background: #444;
+  color: #fff;
+  width: 20rem;
+}
+
+.Control {
+  display: block;
+  padding: 1rem 2rem;
+}

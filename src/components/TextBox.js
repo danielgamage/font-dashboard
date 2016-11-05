@@ -3,13 +3,13 @@ import React, { PropTypes } from 'react'
 import './TextBox.css'
 
 const TextBox = ({ text }) => (
-    <div className="TextItem">
-        <textarea
-            className="text"
-            defaultValue={text}
-            >
-        </textarea>
-    </div>
+  <div className='TextItem'>
+    <textarea
+      className='text'
+      defaultValue={text}
+      >
+    </textarea>
+  </div>
 )
 
 TextBox.propTypes = {

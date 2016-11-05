@@ -8,7 +8,7 @@ const Layout = ({ textBoxes, onTextBoxFocus }) => (
         key={textbox.id}
         {...textbox}
         onFocus={() => onTextBoxFocus(textbox.id)}
-      />
+        />
     )}
   </div>
 )

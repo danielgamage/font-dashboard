@@ -6,7 +6,6 @@ import './TextBox.css'
 
 const TextBox = ({ text }) => (
   <div className='TextItem'>
-    <AddButton />
     <textarea
       className='text'
       defaultValue={text}
@@ -16,7 +15,8 @@ const TextBox = ({ text }) => (
 
 TextBox.propTypes = {
   // onFocus: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
 }
 
 function mapStateToProps (state) {

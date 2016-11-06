@@ -14,7 +14,6 @@ class App extends Component {
         <div className='Container'>
           <div className='LayoutWrapper'>
             <Layout textBoxes={this.props.textBoxes} />
-            <AddButton />
           </div>
         </div>
         <ControlPanel />

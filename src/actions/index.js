@@ -1,7 +1,8 @@
-let nextTextBoxId = 0
 export const addTextBox = (text) => ({
   type: 'ADD_TEXTBOX',
-  id: nextTextBoxId++,
+  id: 0,
+  index: 0,
+  color: "#fff",
   text
 })
 

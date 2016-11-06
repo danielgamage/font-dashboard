@@ -1,12 +1,15 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-const AddButton = ({ dispatch }) => (
+const AddButton = ({ textBoxes, dispatch }) => (
   <button
     onClick={() => {
       dispatch({
         type: 'ADD_TEXTBOX',
-        text: 'Type here...'
+        id: (new Date().getTime()),
+        index: textBoxes.length,
+        text: 'Type here...',
+        color: '#666'
       })
     }}>
     Add textbox
@@ -14,7 +17,13 @@ const AddButton = ({ dispatch }) => (
 )
 
 AddButton.propTypes = {
-  text: PropTypes.string.isRequired
+  index: PropTypes.number.isRequired
 }
 
-export default connect()(AddButton)
+const mapStateToProps = (state) => {
+  return {
+    textBoxes: state.textBoxes
+  }
+}
+
+export default connect(mapStateToProps)(AddButton)

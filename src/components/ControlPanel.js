@@ -58,6 +58,7 @@ class TextBox extends Component {
         <div className='Control'>
           <label htmlFor='font'>Font File</label>
           <input id='font' type='file' onChange={this.readFile.bind(this)} />
+          <p>You can also drag your font directly onto the text block you want to apply the font to.</p>
         </div>
         <div className='Control'>
           <label htmlFor='size'>Font Size</label>

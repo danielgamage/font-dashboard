@@ -1,0 +1,9 @@
+.AddButton {
+  appearance: none;
+  border: 0.2em solid currentColor;
+  background: #fff;
+  color: #4be;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em
+}

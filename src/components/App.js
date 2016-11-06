@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import ControlPanel from './ControlPanel'
 import Layout from '../containers/LayoutContainer'
-import AddButton from './AddButton'
 
 import './App.css'
 
@@ -12,9 +11,7 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='Container'>
-          <div className='LayoutWrapper'>
-            <Layout textBoxes={this.props.textBoxes} />
-          </div>
+          <Layout textBoxes={this.props.textBoxes} />
         </div>
         <ControlPanel />
       </div>

@@ -14,7 +14,7 @@ const TextBox = ({ text }) => (
 )
 
 TextBox.propTypes = {
-  // onFocus: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired
 }

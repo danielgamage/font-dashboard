@@ -2,19 +2,23 @@ import React, { PropTypes } from 'react'
 import TextBox from './TextBox'
 import AddButton from './AddButton'
 
-const Layout = ({ textBoxes, onTextBoxFocus }) => (
-  <div>
-    <AddButton index='0' />
-    {textBoxes.map((textbox, i) => (
-      <div>
-        <TextBox
-          key={textbox.id}
-          {...textbox} />
-        <AddButton index={i + 1} />
-      </div>
-    ))}
-  </div>
-)
+const Layout = ({ textBoxes, onTextBoxFocus }) => {
+  const orderedTextBoxes = [...textBoxes].sort((a, b) => a - b)
+  return (
+    <div className='LayoutWrapper'>
+      <AddButton index='0' />
+      {orderedTextBoxes.map((textbox, i) => (
+        <div>
+          <TextBox
+            key={textbox.id}
+            onFocus={onTextBoxFocus}
+            {...textbox} />
+          <AddButton index={i + 1} />
+        </div>
+      ))}
+    </div>
+  )
+}
 
 Layout.propTypes = {
   textBoxes: PropTypes.arrayOf(PropTypes.shape({

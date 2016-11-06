@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
+import './AddButton.css'
+
 const AddButton = ({ textBoxes, dispatch }) => (
   <button
+    className='AddButton'
     onClick={() => {
       dispatch({
         type: 'ADD_TEXTBOX',

@@ -1,19 +1,27 @@
 .ControlPanel {
-  background: #444;
+  background: #33383f;
   color: #fff;
-  width: 20rem;
+  width: 24rem;
+  text-align: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .Control {
+  border-bottom: 1px solid #373c42;
   display: block;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
 }
 
 .Control label {
   display: block;
-  text-align: left;
 }
 
 .Control output {
   text-align: right;
+}
+
+.Control p {
+  color: #919699;
+  font-size: 14px;
 }

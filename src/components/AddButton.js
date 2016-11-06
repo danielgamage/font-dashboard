@@ -3,14 +3,14 @@ import { connect } from 'react-redux'
 
 import './AddButton.css'
 
-const AddButton = ({ textBoxes, dispatch }) => (
+const AddButton = ({ textBoxes, dispatch, index }) => (
   <button
     className='AddButton'
     onClick={() => {
       dispatch({
         type: 'ADD_TEXTBOX',
         id: (new Date().getTime()),
-        index: textBoxes.length,
+        index: index,
         text: 'Type here...',
         color: '#666'
       })

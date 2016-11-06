@@ -22,8 +22,9 @@ const textBoxes = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TEXTBOX':
       return [
-        ...state,
-        textBox(undefined, action)
+        ...state.slice(0, action.index),
+        textBox(undefined, action),
+        ...state.slice(action.index, state.length)
       ]
     case 'SELECT_TEXTBOX':
       return ([...state].map(el => {

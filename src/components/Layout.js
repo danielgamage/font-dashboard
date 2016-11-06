@@ -8,7 +8,7 @@ const Layout = ({ textBoxes, onTextBoxFocus, dispatch }) => {
     <div className='LayoutWrapper'>
       <AddButton index='0' />
       {textBoxes.map((textbox, i) => (
-        <div>
+        <div key={i}>
           <TextBox
             key={textbox.id}
             {...textbox} />

@@ -24,7 +24,6 @@ const TextBox = ({ text, dispatch, id, fontSize }) => {
 }
 
 TextBox.propTypes = {
-  onFocus: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   fontSize: PropTypes.number.isRequired
@@ -35,7 +34,7 @@ function mapStateToProps (state, ownProps) {
     return (el.id === ownProps.id)
   })[0]
   console.log(textBox)
-  return { textBox: textBox }
+  return { ...textBox }
 }
 
 export default connect(mapStateToProps)(TextBox)

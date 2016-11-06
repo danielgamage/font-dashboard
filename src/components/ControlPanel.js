@@ -35,7 +35,10 @@ class ControlPanel extends Component {
     })
   }
   updateColor (e) {
-    this.setState({ color: e.target.value })
+    this.props.dispatch({
+      type: 'UPDATE_COLOR',
+      value: e.target.value
+    })
   }
   updateRendering (e) {
     this.setState({ fontSmoothing: e.target.value })
@@ -68,8 +71,8 @@ class ControlPanel extends Component {
         </div>
         <div className='Control'>
           <label htmlFor='color'>Text Color</label>
-          <input id='color' type='color' value={this.state.color} onChange={this.updateColor.bind(this)}/>
-          <output>{textBox && `${this.state.color}`}</output>
+          <input id='color' type='color' onChange={this.updateColor.bind(this)}/>
+          <output>{textBox && `${textBox.color}`}</output>
         </div>
         <div className='Control'>
           <label htmlFor='rendering'>Font Rendering</label>

@@ -37,6 +37,13 @@ const textBoxes = (state = [], action) => {
         }
         return el
       }))
+    case 'UPDATE_COLOR':
+      return ([...state].map(el => {
+        if (el.id === selectedID) {
+          el.color = action.value
+        }
+        return el
+      }))
     default:
       return state
   }

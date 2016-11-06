@@ -15,3 +15,8 @@ export const updateFontSize = (value) => ({
   type: 'UPDATE_FONT_SIZE',
   value
 })
+
+export const updateColor = (value) => ({
+  type: 'UPDATE_COLOR',
+  value
+})

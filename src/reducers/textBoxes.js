@@ -3,8 +3,7 @@ const textBox = (state, action) => {
     case 'ADD_TEXTBOX':
       return {
         id: action.id,
-        text: action.text,
-        completed: false
+        text: action.text
       }
     default:
       return state

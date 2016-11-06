@@ -7,7 +7,6 @@ const Layout = ({ textBoxes, onTextBoxFocus }) => (
       <TextBox
         key={textbox.id}
         {...textbox}
-        onFocus={() => onTextBoxFocus(textbox.id)}
         />
     )}
   </div>
@@ -18,7 +17,7 @@ Layout.propTypes = {
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,
-  onTextBoxFocus: PropTypes.func.isRequired
+  // onTextBoxFocus: PropTypes.func.isRequired
 }
 
 export default Layout

@@ -3,25 +3,18 @@ import { connect } from 'react-redux'
 
 import ControlPanel from './ControlPanel'
 import Layout from '../containers/LayoutContainer'
+import AddButton from './AddButton'
 
 import './App.css'
 
 class App extends Component {
   render () {
-    console.log(this.props)
     return (
       <div className='App'>
         <div className='Container'>
           <div className='LayoutWrapper'>
-            <button
-              onClick={() => {
-                this.props.dispatch({
-                  type: 'ADD_TEXTBOX',
-                  text: 'nice cool Paragraph'
-                })
-              }}
-              ></button>
             <Layout textBoxes={this.props.textBoxes} />
+            <AddButton />
           </div>
         </div>
         <ControlPanel />

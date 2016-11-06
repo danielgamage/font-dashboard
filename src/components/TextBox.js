@@ -1,20 +1,26 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
+import AddButton from './AddButton'
 import './TextBox.css'
 
 const TextBox = ({ text }) => (
   <div className='TextItem'>
+    <AddButton />
     <textarea
       className='text'
       defaultValue={text}
-      >
-    </textarea>
+    />
   </div>
 )
 
 TextBox.propTypes = {
-  onFocus: PropTypes.func.isRequired,
+  // onFocus: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
 }
 
-export default TextBox
+function mapStateToProps (state) {
+  return { textBoxes: state.textBoxes }
+}
+
+export default connect(mapStateToProps)(TextBox)

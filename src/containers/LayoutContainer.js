@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTextBox } from '../actions'
+import { selectTextBox } from '../actions'
 import Layout from '../components/Layout'
 
 const getTextBoxes = (textBoxes) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = ({
-  onTodoClick: toggleTextBox
+  onTodoClick: selectTextBox
 })
 
 const LayoutContainer = connect(

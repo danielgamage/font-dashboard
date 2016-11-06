@@ -51,6 +51,8 @@ class TextBox extends Component {
       color: this.state.color,
       ...fontSmoothing
     }
+    // determine whether an option will display as single value or multi value
+    // if this.props.selection.every(el => el.prop == this.props.selection[0].prop)
     return (
       <div className='ControlPanel'>
         <div className='Control'>

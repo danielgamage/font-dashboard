@@ -14,6 +14,11 @@ const textBox = (state, action) => {
 }
 
 const textBoxes = (state = [], action) => {
+  let selectedID
+  if (state.length > 0) {
+    const selectedObjects = [...state].filter(el => el.selected)
+    selectedID = selectedObjects.length && selectedObjects[0].id // lol
+  }
   switch (action.type) {
     case 'ADD_TEXTBOX':
       return [
@@ -25,10 +30,8 @@ const textBoxes = (state = [], action) => {
         return { ...el, selected: (el.id === action.id) }
       }))
     case 'UPDATE_FONT_SIZE':
-      const id = [...state].filter(el => el.selected)[0].id // lol
       return ([...state].map(el => {
-        if (el.id === id) {
-          console.log(action.value)
+        if (el.id === selectedID) {
           el.fontSize = parseFloat(action.value)
         }
         return el

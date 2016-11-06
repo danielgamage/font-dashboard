@@ -53,6 +53,7 @@ class ControlPanel extends Component {
     // if this.props.selection.every(el => el.prop == this.props.selection[0].prop)
 
     // grab props for below by first putting the selected object into mem
+    const textBox = this.props.textBoxes && this.props.textBoxes[0]
     return (
       <div className='ControlPanel'>
         <div className='Control'>
@@ -63,12 +64,12 @@ class ControlPanel extends Component {
         <div className='Control'>
           <label htmlFor='size'>Font Size</label>
           <input id='size' type='range' min='4' max='300' onChange={this.updateSize.bind(this)}/>
-          <output>{`${this.state.fontSize}px`}</output>
+          <output>{textBox && `${textBox.fontSize}px`}</output>
         </div>
         <div className='Control'>
           <label htmlFor='color'>Text Color</label>
           <input id='color' type='color' value={this.state.color} onChange={this.updateColor.bind(this)}/>
-          <output>{`${this.state.color}`}</output>
+          <output>{textBox && `${this.state.color}`}</output>
         </div>
         <div className='Control'>
           <label htmlFor='rendering'>Font Rendering</label>
@@ -83,4 +84,9 @@ class ControlPanel extends Component {
   }
 }
 
-export default connect()(ControlPanel)
+const mapStateToProps = (state, ownProps) => {
+  const selectedTextBoxes = state.textBoxes.filter(el => el.selected)
+  return { textBoxes: selectedTextBoxes }
+}
+
+export default connect(mapStateToProps)(ControlPanel)

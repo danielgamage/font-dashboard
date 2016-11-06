@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { selectTextBox } from '../actions'
 
 import './TextBox.css'
 
@@ -33,7 +32,6 @@ function mapStateToProps (state, ownProps) {
   const textBox = state.textBoxes.filter(el => {
     return (el.id === ownProps.id)
   })[0]
-  console.log(textBox)
   return { ...textBox }
 }
 

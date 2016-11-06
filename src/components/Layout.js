@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 const Layout = ({ textBoxes, onTextBoxFocus, dispatch }) => {
   return (
     <div className='LayoutWrapper'>
-      <AddButton index='0' />
+      <AddButton index={0} />
       {textBoxes.map((textbox, i) => (
         <div key={i}>
           <TextBox

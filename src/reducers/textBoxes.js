@@ -6,7 +6,8 @@ const textBox = (state, action) => {
         index: action.index,
         color: action.color,
         text: action.text,
-        selected: false
+        selected: false,
+        fontSize: 16
       }
     default:
       return state
@@ -21,8 +22,16 @@ const textBoxes = (state = [], action) => {
         textBox(undefined, action)
       ]
     case 'SELECT_TEXTBOX':
-      [...state].map(el => {
+      ;[...state].map(el => {
         el.selected = (el.id === action.id)
+      })
+    case 'UPDATE_FONT_SIZE':
+      const id = [...state].filter(el => el.selected)[0].id // lol
+      ;[...state].map(el => {
+        if (el.id === id) {
+          console.log(action.value)
+          el.fontSize = parseFloat(action.value)
+        }
       })
     default:
       return state

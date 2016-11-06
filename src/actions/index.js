@@ -10,3 +10,8 @@ export const selectTextBox = (id) => ({
   type: 'SELECT_TEXTBOX',
   id
 })
+
+export const updateFontSize = (value) => ({
+  type: 'UPDATE_FONT_SIZE',
+  value
+})

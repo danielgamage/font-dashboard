@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import './ControlPanel.css'
 
-class TextBox extends Component {
+class ControlPanel extends Component {
   constructor (props) {
-    super (props);
+    super(props);
     this.state = {
       fontFamily: 'sans-serif',
       fontSize: 16,
@@ -28,7 +29,10 @@ class TextBox extends Component {
     })
   }
   updateSize (e) {
-    this.setState({ fontSize: e.target.value })
+    this.props.dispatch({
+      type: 'UPDATE_FONT_SIZE',
+      value: e.target.value
+    })
   }
   updateColor (e) {
     this.setState({ color: e.target.value })
@@ -45,14 +49,10 @@ class TextBox extends Component {
     } else {
       fontSmoothing = { webkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
     }
-    let textStyle = {
-      fontFamily: `'${this.state.fontFamily}', sans-serif`,
-      fontSize: this.state.fontSize,
-      color: this.state.color,
-      ...fontSmoothing
-    }
     // determine whether an option will display as single value or multi value
     // if this.props.selection.every(el => el.prop == this.props.selection[0].prop)
+
+    // grab props for below by first putting the selected object into mem
     return (
       <div className='ControlPanel'>
         <div className='Control'>
@@ -62,7 +62,7 @@ class TextBox extends Component {
         </div>
         <div className='Control'>
           <label htmlFor='size'>Font Size</label>
-          <input id='size' type='range' min='4' max='300' value={this.state.fontSize} onChange={this.updateSize.bind(this)}/>
+          <input id='size' type='range' min='4' max='300' onChange={this.updateSize.bind(this)}/>
           <output>{`${this.state.fontSize}px`}</output>
         </div>
         <div className='Control'>
@@ -83,4 +83,4 @@ class TextBox extends Component {
   }
 }
 
-export default TextBox;
+export default connect()(ControlPanel)

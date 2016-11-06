@@ -1,8 +1,10 @@
 import React, { PropTypes } from 'react'
 import TextBox from './TextBox'
 import AddButton from './AddButton'
+import { connect } from 'react-redux'
+import { selectTextBox } from '../actions'
 
-const Layout = ({ textBoxes, onTextBoxFocus }) => {
+const Layout = ({ textBoxes, onTextBoxFocus, dispatch }) => {
   const orderedTextBoxes = [...textBoxes].sort((a, b) => a - b)
   return (
     <div className='LayoutWrapper'>
@@ -11,7 +13,6 @@ const Layout = ({ textBoxes, onTextBoxFocus }) => {
         <div>
           <TextBox
             key={textbox.id}
-            onFocus={onTextBoxFocus}
             {...textbox} />
           <AddButton index={i + 1} />
         </div>
@@ -29,4 +30,12 @@ Layout.propTypes = {
   // onTextBoxFocus: PropTypes.func.isRequired
 }
 
-export default Layout
+const getTextBoxes = (textBoxes) => {
+  return textBoxes
+}
+
+const mapStateToProps = (state) => ({
+  textBoxes: getTextBoxes(state.textBoxes)
+})
+
+export default connect(mapStateToProps)(Layout)

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import ControlPanel from './ControlPanel'
-import Layout from '../containers/LayoutContainer'
+import Layout from './Layout'
 
 import './App.css'
 

@@ -1,13 +1,18 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import AddButton from './AddButton'
 import './TextBox.css'
 
-const TextBox = ({ text }) => (
+const TextBox = ({ text, dispatch, id }) => (
   <div className='TextItem'>
     <textarea
       className='text'
+      onFocus={() => {
+        dispatch({
+          type: 'SELECT_TEXTBOX',
+          id: id
+        })
+      }}
       defaultValue={text}
     />
   </div>

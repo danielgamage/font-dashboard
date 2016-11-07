@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 import './AddButton.css'
 
-const AddButton = ({ textBoxes, dispatch, index }) => (
-  <div className='AddContainer'>
+const AddButton = ({ textBoxes, dispatch, solo, index }) => (
+  <div className={'AddContainer' + (solo ? ' solo' : '')}>
     <button
       className='AddButton'
       onClick={() => {

@@ -7,7 +7,9 @@ const textBox = (state, action) => {
         text: action.text,
         selected: false,
         fontSize: 16,
-        fontFamily: 'sans-serif'
+        fontFamily: 'sans-serif',
+        tracking: 0,
+        leading: 1.5
       }
     default:
       return state
@@ -35,6 +37,20 @@ const textBoxes = (state = [], action) => {
       return ([...state].map(el => {
         if (el.id === selectedID) {
           el.fontSize = parseFloat(action.value)
+        }
+        return el
+      }))
+    case 'UPDATE_FONT_TRACKING':
+      return ([...state].map(el => {
+        if (el.id === selectedID) {
+          el.tracking = `${action.value}em`
+        }
+        return el
+      }))
+    case 'UPDATE_FONT_LEADING':
+      return ([...state].map(el => {
+        if (el.id === selectedID) {
+          el.leading = parseFloat(action.value)
         }
         return el
       }))

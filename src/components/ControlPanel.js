@@ -35,6 +35,18 @@ class ControlPanel extends Component {
       value: e.target.value
     })
   }
+  updateLeading (e) {
+    this.props.dispatch({
+      type: 'UPDATE_FONT_LEADING',
+      value: e.target.value
+    })
+  }
+  updateTracking (e) {
+    this.props.dispatch({
+      type: 'UPDATE_FONT_TRACKING',
+      value: e.target.value
+    })
+  }
   updateColor (e) {
     this.props.dispatch({
       type: 'UPDATE_COLOR',
@@ -67,8 +79,18 @@ class ControlPanel extends Component {
         </div>
         <div className='Control'>
           <label htmlFor='size'>Font Size</label>
-          <input id='size' type='range' min='4' max='300' onChange={this.updateSize.bind(this)}/>
+          <input id='size' type='range' min='4' max='300' value={textBox && textBox.fontSize} onChange={this.updateSize.bind(this)}/>
           <output>{textBox && `${textBox.fontSize}px`}</output>
+        </div>
+        <div className='Control'>
+          <label htmlFor='leading'>Leading</label>
+          <input id='leading' type='range' min='-0.5' max='3' step='0.1' value={textBox && textBox.leading} onChange={this.updateLeading.bind(this)}/>
+          <output>{textBox && `${textBox.leading}px`}</output>
+        </div>
+        <div className='Control'>
+          <label htmlFor='tracking'>Tracking</label>
+          <input id='tracking' type='range' min='-0.5' max='1' step='0.01' value={textBox && textBox.tracking} onChange={this.updateTracking.bind(this)}/>
+          <output>{textBox && `${textBox.tracking}`}</output>
         </div>
         <div className='Control'>
           <label htmlFor='color'>Text Color</label>

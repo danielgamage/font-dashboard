@@ -17,6 +17,16 @@ export const updateFontSize = (value) => ({
   value
 })
 
+export const updateFontTracking = (value) => ({
+  type: 'UPDATE_FONT_TRACKING',
+  value
+})
+
+export const updateFontLeading = (value) => ({
+  type: 'UPDATE_FONT_LEADING',
+  value
+})
+
 export const updateFontFamily = (value) => ({
   type: 'UPDATE_FONT_FAMILY',
   value

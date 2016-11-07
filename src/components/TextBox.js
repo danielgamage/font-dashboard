@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 
 import './TextBox.css'
 
-const TextBox = ({ text, dispatch, id, color, fontSize }) => {
+const TextBox = ({ text, dispatch, id, fontFamily, color, fontSize }) => {
   const styles = {
+    fontFamily: `'${fontFamily}'`,
     fontSize: `${fontSize}px`,
     color: color
   }
+  console.log(styles)
   return (
     <div className='TextItem'>
       <textarea
@@ -29,7 +31,8 @@ TextBox.propTypes = {
   text: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
-  fontSize: PropTypes.number.isRequired
+  fontSize: PropTypes.number.isRequired,
+  fontFamily: PropTypes.string.isRequired
 }
 
 function mapStateToProps (state, ownProps) {

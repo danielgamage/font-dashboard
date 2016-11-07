@@ -3,6 +3,7 @@ export const addTextBox = (text) => ({
   id: 0,
   index: 0,
   color: "#fff",
+  fontFamily: 'sans-serif',
   text
 })
 
@@ -13,6 +14,11 @@ export const selectTextBox = (id) => ({
 
 export const updateFontSize = (value) => ({
   type: 'UPDATE_FONT_SIZE',
+  value
+})
+
+export const updateFontFamily = (value) => ({
+  type: 'UPDATE_FONT_FAMILY',
   value
 })
 

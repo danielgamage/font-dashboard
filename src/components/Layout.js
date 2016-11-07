@@ -24,7 +24,8 @@ Layout.propTypes = {
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
-    fontSize: PropTypes.number.isRequired
+    fontSize: PropTypes.number.isRequired,
+    fontFamily: PropTypes.string.isRequired
   }).isRequired).isRequired
   // onTextBoxFocus: PropTypes.func.isRequired
 }

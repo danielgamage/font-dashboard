@@ -20,8 +20,9 @@ class ControlPanel extends Component {
       reader.addEventListener('load', () => {
         let newFont = new FontFace(file.name, reader.result)
         document.fonts.add(newFont)
-        this.setState({
-          fontFamily: file.name
+        this.props.dispatch({
+          type: 'UPDATE_FONT_FAMILY',
+          value: file.name
         })
       }, false)
       reader.readAsArrayBuffer(file)

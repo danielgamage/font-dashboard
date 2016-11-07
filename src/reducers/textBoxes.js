@@ -6,7 +6,8 @@ const textBox = (state, action) => {
         color: action.color,
         text: action.text,
         selected: false,
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: 'sans-serif'
       }
     default:
       return state
@@ -34,6 +35,13 @@ const textBoxes = (state = [], action) => {
       return ([...state].map(el => {
         if (el.id === selectedID) {
           el.fontSize = parseFloat(action.value)
+        }
+        return el
+      }))
+    case 'UPDATE_FONT_FAMILY':
+      return ([...state].map(el => {
+        if (el.id === selectedID) {
+          el.fontFamily = action.value
         }
         return el
       }))

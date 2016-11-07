@@ -11,6 +11,21 @@ const textBox = (state, action) => {
         tracking: 0,
         leading: 1.5
       }
+    case 'UPDATE_FONT_SIZE':
+      state.fontSize = parseFloat(action.value)
+      return state
+    case 'UPDATE_FONT_TRACKING':
+      state.tracking = parseFloat(action.value)
+      return state
+    case 'UPDATE_FONT_LEADING':
+      state.leading = parseFloat(action.value)
+      return state
+    case 'UPDATE_FONT_FAMILY':
+      state.fontFamily = action.value
+      return state
+    case 'UPDATE_COLOR':
+      state.color = action.value
+      return state
     default:
       return state
   }
@@ -49,37 +64,13 @@ const textBoxes = (state = [], action) => {
         return el
       }))
     case 'UPDATE_FONT_SIZE':
-      return ([...state].map(el => {
-        if (el.id === selectedID) {
-          el.fontSize = parseFloat(action.value)
-        }
-        return el
-      }))
     case 'UPDATE_FONT_TRACKING':
-      return ([...state].map(el => {
-        if (el.id === selectedID) {
-          el.tracking = parseFloat(action.value)
-        }
-        return el
-      }))
     case 'UPDATE_FONT_LEADING':
-      return ([...state].map(el => {
-        if (el.id === selectedID) {
-          el.leading = parseFloat(action.value)
-        }
-        return el
-      }))
     case 'UPDATE_FONT_FAMILY':
-      return ([...state].map(el => {
-        if (el.id === selectedID) {
-          el.fontFamily = action.value
-        }
-        return el
-      }))
     case 'UPDATE_COLOR':
       return ([...state].map(el => {
         if (el.id === selectedID) {
-          el.color = action.value
+          textBox(el, action)
         }
         return el
       }))

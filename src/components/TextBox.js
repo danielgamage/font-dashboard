@@ -14,8 +14,9 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
   }
   return (
     <div className='TextItem'>
-      <textarea
+      <div
         className='text'
+        contentEditable='true'
         onFocus={() => {
           dispatch({
             type: 'SELECT_TEXTBOX',
@@ -26,13 +27,14 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
           dispatch({
             type: 'UPDATE_TEXT',
             id: id,
-            text: e.target.value
+            text: e.target.innerText
           })
         }}
         style={styles}
-        value={text}
         rows='1'
-      />
+      >
+      {text}
+      </div>
     { selected && <DeleteButton id={id} /> }
     </div>
   )

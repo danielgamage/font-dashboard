@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import './AddButton.css'
 
-const AddButton = ({ textBoxes, dispatch, solo, index }) => (
+const AddButton = ({ dispatch, solo, index }) => (
   <div className={'AddContainer' + (solo ? ' solo' : '')}>
     <button
       className='AddButton'
@@ -25,10 +25,4 @@ AddButton.propTypes = {
   index: PropTypes.number.isRequired
 }
 
-const mapStateToProps = (state) => {
-  return {
-    textBoxes: state.textBoxes
-  }
-}
-
-export default connect(mapStateToProps)(AddButton)
+export default connect()(AddButton)

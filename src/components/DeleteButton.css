@@ -1,0 +1,17 @@
+.DeleteButton {
+  appearance: none;
+  border: 0.2em solid currentColor;
+  padding: 0.2em 0.5em 0.3em;
+  background: #fff;
+  color: #4be;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  transition: 0.3s ease;
+  transform: translate(0, 0);
+  cursor: pointer;
+}

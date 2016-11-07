@@ -12,6 +12,11 @@ export const selectTextBox = (id) => ({
   id
 })
 
+export const deleteTextBox = (id) => ({
+  type: 'DELETE_TEXTBOX',
+  id
+})
+
 export const updateFontSize = (value) => ({
   type: 'UPDATE_FONT_SIZE',
   value

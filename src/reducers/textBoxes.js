@@ -33,6 +33,13 @@ const textBoxes = (state = [], action) => {
       return ([...state].map(el => {
         return { ...el, selected: (el.id === action.id) }
       }))
+    case 'DELETE_TEXTBOX':
+      return ([...state].filter(el => {
+        if (el.id === action.id) {
+          return false
+        }
+        return true
+      }))
     case 'UPDATE_FONT_SIZE':
       return ([...state].map(el => {
         if (el.id === selectedID) {

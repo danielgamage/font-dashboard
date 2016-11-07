@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import './TextBox.css'
+import DeleteButton from './DeleteButton'
 
-const TextBox = ({ text, dispatch, id, fontFamily, tracking, leading, color, fontSize }) => {
+const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize }) => {
   const styles = {
     fontFamily: `'${fontFamily}'`,
     fontSize: `${fontSize}px`,
@@ -23,7 +24,9 @@ const TextBox = ({ text, dispatch, id, fontFamily, tracking, leading, color, fon
         }}
         style={styles}
         defaultValue={text}
+        rows='1'
       />
+    { selected && <DeleteButton id={id} /> }
     </div>
   )
 }

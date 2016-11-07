@@ -1,9 +1,27 @@
+.AddContainer {
+  display: block;
+  position: relative;
+  height: 0;
+  z-index: 1;
+}
+
 .AddButton {
+  opacity: 0;
   appearance: none;
   border: 0.2em solid currentColor;
   background: #fff;
   color: #4be;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.05em
+  letter-spacing: 0.05em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: 0.2s ease;
+  transform: translate(-50%,-50%);
+}
+
+.AddContainer:hover .AddButton,
+.AddButton:focus {
+  opacity: 1;
 }

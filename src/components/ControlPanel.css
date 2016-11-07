@@ -2,15 +2,21 @@
   background: #33383f;
   color: #fff;
   width: 24rem;
+  padding: 1rem 0;
+  font-size: 14px;
   text-align: left;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .Control {
-  border-bottom: 1px solid #373c42;
+  border-bottom: 1px solid #3e4247;
   display: block;
-  padding: 1.5rem 2rem;
+  padding: 1rem 2rem;
+}
+
+.Control:last-child {
+  border-bottom: 0;
 }
 
 .Control label {
@@ -23,5 +29,5 @@
 
 .Control p {
   color: #919699;
-  font-size: 14px;
+  font-size: 12px;
 }

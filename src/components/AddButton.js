@@ -4,19 +4,21 @@ import { connect } from 'react-redux'
 import './AddButton.css'
 
 const AddButton = ({ textBoxes, dispatch, index }) => (
-  <button
-    className='AddButton'
-    onClick={() => {
-      dispatch({
-        type: 'ADD_TEXTBOX',
-        id: (new Date().getTime()),
-        index: index,
-        text: 'Type here...',
-        color: '#666'
-      })
-    }}>
-    Add textbox
-  </button>
+  <div className='AddContainer'>
+    <button
+      className='AddButton'
+      onClick={() => {
+        dispatch({
+          type: 'ADD_TEXTBOX',
+          id: (new Date().getTime()),
+          index: index,
+          text: 'Type here...',
+          color: '#666'
+        })
+      }}>
+      Add textbox
+    </button>
+  </div>
 )
 
 AddButton.propTypes = {

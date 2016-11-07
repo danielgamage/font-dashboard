@@ -54,7 +54,7 @@ const textBoxes = (state = [], action) => {
       }))
     case 'DELETE_TEXTBOX':
       return ([...state].filter(el => {
-        if (el.id === action.id) {
+        if (el.id === selectedID) {
           return false
         }
         return true

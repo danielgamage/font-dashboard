@@ -36,7 +36,6 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
       >
       {text}
       </div>
-    { selected && <DeleteButton id={id} /> }
     </div>
   )
 }

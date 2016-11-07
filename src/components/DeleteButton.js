@@ -8,8 +8,7 @@ const DeleteButton = ({ textBoxes, dispatch, id }) => (
       className='DeleteButton'
       onClick={() => {
         dispatch({
-          type: 'DELETE_TEXTBOX',
-          id: id
+          type: 'DELETE_TEXTBOX'
         })
       }}>
       Delete

@@ -1,8 +1,10 @@
 .TextItem {
   position: relative;
+  transition: 0.5s ease;
 }
 
 .TextItem:hover {
+  transition: 0.15s ease;
   box-shadow: 0 0 0 2px #eee inset;
 }
 

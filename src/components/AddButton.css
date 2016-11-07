@@ -18,12 +18,14 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transition: 0.2s ease;
+  transition: 0.3s ease;
   transform: translate(-50%,-50%);
+  cursor: pointer;
 }
 
 .AddContainer.solo .AddButton,
 .AddContainer:hover .AddButton,
 .AddButton:focus {
+  transition: 0.15s ease;
   opacity: 1;
 }

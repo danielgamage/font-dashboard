@@ -40,6 +40,14 @@ const textBoxes = (state = [], action) => {
         }
         return true
       }))
+    case 'UPDATE_TEXT':
+      return ([...state].map(el => {
+        if (el.id === action.id) {
+          console.log(action.text)
+          el.text = action.text
+        }
+        return el
+      }))
     case 'UPDATE_FONT_SIZE':
       return ([...state].map(el => {
         if (el.id === selectedID) {
@@ -50,7 +58,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_FONT_TRACKING':
       return ([...state].map(el => {
         if (el.id === selectedID) {
-          el.tracking = `${action.value}em`
+          el.tracking = parseFloat(action.value)
         }
         return el
       }))

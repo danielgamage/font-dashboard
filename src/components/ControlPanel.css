@@ -1,12 +1,14 @@
 .ControlPanel {
   background: #33383f;
   color: #fff;
-  width: 24rem;
+  width: 28rem;
   padding: 1rem 0;
   font-size: 14px;
   text-align: left;
   overflow-y: scroll;
   overflow-x: hidden;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .Control {
@@ -15,12 +17,30 @@
   padding: 1rem 2rem;
 }
 
+.full {
+  width: 100%;
+}
+.half {
+  width: 50%;
+}
+
+.sample {
+  margin-top: -1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .Control:last-child {
   border-bottom: 0;
 }
 
 .Control label {
   display: block;
+}
+
+.Control input {
+  max-width: 5rem;
 }
 
 .Control output {

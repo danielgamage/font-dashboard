@@ -9,7 +9,7 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
     fontFamily: `'${fontFamily}'`,
     fontSize: `${fontSize}px`,
     color: color,
-    letterSpacing: tracking,
+    letterSpacing: `${tracking}em`,
     lineHeight: leading
   }
   return (
@@ -22,8 +22,15 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
             id: id
           })
         }}
+        onInput={(e) => {
+          dispatch({
+            type: 'UPDATE_TEXT',
+            id: id,
+            text: e.target.value
+          })
+        }}
         style={styles}
-        defaultValue={text}
+        value={text}
         rows='1'
       />
     { selected && <DeleteButton id={id} /> }

@@ -43,6 +43,11 @@ export const updateFontFamily = (value) => ({
   value
 })
 
+export const updateColumns = (value) => ({
+  type: 'UPDATE_COLUMNS',
+  value
+})
+
 export const updateColor = (value) => ({
   type: 'UPDATE_COLOR',
   value

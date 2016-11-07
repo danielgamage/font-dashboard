@@ -56,6 +56,12 @@ class ControlPanel extends Component {
   updateRendering (e) {
     this.setState({ fontSmoothing: e.target.value })
   }
+  updateColumns (e) {
+    this.props.dispatch({
+      type: 'UPDATE_COLUMNS',
+      value: e.target.value
+    })
+  }
   render () {
     let fontSmoothing;
     if (this.state.fontSmoothing === 'Grayscale') {
@@ -88,7 +94,7 @@ class ControlPanel extends Component {
         <div className='Control half'>
           <label htmlFor='leading'>Leading</label>
           <input id='leading' type='range' min='-0.5' max='3' step='0.1' value={textBox && textBox.leading} onChange={this.updateLeading.bind(this)}/>
-          <output>{textBox && `${textBox.leading}px`}</output>
+          <output>{textBox && `${textBox.leading}`}</output>
         </div>
         <div className='Control half'>
           <label htmlFor='tracking'>Tracking</label>
@@ -106,6 +112,14 @@ class ControlPanel extends Component {
             <option>Subpixel</option>
             <option>Grayscale</option>
             <option>None</option>
+          </select>
+        </div>
+        <div className='Control half'>
+          <label htmlFor='columns'>Columns</label>
+          <select id='columns' onChange={this.updateColumns.bind(this)}>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
           </select>
         </div>
       </div>

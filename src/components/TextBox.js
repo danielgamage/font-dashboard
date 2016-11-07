@@ -4,13 +4,14 @@ import { connect } from 'react-redux'
 import './TextBox.css'
 import DeleteButton from './DeleteButton'
 
-const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize }) => {
+const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns }) => {
   const styles = {
     fontFamily: `'${fontFamily}'`,
     fontSize: `${fontSize}px`,
     color: color,
     letterSpacing: `${tracking}em`,
-    lineHeight: leading
+    lineHeight: leading,
+    columnCount: columns
   }
   return (
     <div className='TextItem'>
@@ -47,7 +48,8 @@ TextBox.propTypes = {
   fontSize: PropTypes.number.isRequired,
   fontFamily: PropTypes.string.isRequired,
   tracking: PropTypes.number.isRequired,
-  leading: PropTypes.number.isRequired
+  leading: PropTypes.number.isRequired,
+  columns: PropTypes.number.isRequired
 }
 
 function mapStateToProps (state, ownProps) {

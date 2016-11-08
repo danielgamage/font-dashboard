@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import './DeleteButton.css'
-
 const DeleteButton = ({ textBoxes, dispatch }) => (
     <button
       className='DeleteButton'

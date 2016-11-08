@@ -34,6 +34,9 @@ const textBox = (state, action) => {
     case 'UPDATE_ALIGNMENT':
       state.alignment = action.value
       return state
+    case 'UPDATE_TEXT':
+      state.text = action.text
+      return state
     default:
       return state
   }
@@ -64,13 +67,6 @@ const textBoxes = (state = [], action) => {
         return true
       }))
     case 'UPDATE_TEXT':
-      return ([...state].map(el => {
-        if (el.id === action.id) {
-          console.log(action.text)
-          el.text = action.text
-        }
-        return el
-      }))
     case 'UPDATE_FONT_SIZE':
     case 'UPDATE_FONT_TRACKING':
     case 'UPDATE_FONT_LEADING':

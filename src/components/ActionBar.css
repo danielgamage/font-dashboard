@@ -2,3 +2,22 @@
   height: 4rem;
   background-color: #039BE5;
 }
+.ActionBar button {
+  appearance: none;
+  padding: 0.2em 0.5em 0.3em;
+  color: #fff;
+  background: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: 0.3s ease;
+  transform: translate(0, 0);
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  border: none;
+}
+.ActionBar button:hover,
+.ActionBar button:focus {
+  background: rgba(255,255,255, 0.2);
+}

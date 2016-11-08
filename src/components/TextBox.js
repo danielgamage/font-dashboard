@@ -27,7 +27,6 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
         onInput={(e) => {
           dispatch({
             type: 'UPDATE_TEXT',
-            id: id,
             text: e.target.innerText
           })
         }}
@@ -49,7 +48,7 @@ TextBox.propTypes = {
   tracking: PropTypes.number.isRequired,
   leading: PropTypes.number.isRequired,
   columns: PropTypes.number.isRequired,
-  align: PropTypes.string.isRequired
+  alignment: PropTypes.string.isRequired
 }
 
 function mapStateToProps (state, ownProps) {

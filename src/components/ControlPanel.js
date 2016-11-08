@@ -1,19 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import align_left from '../icons/align-left.svg';
-import align_center from '../icons/align-center.svg';
-import align_right from '../icons/align-right.svg';
-import align_justify from '../icons/align-justify.svg';
+import alignIcon from '../icons/align.svg';
 
 import './ControlPanel.css'
 
-
-const icons = {
-  'align_left': align_left,
-  'align_center': align_center,
-  'align_right': align_right,
-  'align_justify': align_justify
-}
 class ControlPanel extends Component {
   constructor (props) {
     super(props);
@@ -132,7 +122,7 @@ class ControlPanel extends Component {
                 checked={(textBox && textBox.alignment === el)}
                 onChange={this.updateAlignment.bind(this)}/>
               <svg viewBox='0 0 16 16'>
-                <use xlinkHref={icons['align_' + el] + '#Layer_1'}></use>
+                <use xlinkHref={alignIcon + `#${el}`}></use>
               </svg>
             </label>
           ))}

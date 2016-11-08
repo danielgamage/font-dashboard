@@ -35,7 +35,7 @@
   text-overflow: ellipsis;
 }
 
-.Control label {
+.ControlTitle {
   display: block;
 }
 
@@ -46,6 +46,24 @@
   color: white;
   border: 0;
   border-bottom: 0.15em solid #888;
+}
+
+.Control input[type=radio][name=alignment] {
+  appearance: none;
+  width: 0;
+  height: 0;
+  background: none;
+  margin: 0;
+}
+
+.Control input[type=radio][name=alignment]:checked + svg {
+  fill: #fff;
+}
+
+.Control svg {
+  width: 1rem;
+  height: 1rem;
+  fill: #777;
 }
 
 .Control output {

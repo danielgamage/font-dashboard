@@ -1,9 +1,9 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import './DeleteButton.css'
 
-const DeleteButton = ({ textBoxes, dispatch, id }) => (
+const DeleteButton = ({ textBoxes, dispatch }) => (
     <button
       className='DeleteButton'
       onClick={() => {
@@ -14,9 +14,5 @@ const DeleteButton = ({ textBoxes, dispatch, id }) => (
       Delete
     </button>
 )
-
-DeleteButton.propTypes = {
-  id: PropTypes.number.isRequired
-}
 
 export default connect()(DeleteButton)

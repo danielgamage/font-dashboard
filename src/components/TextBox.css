@@ -8,6 +8,11 @@
   box-shadow: 0 0 0 2px #eee inset;
 }
 
+.TextItem.selected {
+  transition: 0.15s ease;
+  box-shadow: 0 0 0 2px #ddd inset;
+}
+
 .text {
   border: none;
   padding: 0;
@@ -17,4 +22,8 @@
   width: 100%;
   resize: none;
   background: none;
+}
+
+.text:focus {
+  outline: none;
 }

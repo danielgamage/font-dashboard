@@ -13,10 +13,11 @@ const AddButton = ({ dispatch, solo, index }) => (
           id: (new Date().getTime()),
           index: index,
           text: 'Type here...',
-          color: '#666'
+          color: '#666',
+          columns: '1'
         })
       }}>
-      Add textbox
+      +
     </button>
   </div>
 )

@@ -86,20 +86,20 @@ class ControlPanel extends Component {
           <input id='font' type='file' onChange={this.readFile.bind(this)} />
           <p>You can also drag your font directly onto the text block you want to apply the font to.</p>
         </div>
-        <div className='Control full'>
+        <div className='Control third'>
           <label htmlFor='size'>Font Size</label>
-          <input id='size' type='range' min='4' max='300' value={textBox && textBox.fontSize} onChange={this.updateSize.bind(this)}/>
-          <output>{textBox && `${textBox.fontSize}px`}</output>
+          <input id='size' type='number' input='numeric' min='0' value={textBox && textBox.fontSize} onChange={this.updateSize.bind(this)}/>
+          {`px`}
         </div>
-        <div className='Control half'>
-          <label htmlFor='leading'>Leading</label>
-          <input id='leading' type='range' min='-0.5' max='3' step='0.1' value={textBox && textBox.leading} onChange={this.updateLeading.bind(this)}/>
-          <output>{textBox && `${textBox.leading}`}</output>
+        <div className='Control third'>
+          <label htmlFor='leading'>↕︎</label>
+          <input id='leading' type='number' input='numeric' step='0.1' value={textBox && textBox.leading} onChange={this.updateLeading.bind(this)}/>
+          {`em`}
         </div>
-        <div className='Control half'>
-          <label htmlFor='tracking'>Tracking</label>
-          <input id='tracking' type='range' min='-0.5' max='1' step='0.01' value={textBox && textBox.tracking} onChange={this.updateTracking.bind(this)}/>
-          <output>{textBox && `${textBox.tracking}em`}</output>
+        <div className='Control third'>
+          <label htmlFor='tracking'>↔︎</label>
+          <input id='tracking' type='number' input='numeric' min='-0.5' max='1' step='0.01' value={textBox && textBox.tracking} onChange={this.updateTracking.bind(this)}/>
+          {`em`}
         </div>
         <div className='Control half'>
           <label htmlFor='color'>Text Color</label>
@@ -116,11 +116,7 @@ class ControlPanel extends Component {
         </div>
         <div className='Control half'>
           <label htmlFor='columns'>Columns</label>
-          <select id='columns' onChange={this.updateColumns.bind(this)}>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select>
+          <input type='number' min='1' id='columns' value={textBox && textBox.columns} onChange={this.updateColumns.bind(this)} />
         </div>
       </div>
     )

@@ -1,14 +1,19 @@
 .DeleteButton {
   appearance: none;
-  border: 0.2em solid currentColor;
   padding: 0.2em 0.5em 0.3em;
-  background: #fff;
-  color: #4be;
+  color: #fff;
+  background: none;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: 0.3s ease;
   transform: translate(0, 0);
   cursor: pointer;
+  width: 4rem;
   height: 4rem;
+  border: none;
+}
+.DeleteButton:hover,
+.DeleteButton:focus {
+  background: rgba(255,255,255, 0.2);
 }

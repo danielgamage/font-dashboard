@@ -29,7 +29,6 @@ Layout.propTypes = {
     tracking: PropTypes.number.isRequired,
     leading: PropTypes.number.isRequired
   }).isRequired).isRequired
-  // onTextBoxFocus: PropTypes.func.isRequired
 }
 
 const getTextBoxes = (textBoxes) => {

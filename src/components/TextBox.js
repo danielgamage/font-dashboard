@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import './TextBox.css'
-import DeleteButton from './DeleteButton'
 
 const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns }) => {
   const styles = {
@@ -14,7 +13,7 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
     columnCount: columns
   }
   return (
-    <div className='TextItem'>
+    <div className={'TextItem' + (selected ? ' selected' : '')}>
       <div
         className='text'
         contentEditable='true'

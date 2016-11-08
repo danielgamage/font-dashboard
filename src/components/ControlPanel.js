@@ -62,6 +62,12 @@ class ControlPanel extends Component {
       value: e.target.value
     })
   }
+  updateAlignment (e) {
+    this.props.dispatch({
+      type: 'UPDATE_ALIGNMENT',
+      value: e.target.value
+    })
+  }
   render () {
     let fontSmoothing;
     if (this.state.fontSmoothing === 'Grayscale') {
@@ -105,6 +111,25 @@ class ControlPanel extends Component {
           <label htmlFor='color'>Text Color</label>
           <input id='color' type='color' onChange={this.updateColor.bind(this)}/>
           <output>{textBox && `${textBox.color}`}</output>
+        </div>
+        <div className='Control half'>
+          <label htmlFor='alignment'>Alignment</label>
+          <input id='alignment' name='alignment' type='radio'
+            value='left'
+            checked={(textBox && textBox.alignment === 'left')}
+            onChange={this.updateAlignment.bind(this)}/>
+          <input id='alignment' name='alignment' type='radio'
+            value='center'
+            checked={(textBox && textBox.alignment === 'center')}
+            onChange={this.updateAlignment.bind(this)}/>
+          <input id='alignment' name='alignment' type='radio'
+            value='right'
+            checked={(textBox && textBox.alignment === 'right')}
+            onChange={this.updateAlignment.bind(this)}/>
+          <input id='alignment' name='alignment' type='radio'
+            value='justify'
+            checked={(textBox && textBox.alignment === 'justify')}
+            onChange={this.updateAlignment.bind(this)}/>
         </div>
         <div className='Control half'>
           <label htmlFor='rendering'>Font Rendering</label>

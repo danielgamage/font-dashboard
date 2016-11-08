@@ -35,10 +35,6 @@
   text-overflow: ellipsis;
 }
 
-.Control:last-child {
-  border-bottom: 0;
-}
-
 .Control label {
   display: block;
 }

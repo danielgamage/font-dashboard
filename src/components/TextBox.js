@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 
 import './TextBox.css'
 
-const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns }) => {
+const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns, alignment }) => {
   const styles = {
     fontFamily: `'${fontFamily}'`,
     fontSize: `${fontSize}px`,
     color: color,
     letterSpacing: `${tracking}em`,
     lineHeight: leading,
+    textAlign: alignment,
     columnCount: columns
   }
   return (
@@ -47,7 +48,8 @@ TextBox.propTypes = {
   fontFamily: PropTypes.string.isRequired,
   tracking: PropTypes.number.isRequired,
   leading: PropTypes.number.isRequired,
-  columns: PropTypes.number.isRequired
+  columns: PropTypes.number.isRequired,
+  align: PropTypes.string.isRequired
 }
 
 function mapStateToProps (state, ownProps) {

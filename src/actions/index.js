@@ -51,3 +51,8 @@ export const updateColor = (value) => ({
   type: 'UPDATE_COLOR',
   value
 })
+
+export const updateAlignment = (value) => ({
+  type: 'UPDATE_ALIGNMENT',
+  value
+})

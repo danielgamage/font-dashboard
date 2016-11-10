@@ -46,7 +46,10 @@ class ControlPanelText extends Component {
     })
   }
   updateRendering (e) {
-    this.setState({ fontSmoothing: e.target.value })
+    this.props.dispatch({
+      type: 'UPDATE_RENDERING',
+      value: e.target.value
+    })
   }
   updateColumns (e) {
     this.props.dispatch({

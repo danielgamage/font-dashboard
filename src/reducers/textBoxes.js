@@ -37,6 +37,9 @@ const textBox = (state, action) => {
     case 'UPDATE_TEXT':
       state.text = action.value
       return state
+    case 'UPDATE_RENDERING':
+      state.rendering = action.value
+      return state
     default:
       return state
   }
@@ -78,6 +81,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_COLOR':
     case 'UPDATE_COLUMNS':
     case 'UPDATE_ALIGNMENT':
+    case 'UPDATE_RENDERING':
       return ([...state].map(el => {
         if (el.id === selectedID) {
           textBox(el, action)

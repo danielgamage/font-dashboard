@@ -3,7 +3,15 @@ import { connect } from 'react-redux'
 
 import './TextBox.css'
 
-const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns, alignment }) => {
+const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns, alignment, rendering }) => {
+  let fontSmoothing
+  if (rendering === 'Grayscale') {
+    fontSmoothing = { webkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
+  } else if (rendering === 'None') {
+    fontSmoothing = { webkitFontSmoothing: 'none', MozOsxFontSmoothing: 'none'}
+  } else {
+    fontSmoothing = { webkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
+  }
   const styles = {
     fontFamily: `'${fontFamily}'`,
     fontSize: `${fontSize}px`,
@@ -11,7 +19,8 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
     letterSpacing: `${tracking}em`,
     lineHeight: leading,
     textAlign: alignment,
-    columnCount: columns
+    columnCount: columns,
+    ...fontSmoothing
   }
   return (
     <div className={'TextItem' + (selected ? ' selected' : '')}>
@@ -52,7 +61,8 @@ TextBox.propTypes = {
   tracking: PropTypes.number.isRequired,
   leading: PropTypes.number.isRequired,
   columns: PropTypes.number.isRequired,
-  alignment: PropTypes.string.isRequired
+  alignment: PropTypes.string.isRequired,
+  rendering: PropTypes.string.isRequired
 }
 
 function mapStateToProps (state, ownProps) {

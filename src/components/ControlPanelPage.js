@@ -21,7 +21,6 @@ class ControlPanelText extends Component {
     })
   }
   render () {
-    console.log(this.props.page)
     // determine whether an option will display as single value or multi value
     // if this.props.selection.every(el => el.prop == this.props.selection[0].prop)
 

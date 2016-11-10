@@ -29,15 +29,23 @@
 .TextList {
   position: absolute;
   bottom: 100%;
+  width: 100%;
   background: #0277BD;
   margin: 0;
   padding: 1rem 0;
   list-style: none;
   color: #E1F5FE;
+  overflow-y: scroll;
+  height: 12rem;
 }
 .TextList__Item {
   display: block;
   padding: 0.5rem 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  cursor: pointer;
 }
 .TextList__Item:hover{
   background-color: #0065a2;

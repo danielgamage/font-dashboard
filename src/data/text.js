@@ -2,5 +2,16 @@ export default [
   `ABCDEFGHIJKLMNOPQRSTUVWXYZ`,
   `abcdefghijklmnopqrstuvwxyz`,
   `AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz`,
-  `The wizard quickly jinxed the gnomes before they vaporized. A quivering Texas zombie fought republic linked jewelry. Grumpy wizards make toxic brew for the evil queen and jack. Back in June we delivered oxygen equipment of the same size.`
+  `The wizard quickly jinxed the gnomes before they vaporized. A quivering Texas zombie fought republic linked jewelry. Grumpy wizards make toxic brew for the evil queen and jack. Back in June we delivered oxygen equipment of the same size.`,
+  `Nechť již hříšné saxofony ďáblů rozezvučí síň úděsnými tóny waltzu, tanga a quickstepu.`,
+  `Quizdeltagerne spiste jordbær med fløde, mens cirkusklovnen Walther spillede på xylofon.`,
+  `Eble ĉiu kvazaŭ-deca fuŝĥoraĵo ĝojigos homtipon.`,
+  `Monsieur Jack, vous dactylographiez bien mieux que votre ami Wolf`,
+  `“Falsches Üben von Xylophonmusik quält jeden größeren Zwerg”`,
+  `Kæmi ný öxi hér, ykist þjófum nú bæði víl og ádrepa.`,
+  `Berlusconi? Quiz, tv, paghe da fame.`,
+  `Vår sære Zulu fra badeøya spilte jo whist og quickstep i min taxi.`,
+  `Pójdźże, kiń tę chmurność w głąb flaszy!`,
+  `Byxfjärmat föl gick på duvshowen.`,
+  `Masseødelæggelsesvåben`,
 ]

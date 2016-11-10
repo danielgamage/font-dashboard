@@ -4,6 +4,7 @@ import alignIcon from '../icons/align.svg';
 
 import './ControlPanel.css'
 import ControlPanelText from './ControlPanelText'
+import ControlPanelPage from './ControlPanelPage'
 
 class ControlPanel extends Component {
   constructor (props) {
@@ -32,7 +33,7 @@ class ControlPanel extends Component {
           ))}
         </div>
         {this.state.tab === 'Text' && <ControlPanelText />}
-        {this.state.tab === 'Page' && 'Hello!'}
+        {this.state.tab === 'Page' && <ControlPanelPage />}
       </div>
     )
   }

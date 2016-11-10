@@ -60,9 +60,6 @@ class ControlPanelText extends Component {
       value: e.target.value
     })
   }
-  switchTabs (tab) {
-    this.setState({tab: tab})
-  }
   render () {
     // determine whether an option will display as single value or multi value
     // if this.props.selection.every(el => el.prop == this.props.selection[0].prop)

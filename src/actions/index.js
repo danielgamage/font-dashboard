@@ -55,3 +55,14 @@ export const updateAlignment = (value) => ({
   type: 'UPDATE_ALIGNMENT',
   value
 })
+
+export const updatePagePadding = (value, direction) => ({
+  type: 'UPDATE_PAGE_PADDING',
+  value,
+  direction
+})
+
+export const updatePageWidth = (value) => ({
+  type: 'UPDATE_PAGE_WIDTH',
+  value
+})

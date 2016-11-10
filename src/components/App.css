@@ -12,7 +12,6 @@
 
 .LayoutWrapper {
   margin: auto;
-  width: 30rem;
   max-width: 100%;
   padding: 2rem 0;
   flex: 1 0 auto;

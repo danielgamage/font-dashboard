@@ -55,6 +55,10 @@ const textBoxes = (state = [], action) => {
         textBox(undefined, action),
         ...state.slice(action.index, state.length)
       ]
+    case 'DESELECT_TEXTBOXES':
+      return ([...state].map(el => {
+        return { ...el, selected: false }
+      }))
     case 'SELECT_TEXTBOX':
       return ([...state].map(el => {
         return { ...el, selected: (el.id === action.id) }

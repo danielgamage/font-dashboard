@@ -18,6 +18,10 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
       <div
         className='text'
         contentEditable='true'
+        onClick={(e) => {
+          // prevent deselection
+          e.stopPropagation()
+        }}
         onFocus={() => {
           dispatch({
             type: 'SELECT_TEXTBOX',

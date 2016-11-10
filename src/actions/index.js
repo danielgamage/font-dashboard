@@ -12,6 +12,11 @@ export const selectTextBox = (id) => ({
   id
 })
 
+export const deselectTextBoxes = (id) => ({
+  type: 'DESELECT_TEXTBOXES',
+  id
+})
+
 export const deleteTextBox = () => ({
   type: 'DELETE_TEXTBOX'
 })

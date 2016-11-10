@@ -52,7 +52,7 @@ TextBox.propTypes = {
 }
 
 function mapStateToProps (state, ownProps) {
-  const textBox = state.textBoxes.filter(el => {
+  const textBox = state.textBoxes.present.filter(el => {
     return (el.id === ownProps.id)
   })[0]
   return { ...textBox }

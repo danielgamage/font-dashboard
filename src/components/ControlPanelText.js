@@ -128,7 +128,7 @@ class ControlPanelText extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const selectedTextBoxes = state.textBoxes.filter(el => el.selected)
+  const selectedTextBoxes = state.textBoxes.present.filter(el => el.selected)
   return { textBoxes: selectedTextBoxes }
 }
 

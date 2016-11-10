@@ -18,7 +18,6 @@ class ControlPanel extends Component {
   }
   render () {
     // grab props for below by first putting the selected object into mem
-    const textBox = this.props.textBoxes && this.props.textBoxes[0]
     return (
       <div className='ControlPanel'>
         <div className='TabBar'>
@@ -39,9 +38,4 @@ class ControlPanel extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const selectedTextBoxes = state.textBoxes.filter(el => el.selected)
-  return { textBoxes: selectedTextBoxes }
-}
-
-export default connect(mapStateToProps)(ControlPanel)
+export default connect()(ControlPanel)

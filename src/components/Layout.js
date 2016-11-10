@@ -3,23 +3,25 @@ import TextBox from './TextBox'
 import AddButton from './AddButton'
 import { connect } from 'react-redux'
 
-const Layout = ({ textBoxes, onTextBoxFocus, dispatch, page }) => {
+const Layout = ({ textBoxes, dispatch, page }) => {
   const styles = {
     width: `${page.width}rem`
   }
   return (
-    <div
-      className='LayoutWrapper'
-      style={styles}>
-      <AddButton index={0} solo={(textBoxes.length === 0)}/>
-      {textBoxes.map((textbox, i) => (
-        <div key={i}>
-          <TextBox
-            key={textbox.id}
-            {...textbox} />
-          <AddButton index={i + 1} />
-        </div>
-      ))}
+    <div className="Layout">
+      <div
+        className='LayoutWrapper'
+        style={styles}>
+        <AddButton index={0} solo={(textBoxes.length === 0)}/>
+        {textBoxes.map((textbox, i) => (
+          <div key={i}>
+            <TextBox
+              key={textbox.id}
+              {...textbox} />
+            <AddButton index={i + 1} />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -37,8 +39,8 @@ Layout.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  textBoxes: state.textBoxes,
-  page: state.page
+  textBoxes: state.textBoxes.present,
+  page: state.page.present
 })
 
 export default connect(mapStateToProps)(Layout)

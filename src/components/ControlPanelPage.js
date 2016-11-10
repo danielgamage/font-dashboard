@@ -39,7 +39,7 @@ class ControlPanelText extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { page: state.page }
+  return { page: state.page.present }
 }
 
 export default connect(mapStateToProps)(ControlPanelText)

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import { ActionCreators } from 'redux-undo'
 
 import TextSamples from './TextSamples'
 
@@ -7,7 +8,7 @@ import './ActionBar.css'
 
 class ActionBar extends Component {
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       samplesOpen: false
     }
@@ -35,6 +36,20 @@ class ActionBar extends Component {
           Abc...
         </button>
         { this.state.samplesOpen && <TextSamples/> }
+        <button
+          onClick={() => {
+            dispatch(ActionCreators.undo()) // undo the last action
+          }}
+          >
+        Undo
+        </button>
+        <button
+          onClick={() => {
+            dispatch(ActionCreators.redo()) // undo the last action
+          }}
+          >
+        Redo
+        </button>
       </div>
     )
   }

@@ -35,7 +35,7 @@ const textBox = (state, action) => {
       state.alignment = action.value
       return state
     case 'UPDATE_TEXT':
-      state.text = action.text
+      state.text = action.value
       return state
     default:
       return state

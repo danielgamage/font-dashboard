@@ -1,6 +1,7 @@
 .ActionBar {
   height: 4rem;
   background-color: #039BE5;
+  position: relative;
 }
 .ActionBar button {
   appearance: none;
@@ -20,4 +21,24 @@
 .ActionBar button:hover,
 .ActionBar button:focus {
   background: rgba(255,255,255, 0.2);
+}
+.ActionBar button.open {
+  background: #0277BD;
+}
+
+.TextList {
+  position: absolute;
+  bottom: 100%;
+  background: #0277BD;
+  margin: 0;
+  padding: 1rem 0;
+  list-style: none;
+  color: #E1F5FE;
+}
+.TextList__Item {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+.TextList__Item:hover{
+  background-color: #0065a2;
 }

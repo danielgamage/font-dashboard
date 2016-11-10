@@ -39,16 +39,14 @@ class ActionBar extends Component {
         <button
           onClick={() => {
             dispatch(ActionCreators.undo()) // undo the last action
-          }}
-          >
-        Undo
+          }}>
+          Undo
         </button>
         <button
           onClick={() => {
             dispatch(ActionCreators.redo()) // undo the last action
-          }}
-          >
-        Redo
+          }}>
+          Redo
         </button>
       </div>
     )

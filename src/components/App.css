@@ -4,15 +4,19 @@
 
 .Container {
   width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  height: 100%;
   display: flex;
   flex-flow: column;
+}
+
+.Layout {
+  flex: 1 1 auto;
+  height: 100%;
+  overflow: scroll;
 }
 
 .LayoutWrapper {
   margin: auto;
   max-width: 100%;
   padding: 2rem 0;
-  flex: 1 0 auto;
 }

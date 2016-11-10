@@ -41,9 +41,10 @@ export const updateFontLeading = (value) => ({
   value
 })
 
-export const updateFontFamily = (value) => ({
+export const updateFontFamily = (value, id) => ({
   type: 'UPDATE_FONT_FAMILY',
-  value
+  value,
+  id
 })
 
 export const updateColumns = (value) => ({

@@ -1,16 +1,17 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import readFile from '../utils/readFile.js'
 
 import './TextBox.css'
 
 const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns, alignment, rendering }) => {
   let fontSmoothing
   if (rendering === 'Grayscale') {
-    fontSmoothing = { webkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
+    fontSmoothing = { WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
   } else if (rendering === 'None') {
-    fontSmoothing = { webkitFontSmoothing: 'none', MozOsxFontSmoothing: 'none'}
+    fontSmoothing = { WebkitFontSmoothing: 'none', MozOsxFontSmoothing: 'none'}
   } else {
-    fontSmoothing = { webkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
+    fontSmoothing = { WebkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
   }
   const styles = {
     fontFamily: `'${fontFamily}'`,
@@ -23,32 +24,58 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
     ...fontSmoothing
   }
   return (
-    <div className={'TextItem' + (selected ? ' selected' : '')}>
       <div
-        className='text'
-        contentEditable='true'
-        onClick={(e) => {
-          // prevent deselection
-          e.stopPropagation()
-        }}
-        onFocus={() => {
-          dispatch({
-            type: 'SELECT_TEXTBOX',
-            id: id
-          })
-        }}
-        onInput={(e) => {
-          dispatch({
-            type: 'UPDATE_TEXT',
-            text: e.target.innerText
-          })
-        }}
-        style={styles}
-        rows='1'
-      >
-      {text}
+        className={'TextItem' + (selected ? ' selected' : '')}
+        onDrop={(e) => {
+          e.preventDefault();
+          // If dropped items aren't files, reject them
+          var dt = e.dataTransfer;
+          if (dt.items) {
+            const files = [...dt.items].map((file, i) => {
+              if (dt.items[i].kind == "file") {
+                return dt.items[i].getAsFile()
+              }
+            })
+            readFile(files[0])
+            files.map((file) => {
+              dispatch({
+                type: 'UPDATE_FONT_FAMILY',
+                value: file.name,
+                id: id
+              })
+            })
+          } else {
+            // Use DataTransfer interface to access the file(s)
+            for (var i=0; i < dt.files.length; i++) {
+              console.log("... file[" + i + "].name = " + dt.files[i].name);
+            }
+          }
+        }}>
+        <div
+          className='text'
+          contentEditable='true'
+          onClick={(e) => {
+            // prevent deselection
+            e.stopPropagation()
+          }}
+          onFocus={() => {
+            dispatch({
+              type: 'SELECT_TEXTBOX',
+              id: id
+            })
+          }}
+          onInput={(e) => {
+            dispatch({
+              type: 'UPDATE_TEXT',
+              text: e.target.innerText
+            })
+          }}
+          style={styles}
+          rows='1'
+        >
+        {text}
+        </div>
       </div>
-    </div>
   )
 }
 

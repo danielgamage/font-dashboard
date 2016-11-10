@@ -83,7 +83,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_ALIGNMENT':
     case 'UPDATE_RENDERING':
       return ([...state].map(el => {
-        if (el.id === selectedID) {
+        if (el.id === selectedID || el.id === action.id) {
           textBox(el, action)
         }
         return el

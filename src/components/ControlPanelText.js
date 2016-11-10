@@ -1,24 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import alignIcon from '../icons/align.svg'
-
+import readFile from '../utils/readFile.js'
 
 class ControlPanelText extends Component {
-  readFile (e) {
-    // Side effects: add font to document.fonts
-    // should probably cache if font already exists
-    [...e.target.files].map((file, i) => {
-      let reader = new FileReader()
-      reader.addEventListener('load', () => {
-        let newFont = new FontFace(file.name, reader.result)
-        document.fonts.add(newFont)
-        this.props.dispatch({
-          type: 'UPDATE_FONT_FAMILY',
-          value: file.name
-        })
-      }, false)
-      reader.readAsArrayBuffer(file)
-      return true
+  updateFonts (e) {
+    readFile(...e.target.files)
+    ;[...e.target.files].map((file) => {
+      this.props.dispatch({
+        type: 'UPDATE_FONT_FAMILY',
+        value: file.name
+      })
     })
   }
   updateSize (e) {
@@ -76,7 +68,7 @@ class ControlPanelText extends Component {
         </div>
         <div className='Control full'>
           <label htmlFor='font' className='ControlTitle'>Font File</label>
-          <input id='font' type='file' onChange={this.readFile.bind(this)} />
+          <input id='font' type='file' onChange={this.updateFonts.bind(this)} />
           <p>You can also drag your font directly onto the text block you want to apply the font to.</p>
         </div>
         <div className='Control third'>

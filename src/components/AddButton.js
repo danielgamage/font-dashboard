@@ -19,6 +19,7 @@ const AddButton = ({ dispatch, solo, index }) => (
       }}>
       +
     </button>
+    <div className='AddBackground'></div>
   </div>
 )
 

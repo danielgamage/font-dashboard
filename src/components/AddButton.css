@@ -7,6 +7,7 @@
 
 .AddButton {
   opacity: 0;
+  z-index: 1;
   appearance: none;
   border: 0.2em solid currentColor;
   padding: 0.2em 0.5em 0.3em;
@@ -26,9 +27,18 @@
   border-radius: 1rem;
 }
 
+.AddBackground {
+  transition: 0.3s ease;
+  border-top: 2px solid #eee;
+  opacity: 0;
+}
+
 .AddContainer.solo .AddButton,
 .AddContainer:hover .AddButton,
-.AddButton:focus {
+.AddButton:focus,
+.AddContainer.solo .AddButton + .AddBackground,
+.AddContainer:hover .AddButton + .AddBackground,
+.AddButton:focus + .AddBackground {
   transition: 0.15s ease;
   opacity: 1;
 }

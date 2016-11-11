@@ -11,7 +11,8 @@ const textBox = (state, action) => {
         tracking: 0,
         leading: 1.5,
         columns: 1,
-        alignment: 'left'
+        alignment: 'left',
+        rendering: 'Subpixel'
       }
     case 'UPDATE_FONT_SIZE':
       state.fontSize = parseFloat(action.value)
@@ -35,7 +36,7 @@ const textBox = (state, action) => {
       state.alignment = action.value
       return state
     case 'UPDATE_TEXT':
-      state.text = action.value
+      state.text = action.value || ''
       return state
     case 'UPDATE_RENDERING':
       state.rendering = action.value
@@ -83,9 +84,12 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_ALIGNMENT':
     case 'UPDATE_RENDERING':
       return ([...state].map(el => {
+        console.log(action)
         if (el.id === selectedID || el.id === action.id) {
-          textBox(el, action)
+          console.log("el.id: " + el.id)
+          el = textBox(el, action)
         }
+        console.log(el)
         return el
       }))
     default:

@@ -54,6 +54,7 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
         <div
           className='text'
           contentEditable='true'
+          placeholder='Type here...'
           onClick={(e) => {
             // prevent deselection
             e.stopPropagation()
@@ -67,13 +68,13 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
           onInput={(e) => {
             dispatch({
               type: 'UPDATE_TEXT',
-              text: e.target.innerText
+              value: e.target.innerText
             })
           }}
           style={styles}
           rows='1'
         >
-        {text}
+          {text}
         </div>
       </div>
   )

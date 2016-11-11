@@ -12,7 +12,7 @@ const AddButton = ({ dispatch, solo, index }) => (
           type: 'ADD_TEXTBOX',
           id: (new Date().getTime()),
           index: index,
-          text: 'Type here...',
+          text: '',
           color: '#666',
           columns: '1'
         })

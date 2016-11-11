@@ -52,6 +52,11 @@ export const updateColumns = (value) => ({
   value
 })
 
+export const updateGutters = (value) => ({
+  type: 'UPDATE_GUTTERS',
+  value
+})
+
 export const updateColor = (value) => ({
   type: 'UPDATE_COLOR',
   value

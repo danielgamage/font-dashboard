@@ -4,7 +4,7 @@ import readFile from '../utils/readFile.js'
 
 import './TextBox.css'
 
-const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns, alignment, rendering }) => {
+const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns, gutters, alignment, rendering }) => {
   let fontSmoothing
   if (rendering === 'Grayscale') {
     fontSmoothing = { WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
@@ -21,6 +21,7 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
     lineHeight: leading,
     textAlign: alignment,
     columnCount: columns,
+    columnGap: `${gutters}rem`,
     ...fontSmoothing
   }
   return (
@@ -89,6 +90,7 @@ TextBox.propTypes = {
   tracking: PropTypes.number.isRequired,
   leading: PropTypes.number.isRequired,
   columns: PropTypes.number.isRequired,
+  gutters: PropTypes.number.isRequired,
   alignment: PropTypes.string.isRequired,
   rendering: PropTypes.string.isRequired
 }

@@ -49,6 +49,12 @@ class ControlPanelText extends Component {
       value: e.target.value
     })
   }
+  updateGutters (e) {
+    this.props.dispatch({
+      type: 'UPDATE_GUTTERS',
+      value: e.target.value
+    })
+  }
   updateAlignment (e) {
     this.props.dispatch({
       type: 'UPDATE_ALIGNMENT',
@@ -105,6 +111,14 @@ class ControlPanelText extends Component {
             </label>
           ))}
         </div>
+        <div className='Control third'>
+          <label htmlFor='columns' className='ControlTitle'>Columns</label>
+          <input type='number' min='1' id='columns' value={textBox && textBox.columns} onChange={this.updateColumns.bind(this)} />
+        </div>
+        <div className='Control third'>
+          <label htmlFor='gutter' className='ControlTitle'>Gutter Size</label>
+          <input type='number' min='1' id='gutter' value={textBox && textBox.gutters} onChange={this.updateGutters.bind(this)} />
+        </div>
         <div className='Control half'>
           <label htmlFor='rendering' className='ControlTitle'>Font Rendering</label>
           <select id='rendering' onChange={this.updateRendering.bind(this)}>
@@ -112,10 +126,6 @@ class ControlPanelText extends Component {
             <option>Grayscale</option>
             <option>None</option>
           </select>
-        </div>
-        <div className='Control half'>
-          <label htmlFor='columns' className='ControlTitle'>Columns</label>
-          <input type='number' min='1' id='columns' value={textBox && textBox.columns} onChange={this.updateColumns.bind(this)} />
         </div>
       </div>
     )

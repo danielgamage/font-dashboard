@@ -11,6 +11,7 @@ const textBox = (state, action) => {
         tracking: 0,
         leading: 1.5,
         columns: 1,
+        gutters: 1,
         alignment: 'left',
         rendering: 'Subpixel'
       }
@@ -31,6 +32,9 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_COLUMNS':
       state.columns = action.value
+      return state
+    case 'UPDATE_GUTTERS':
+      state.gutters = action.value
       return state
     case 'UPDATE_ALIGNMENT':
       state.alignment = action.value
@@ -81,6 +85,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_FONT_FAMILY':
     case 'UPDATE_COLOR':
     case 'UPDATE_COLUMNS':
+    case 'UPDATE_GUTTERS':
     case 'UPDATE_ALIGNMENT':
     case 'UPDATE_RENDERING':
       return ([...state].map(el => {

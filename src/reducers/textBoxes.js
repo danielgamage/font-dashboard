@@ -45,16 +45,18 @@ const textBox = (state, action) => {
     case 'UPDATE_RENDERING':
       state.rendering = action.value
       return state
+    case 'DELETE_TEXTBOX':
+      return false
     default:
       return state
   }
 }
 
 const textBoxes = (state = [], action) => {
-  let selectedID
+  let selectedIDs
   if (state.length > 0) {
     const selectedObjects = [...state].filter(el => el.selected)
-    selectedID = selectedObjects.length && selectedObjects[0].id // lol
+    selectedIDs = selectedObjects.length && selectedObjects.map(el => el.id)
   }
   switch (action.type) {
     case 'ADD_TEXTBOX':
@@ -69,11 +71,18 @@ const textBoxes = (state = [], action) => {
       }))
     case 'SELECT_TEXTBOX':
       return ([...state].map(el => {
-        return { ...el, selected: (el.id === action.id) }
+        if (action.add) {
+          if (el.id === action.id) {
+            el = { ...el, selected: true }
+          }
+        } else {
+          el = { ...el, selected: el.id === action.id }
+        }
+        return { ...el }
       }))
     case 'DELETE_TEXTBOX':
       return ([...state].filter(el => {
-        if (el.id === selectedID) {
+        if (selectedIDs.indexOf(el.id) !== -1) {
           return false
         }
         return true
@@ -89,13 +98,14 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_ALIGNMENT':
     case 'UPDATE_RENDERING':
       return ([...state].map(el => {
-        console.log(action)
-        if (el.id === selectedID || el.id === action.id) {
-          console.log("el.id: " + el.id)
+        if (selectedIDs.indexOf(el.id) !== -1 || el.id === action.id) {
           el = textBox(el, action)
         }
-        console.log(el)
-        return el
+        if (el === false) {
+          return false
+        } else {
+          return el
+        }
       }))
     default:
       return state

@@ -33,9 +33,10 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
           var dt = e.dataTransfer;
           if (dt.items) {
             const files = [...dt.items].map((file, i) => {
-              if (dt.items[i].kind == "file") {
+              if (dt.items[i].kind === "file") {
                 return dt.items[i].getAsFile()
               }
+              return false
             })
             readFile(files[0])
             files.map((file) => {
@@ -59,11 +60,10 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
           onClick={(e) => {
             // prevent deselection
             e.stopPropagation()
-          }}
-          onFocus={() => {
             dispatch({
               type: 'SELECT_TEXTBOX',
-              id: id
+              id: id,
+              add: e.shiftKey
             })
           }}
           onInput={(e) => {

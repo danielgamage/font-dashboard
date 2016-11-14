@@ -7,9 +7,10 @@ export const addTextBox = (text) => ({
   text
 })
 
-export const selectTextBox = (id) => ({
+export const selectTextBox = (id, add) => ({
   type: 'SELECT_TEXTBOX',
-  id
+  id,
+  add
 })
 
 export const deselectTextBoxes = (id) => ({

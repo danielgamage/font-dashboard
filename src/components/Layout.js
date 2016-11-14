@@ -42,7 +42,8 @@ Layout.propTypes = {
     fontSize: PropTypes.number.isRequired,
     fontFamily: PropTypes.string.isRequired,
     tracking: PropTypes.number.isRequired,
-    leading: PropTypes.number.isRequired
+    leading: PropTypes.number.isRequired,
+    opentype: PropTypes.array.isRequired
   }).isRequired).isRequired
 }
 

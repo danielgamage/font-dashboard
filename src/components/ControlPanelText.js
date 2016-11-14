@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import alignIcon from '../icons/align.svg'
 import readFile from '../utils/readFile.js'
+import opentypeFeatures from '../data/opentypeFeatures.js'
 
 class ControlPanelText extends Component {
   updateFonts (e) {
@@ -59,6 +60,13 @@ class ControlPanelText extends Component {
     this.props.dispatch({
       type: 'UPDATE_ALIGNMENT',
       value: e.target.value
+    })
+  }
+  updateOpenType (e) {
+    this.props.dispatch({
+      type: 'UPDATE_OPENTYPE',
+      key: e.target.value,
+      value: e.target.checked
     })
   }
   render () {
@@ -129,6 +137,15 @@ class ControlPanelText extends Component {
             <option>Grayscale</option>
             <option>None</option>
           </select>
+        </div>
+        <div className='Control full'>
+          <div className='ControlTitle'>OpenType Features</div>
+          {opentypeFeatures.map(el => (
+            <label key={el.value}>
+              <input type='checkbox' value={el.value} onChange={this.updateOpenType.bind(this)} />
+              {el.description}
+            </label>
+          ))}
         </div>
       </div>
     )

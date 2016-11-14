@@ -1,3 +1,5 @@
+import opentypeFeatures from '../data/opentypeFeatures.js'
+
 const textBox = (state, action) => {
   switch (action.type) {
     case 'ADD_TEXTBOX':
@@ -13,7 +15,8 @@ const textBox = (state, action) => {
         columns: 1,
         gutters: 1,
         alignment: 'left',
-        rendering: 'Subpixel'
+        rendering: 'Subpixel',
+        opentype: opentypeFeatures.map(el => ({key: el.value, value: 0}))
       }
     case 'UPDATE_FONT_SIZE':
       state.fontSize = parseFloat(action.value)
@@ -45,6 +48,14 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_RENDERING':
       state.rendering = action.value
+      return state
+    case 'UPDATE_OPENTYPE':
+      state.opentype.map(el => {
+        if (el.key === action.key) {
+          el.value = action.value
+        }
+        return el
+      })
       return state
     case 'DELETE_TEXTBOX':
       return false
@@ -98,6 +109,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_GUTTERS':
     case 'UPDATE_ALIGNMENT':
     case 'UPDATE_RENDERING':
+    case 'UPDATE_OPENTYPE':
       return ([...state].map(el => {
         if (selectedIDs.indexOf(el.id) !== -1 || el.id === action.id) {
           el = textBox(el, action)

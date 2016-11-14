@@ -73,6 +73,12 @@ export const updateAlignment = (value) => ({
   value
 })
 
+export const updateOpenType = (key, value) => ({
+  type: 'UPDATE_OPENTYPE',
+  key,
+  value
+})
+
 export const updatePagePadding = (value, direction) => ({
   type: 'UPDATE_PAGE_PADDING',
   value,

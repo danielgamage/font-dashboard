@@ -4,7 +4,7 @@ import readFile from '../utils/readFile.js'
 
 import './TextBox.css'
 
-const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns, gutters, alignment, rendering }) => {
+const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, fontSize, columns, gutters, alignment, rendering, opentype }) => {
   let fontSmoothing
   if (rendering === 'Grayscale') {
     fontSmoothing = { WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
@@ -13,6 +13,7 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
   } else {
     fontSmoothing = { WebkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
   }
+  const opentypeValue = opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
   const styles = {
     fontFamily: `'${fontFamily}'`,
     fontSize: `${fontSize}px`,
@@ -22,8 +23,10 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
     textAlign: alignment,
     columnCount: columns,
     columnGap: `${gutters}rem`,
+    fontFeatureSettings: opentypeValue,
     ...fontSmoothing
   }
+  console.log(styles)
   return (
       <div
         className={'TextItem' + (selected ? ' selected' : '')}
@@ -45,6 +48,7 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
                 value: file.name,
                 id: id
               })
+              return true
             })
           } else {
             // Use DataTransfer interface to access the file(s)
@@ -92,7 +96,8 @@ TextBox.propTypes = {
   columns: PropTypes.number.isRequired,
   gutters: PropTypes.number.isRequired,
   alignment: PropTypes.string.isRequired,
-  rendering: PropTypes.string.isRequired
+  rendering: PropTypes.string.isRequired,
+  opentype: PropTypes.array.isRequired
 }
 
 function mapStateToProps (state, ownProps) {

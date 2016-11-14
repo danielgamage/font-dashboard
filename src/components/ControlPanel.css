@@ -17,7 +17,7 @@
 }
 .TabBar {
   display: flex;
-  box-shadow: 0 0.5rem 0 rgba(0,0,0,0.2);
+  box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
   position: relative;
   z-index: 1;
   flex: 0 0 auto;
@@ -83,9 +83,35 @@
   fill: #fff;
 }
 
+input[type=color] {
+  appearance: none;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: 0;
+}
+
+input[type=color]:focus {
+  outline: none;
+}
+
+input[type=color]:focus + .input--color {
+  box-shadow: 0 0 0 0.2rem #fff inset;
+}
+
+.input--color {
+  background-color: currentColor;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
 .Control svg {
-  width: 1rem;
-  height: 1rem;
+  width: 2rem;
+  height: 2rem;
   fill: #777;
 }
 

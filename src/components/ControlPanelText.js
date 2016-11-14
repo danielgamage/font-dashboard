@@ -93,8 +93,11 @@ class ControlPanelText extends Component {
           {`em`}
         </div>
         <div className='Control half'>
-          <label htmlFor='color' className='ControlTitle'>Text Color</label>
-          <input id='color' type='color' onChange={this.updateColor.bind(this)}/>
+          <div className='ControlTitle'>Text Color</div>
+          <label>
+            <input id='color' type='color' onChange={this.updateColor.bind(this)}/>
+            <div style={{color: textBox && textBox.color}} className='input--color' />
+          </label>
           <output>{textBox && `${textBox.color}`}</output>
         </div>
         <div className='Control half'>

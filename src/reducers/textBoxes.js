@@ -28,6 +28,7 @@ const textBox = (state, action) => {
       state.fontFamily = action.value
       return state
     case 'UPDATE_COLOR':
+      console.log(action.value)
       state.color = action.value
       return state
     case 'UPDATE_COLUMNS':

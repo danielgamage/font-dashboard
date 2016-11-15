@@ -87,16 +87,18 @@ class ControlPanelText extends Component {
         </div>
         <div className='Control third'>
           <NumericInput
-            label='↕︎ Leading'
+            label='Leading'
             id='leading'
             append='em'
+            step='0.05'
+            min='0'
             value={textBox && textBox.leading}
             action='UPDATE_FONT_LEADING'
             />
         </div>
         <div className='Control third'>
           <NumericInput
-            label='↔︎ Tracking'
+            label='Tracking'
             id='tracking'
             append='em'
             step='0.01'

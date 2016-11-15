@@ -19,8 +19,11 @@ class ControlPanelText extends Component {
     document.removeEventListener('mouseup', this.onMouseUp)
   }
   onDrag (e) {
-    console.log(e)
-    this.updateStore(this.props.value + e.movementX)
+    let value = this.props.value
+    value = value + (e.movementX * (this.props.step || 1))
+    value = this.props.min ? Math.max(this.props.min, value) : value
+    value = this.props.max ? Math.min(this.props.max, value) : value
+    this.updateStore(value)
   }
   onChange (e) {
     this.updateStore(e.target.value)

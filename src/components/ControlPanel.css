@@ -7,10 +7,11 @@
   overflow-x: hidden;
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
   line-height: 1.4;
 }
 .ControlPanelTab{
-  padding: 1rem 0;
+  padding: 1rem;
   overflow-y: scroll;
   display: flex;
   flex-flow: row wrap;
@@ -39,7 +40,7 @@
 .Control {
   border-bottom: 1px solid #3e4247;
   display: block;
-  padding: 1rem 1rem;
+  padding: 1rem 0;
 }
 
 .full {
@@ -53,7 +54,7 @@
 }
 
 .sample {
-  margin-top: -1rem;
+  height: 1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -61,6 +62,12 @@
 
 .ControlTitle {
   display: block;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #ddd;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 .Control input[type=number] {
@@ -84,6 +91,23 @@
   fill: #fff;
 }
 
+.hide-checkbox {
+  display: inline-block;
+  margin-right: 1rem;
+  line-height: 1.5rem;
+  height: 1.5rem;
+}
+.hide-checkbox__input {
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  opacity: 0;
+}
+.hide-checkbox__input:checked + .hide-checkbox__replacement-input {
+  box-shadow: 0 -0.15em 0 #039BE5 inset;
+}
 .font-family {
   display: flex;
   align-items: center;

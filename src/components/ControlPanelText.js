@@ -86,7 +86,7 @@ class ControlPanelText extends Component {
         <div className='Control full'>
           <div className='ControlTitle'>Font File</div>
           <label className='font-family'>
-            {`font-face`}
+            {`font-face:`}
             <input id='font' type='text' value={textBox ? textBox.fontFamily : ''} onChange={this.updateFontFamily.bind(this)}/>
           </label>
           <input id='font' type='file' onChange={this.updateFonts.bind(this)} />
@@ -148,9 +148,9 @@ class ControlPanelText extends Component {
         <div className='Control full'>
           <div className='ControlTitle'>OpenType Features</div>
           {opentypeFeatures.map(el => (
-            <label key={el.value}>
-              <input type='checkbox' value={el.value} onChange={this.updateOpenType.bind(this)} />
-              {el.description}
+            <label key={el.value} className='hide-checkbox'>
+              <input className='hide-checkbox__input' type='checkbox' value={el.value} onChange={this.updateOpenType.bind(this)} />
+              <div className='hide-checkbox__replacement-input'>{el.description}</div>
             </label>
           ))}
         </div>

@@ -3,6 +3,8 @@
   background-color: #039BE5;
   position: relative;
   transition: 0.2s ease;
+  display: flex;
+  justify-content: space-between;
 }
 .ActionBar button {
   appearance: none;
@@ -64,4 +66,10 @@
 }
 .TextList__Item:hover{
   background-color: #0065a2;
+}
+
+.ActionBar svg {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
 }

@@ -30,12 +30,6 @@ class ControlPanelText extends Component {
       value: e.target.value
     })
   }
-  updateColumns (e) {
-    this.props.dispatch({
-      type: 'UPDATE_COLUMNS',
-      value: e.target.value
-    })
-  }
   updateGutters (e) {
     this.props.dispatch({
       type: 'UPDATE_GUTTERS',
@@ -131,12 +125,26 @@ class ControlPanelText extends Component {
           ))}
         </div>
         <div className='Control third'>
-          <label htmlFor='columns' className='ControlTitle'>Columns</label>
-          <input type='number' min='1' id='columns' value={textBox && textBox.columns} onChange={this.updateColumns.bind(this)} />
+          <NumericInput
+            label='Columns'
+            id='columns'
+            step='1'
+            min='1'
+            max='4'
+            value={textBox && textBox.columns}
+            action='UPDATE_COLUMNS'
+            />
         </div>
         <div className='Control third'>
-          <label htmlFor='gutter' className='ControlTitle'>Gutter Size</label>
-          <input type='number' min='1' id='gutter' value={textBox && textBox.gutters} onChange={this.updateGutters.bind(this)} />
+          <NumericInput
+            label='Gutter Size'
+            id='gutter'
+            append='rem'
+            step='0.1'
+            min='0'
+            value={textBox && textBox.gutters}
+            action='UPDATE_GUTTERS'
+            />
         </div>
         <div className='Control half'>
           <label htmlFor='rendering' className='ControlTitle'>Font Rendering</label>

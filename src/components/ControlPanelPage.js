@@ -1,16 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import NumericInput from './NumericInput.js'
 
 class ControlPanelText extends Component {
   updateBackgroundColor (e) {
     this.props.dispatch({
       type: 'UPDATE_PAGE_BACKGROUND_COLOR',
-      value: e.target.value
-    })
-  }
-  updatePageWidth (e) {
-    this.props.dispatch({
-      type: 'UPDATE_PAGE_WIDTH',
       value: e.target.value
     })
   }
@@ -28,9 +23,15 @@ class ControlPanelText extends Component {
     return (
       <div className='ControlPanelTab'>
         <div className='Control third'>
-          <label htmlFor='size' className='ControlTitle'>Page Width</label>
-          <input id='size' type='number' inputMode='numeric' min='0' value={this.props.page && this.props.page.width} onChange={this.updatePageWidth.bind(this)} />
-          {`px`}
+          <NumericInput
+            label='Page Width'
+            id='width'
+            append='rem'
+            step='0.1'
+            min='0'
+            value={this.props.page && this.props.page.width}
+            action='UPDATE_PAGE_WIDTH'
+            />
         </div>
       </div>
     )

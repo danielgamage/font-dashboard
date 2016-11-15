@@ -48,6 +48,14 @@ class ActionBar extends Component {
           }}>
           Redo
         </button>
+        <button
+          onClick={() => {
+            dispatch({
+              type: 'TOGGLE_FULLSCREEN'
+            })
+          }}>
+          Full
+        </button>
       </div>
     )
   }

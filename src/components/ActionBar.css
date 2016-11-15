@@ -2,6 +2,7 @@
   height: 4rem;
   background-color: #039BE5;
   position: relative;
+  transition: 0.2s ease;
 }
 .ActionBar button {
   appearance: none;

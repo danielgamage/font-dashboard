@@ -89,3 +89,7 @@ export const updatePageWidth = (value) => ({
   type: 'UPDATE_PAGE_WIDTH',
   value
 })
+
+export const toggleFullscreen = () => ({
+  type: 'TOGGLE_FULLSCREEN'
+})

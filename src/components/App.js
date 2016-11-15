@@ -10,7 +10,7 @@ import './App.css'
 class App extends Component {
   render () {
     return (
-      <div className='App'>
+      <div className={'App' + (this.props.view.fullscreen ? ' fullscreen' : '')}>
         <div className='Container'>
           <Layout textBoxes={this.props.textBoxes} />
           <ActionBar />
@@ -22,7 +22,7 @@ class App extends Component {
 }
 
 function mapStateToProps (state) {
-  return { textBoxes: state.textBoxes }
+  return { textBoxes: state.textBoxes, view: state.view.present }
 }
 
 export default connect(mapStateToProps)(App)

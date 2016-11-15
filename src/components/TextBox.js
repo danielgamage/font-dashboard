@@ -26,7 +26,6 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
     fontFeatureSettings: opentypeValue,
     ...fontSmoothing
   }
-  console.log(styles)
   return (
       <div
         className={'TextItem' + (selected ? ' selected' : '')}

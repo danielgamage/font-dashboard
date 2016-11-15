@@ -111,7 +111,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_RENDERING':
     case 'UPDATE_OPENTYPE':
       return ([...state].map(el => {
-        if (selectedIDs.indexOf(el.id) !== -1 || el.id === action.id) {
+        if ((selectedIDs && selectedIDs.indexOf(el.id) !== -1) || el.id === action.id) {
           el = textBox(el, action)
         }
         if (el === false) {

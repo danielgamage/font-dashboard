@@ -84,6 +84,19 @@
   fill: #fff;
 }
 
+.font-family {
+  display: flex;
+  align-items: center;
+}
+.font-family input[type=text] {
+  background-color: #3c4148;
+  color: white;
+  border: 1px solid #464646;
+  padding: 0.5rem 0.7rem 0.6rem;
+  margin: 1rem 0 1rem 1rem;
+  flex: 1 1 auto;
+}
+
 input[type=color] {
   appearance: none;
   width: 0;

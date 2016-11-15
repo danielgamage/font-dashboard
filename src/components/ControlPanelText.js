@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import alignIcon from '../icons/align.svg'
 import readFile from '../utils/readFile.js'
 import opentypeFeatures from '../data/opentypeFeatures.js'
+import NumericInput from './NumericInput.js'
 
 class ControlPanelText extends Component {
   updateFonts (e) {
@@ -15,24 +16,6 @@ class ControlPanelText extends Component {
     this.props.dispatch({
       type: 'UPDATE_FONT_FAMILY',
       value: e.target.value || family
-    })
-  }
-  updateSize (e) {
-    this.props.dispatch({
-      type: 'UPDATE_FONT_SIZE',
-      value: e.target.value
-    })
-  }
-  updateLeading (e) {
-    this.props.dispatch({
-      type: 'UPDATE_FONT_LEADING',
-      value: e.target.value
-    })
-  }
-  updateTracking (e) {
-    this.props.dispatch({
-      type: 'UPDATE_FONT_TRACKING',
-      value: e.target.value
     })
   }
   updateColor (e) {
@@ -93,19 +76,35 @@ class ControlPanelText extends Component {
           <p>You can also drag your font directly onto the text block you want to apply the font to.</p>
         </div>
         <div className='Control third'>
-          <label htmlFor='size' className='ControlTitle'>Font Size</label>
-          <input id='size' type='number' inputMode='numeric' min='0' value={textBox && textBox.fontSize} onChange={this.updateSize.bind(this)}/>
-          {`px`}
+          <NumericInput
+            label='Font Size'
+            id='size'
+            append='px'
+            min='0'
+            value={textBox && textBox.fontSize}
+            action='UPDATE_FONT_SIZE'
+            />
         </div>
         <div className='Control third'>
-          <label htmlFor='leading' className='ControlTitle'>↕︎</label>
-          <input id='leading' type='number' inputMode='numeric' step='0.1' value={textBox && textBox.leading} onChange={this.updateLeading.bind(this)}/>
-          {`em`}
+          <NumericInput
+            label='↕︎ Leading'
+            id='leading'
+            append='em'
+            value={textBox && textBox.leading}
+            action='UPDATE_FONT_LEADING'
+            />
         </div>
         <div className='Control third'>
-          <label htmlFor='tracking' className='ControlTitle'>↔︎</label>
-          <input id='tracking' type='number' inputMode='numeric' min='-0.5' max='1' step='0.01' value={textBox && textBox.tracking} onChange={this.updateTracking.bind(this)}/>
-          {`em`}
+          <NumericInput
+            label='↔︎ Tracking'
+            id='tracking'
+            append='em'
+            step='0.01'
+            min='-0.5'
+            max='1'
+            value={textBox && textBox.tracking}
+            action='UPDATE_FONT_TRACKING'
+            />
         </div>
         <div className='Control half'>
           <div className='ControlTitle'>Text Color</div>

@@ -14,3 +14,8 @@ body,
 .App {
   height: 100%;
 }
+
+.cursor--lr,
+.cursor--lr label {
+  cursor: ew-resize !important;
+}

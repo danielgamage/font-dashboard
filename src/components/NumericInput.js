@@ -13,10 +13,12 @@ class ControlPanelText extends Component {
   onMouseDown (e) {
     document.addEventListener('mousemove', this.onDrag)
     document.addEventListener('mouseup', this.onMouseUp)
+    document.body.classList.add('cursor--lr')
   }
   onMouseUp (e) {
     document.removeEventListener('mousemove', this.onDrag)
     document.removeEventListener('mouseup', this.onMouseUp)
+    document.body.classList.remove('cursor--lr')
   }
   onDrag (e) {
     let value = this.props.value

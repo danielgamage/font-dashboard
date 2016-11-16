@@ -6,6 +6,7 @@ const textBox = (state, action) => {
       return {
         id: action.id,
         color: action.color,
+        backgroundColor: 'rgba(255,255,255,0)',
         text: action.text,
         selected: false,
         fontSize: 16,
@@ -31,8 +32,10 @@ const textBox = (state, action) => {
       state.fontFamily = action.value
       return state
     case 'UPDATE_COLOR':
-      console.log(action.value)
       state.color = action.value
+      return state
+    case 'UPDATE_BACKGROUND_COLOR':
+      state.backgroundColor = action.value
       return state
     case 'UPDATE_COLUMNS':
       state.columns = action.value
@@ -105,6 +108,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_FONT_LEADING':
     case 'UPDATE_FONT_FAMILY':
     case 'UPDATE_COLOR':
+    case 'UPDATE_BACKGROUND_COLOR':
     case 'UPDATE_COLUMNS':
     case 'UPDATE_GUTTERS':
     case 'UPDATE_ALIGNMENT':

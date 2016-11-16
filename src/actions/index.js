@@ -63,6 +63,11 @@ export const updateColor = (value) => ({
   value
 })
 
+export const updateBackgroundColor = (value) => ({
+  type: 'UPDATE_BACKGROUND_COLOR',
+  value
+})
+
 export const updateRendering = (value) => ({
   type: 'UPDATE_RENDERING',
   value

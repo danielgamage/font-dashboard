@@ -52,6 +52,9 @@
 .third {
   width: calc(100% / 3);
 }
+.quarter {
+  width: 25%;
+}
 
 .sample {
   height: 1rem;
@@ -136,6 +139,7 @@ input[type=color] {
   height: 0;
   padding: 0;
   border: 0;
+  opacity: 0;
 }
 
 input[type=color]:focus {
@@ -147,13 +151,24 @@ input[type=color]:focus + .input--color {
 }
 
 .input--color {
-  background-color: currentColor;
+  position: relative;
+  background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black),
+  linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black);
+  background-size: 0.5rem 0.5rem;
   width: 2rem;
   height: 2rem;
   border-radius: 1rem;
   display: inline-block;
   vertical-align: middle;
   margin-right: 0.5rem;
+  overflow: hidden;
+}
+.input--color::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
 }
 
 .Control svg {

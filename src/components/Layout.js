@@ -39,6 +39,7 @@ Layout.propTypes = {
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     color: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
     fontSize: PropTypes.number.isRequired,
     fontFamily: PropTypes.string.isRequired,
     tracking: PropTypes.number.isRequired,

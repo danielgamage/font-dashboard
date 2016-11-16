@@ -24,6 +24,12 @@ class ControlPanelText extends Component {
       value: e.target.value
     })
   }
+  updateBackgroundColor (e) {
+    this.props.dispatch({
+      type: 'UPDATE_BACKGROUND_COLOR',
+      value: e.target.value
+    })
+  }
   updateRendering (e) {
     this.props.dispatch({
       type: 'UPDATE_RENDERING',
@@ -103,10 +109,18 @@ class ControlPanelText extends Component {
             />
         </div>
         <div className='Control half'>
-          <div className='ControlTitle'>Text Color</div>
+          <div className='ControlTitle'>Text</div>
           <label>
-            <input id='color' type='color' onChange={this.updateColor.bind(this)}/>
+            <input type='color' onChange={this.updateColor.bind(this)}/>
             <div style={{color: textBox && textBox.color}} className='input--color' />
+          </label>
+          <output>{textBox && `${textBox.color}`}</output>
+        </div>
+        <div className='Control half'>
+          <div className='ControlTitle'>Background</div>
+          <label>
+            <input type='color' onChange={this.updateBackgroundColor.bind(this)}/>
+            <div style={{color: textBox && textBox.backgroundColor}} className='input--color' />
           </label>
           <output>{textBox && `${textBox.color}`}</output>
         </div>

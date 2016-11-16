@@ -10,6 +10,7 @@ class ControlPanelText extends Component {
     readFile(...e.target.files)
     ;[...e.target.files].map((file) => {
       this.updateFontFamily(e, file.name).bind(this)
+      return true
     })
   }
   updateFontFamily (e, family) {
@@ -167,6 +168,36 @@ class ControlPanelText extends Component {
             <option>Grayscale</option>
             <option>None</option>
           </select>
+        </div>
+        <div className='Control half flex'>
+          {['Top', 'Left', 'Right', 'Bottom'].map((el) => (
+            <NumericInput
+              className={el}
+              label={el}
+              key={el}
+              id={`padding-${el.toLowerCase()}`}
+              step='0.1'
+              min='0'
+              value={textBox && textBox.padding[`${el.toLowerCase()}`]}
+              action={`UPDATE_PADDING`}
+              actionKey={el.toLowerCase()}
+              />
+          ))}
+        </div>
+        <div className='Control half flex'>
+          {['Top', 'Left', 'Right', 'Bottom'].map((el) => (
+            <NumericInput
+              className={el}
+              label={el}
+              key={el}
+              id={`margin-${el.toLowerCase()}`}
+              step='0.1'
+              min='0'
+              value={textBox && textBox.margin[`${el.toLowerCase()}`]}
+              action={`UPDATE_MARGIN`}
+              actionKey={el.toLowerCase()}
+              />
+          ))}
         </div>
         <div className='Control full'>
           <div className='ControlTitle'>OpenType Features</div>

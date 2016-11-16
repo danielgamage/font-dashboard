@@ -10,8 +10,6 @@ const defaultState = {
 
 const page = (state = defaultState, action) => {
   switch (action.type) {
-    case 'UPDATE_PADDING':
-      return [...state].padding[action.direction] = action.value
     case 'UPDATE_PAGE_WIDTH':
       const newState = {
         ...state,

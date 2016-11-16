@@ -43,6 +43,12 @@
   padding: 1rem 0;
 }
 
+.Control.flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .full {
   width: 100%;
 }
@@ -54,6 +60,26 @@
 }
 .quarter {
   width: 25%;
+}
+
+.Top {
+  width: 100%;
+  text-align: center;
+  
+}
+.Left {
+  width: 50%;
+  text-align: center;
+
+}
+.Right {
+  width: 50%;
+  text-align: center;
+
+}
+.Bottom {
+  width: 100%;
+  text-align: center;
 }
 
 .sample {

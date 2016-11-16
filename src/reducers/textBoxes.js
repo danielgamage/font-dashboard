@@ -16,6 +16,18 @@ const textBox = (state, action) => {
         columns: 1,
         gutters: 1,
         alignment: 'left',
+        padding: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        },
+        margin: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        },
         rendering: 'Subpixel',
         opentype: opentypeFeatures.map(el => ({key: el.value, value: 0}))
       }
@@ -51,6 +63,12 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_RENDERING':
       state.rendering = action.value
+      return state
+    case 'UPDATE_PADDING':
+      state.padding[action.key] = parseFloat(action.value)
+      return state
+    case 'UPDATE_MARGIN':
+      state.margin[action.key] = parseFloat(action.value)
       return state
     case 'UPDATE_OPENTYPE':
       state.opentype.map(el => {
@@ -113,6 +131,8 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_GUTTERS':
     case 'UPDATE_ALIGNMENT':
     case 'UPDATE_RENDERING':
+    case 'UPDATE_PADDING':
+    case 'UPDATE_MARGIN':
     case 'UPDATE_OPENTYPE':
       return ([...state].map(el => {
         if ((selectedIDs && selectedIDs.indexOf(el.id) !== -1) || el.id === action.id) {

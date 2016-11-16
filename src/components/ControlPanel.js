@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import alignIcon from '../icons/align.svg';
 
 import './ControlPanel.css'
 import ControlPanelText from './ControlPanelText'

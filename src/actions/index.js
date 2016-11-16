@@ -58,6 +58,18 @@ export const updateGutters = (value) => ({
   value
 })
 
+export const updatePadding = (key, value) => ({
+  type: 'UPDATE_PADDING',
+  key,
+  value
+})
+
+export const updateMargin = (key, value) => ({
+  type: 'UPDATE_MARGIN',
+  key,
+  value
+})
+
 export const updateColor = (value) => ({
   type: 'UPDATE_COLOR',
   value

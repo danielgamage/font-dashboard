@@ -4,7 +4,7 @@ import readFile from '../utils/readFile.js'
 
 import './TextBox.css'
 
-const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, backgroundColor, fontSize, columns, gutters, alignment, rendering, opentype }) => {
+const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, color, backgroundColor, fontSize, columns, padding, margin, gutters, alignment, rendering, opentype }) => {
   let fontSmoothing
   if (rendering === 'Grayscale') {
     fontSmoothing = { WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
@@ -13,6 +13,8 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
   } else {
     fontSmoothing = { WebkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
   }
+  console.log('padding:' + padding)
+  console.log(margin)
   const opentypeValue = opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
   const styles = {
     fontFamily: `'${fontFamily}'`,
@@ -24,6 +26,8 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
     textAlign: alignment,
     columnCount: columns,
     columnGap: `${gutters}rem`,
+    padding: `${padding.top}px ${padding.right}px ${padding.bottom}px ${padding.left}px`,
+    margin: `${margin.top}px ${margin.right}px ${margin.bottom}px ${margin.left}px`,
     fontFeatureSettings: opentypeValue,
     ...fontSmoothing
   }
@@ -94,6 +98,8 @@ TextBox.propTypes = {
   tracking: PropTypes.number.isRequired,
   leading: PropTypes.number.isRequired,
   columns: PropTypes.number.isRequired,
+  padding: PropTypes.object.isRequired,
+  margin: PropTypes.object.isRequired,
   gutters: PropTypes.number.isRequired,
   alignment: PropTypes.string.isRequired,
   rendering: PropTypes.string.isRequired,

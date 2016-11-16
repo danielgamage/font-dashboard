@@ -22,7 +22,7 @@ class ControlPanelText extends Component {
   }
   onDrag (e) {
     let value = this.props.value
-    value = value + (e.movementX * (this.props.step || 1))
+    value += (e.movementX * (this.props.step || 1))
     value = this.props.min ? Math.max(this.props.min, value) : value
     value = this.props.max ? Math.min(this.props.max, value) : value
     this.updateStore(value)
@@ -33,12 +33,13 @@ class ControlPanelText extends Component {
   updateStore (v) {
     this.props.dispatch({
       type: this.props.action,
+      key: this.props.actionKey || null,
       value: v
     })
   }
   render () {
     return (
-      <div>
+      <div className={this.props.className}>
         <label
           htmlFor={this.props.id}
           className='ControlTitle'

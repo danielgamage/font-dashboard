@@ -42,6 +42,8 @@ Layout.propTypes = {
     backgroundColor: PropTypes.string.isRequired,
     fontSize: PropTypes.number.isRequired,
     fontFamily: PropTypes.string.isRequired,
+    padding: PropTypes.object.isRequired,
+    margin: PropTypes.object.isRequired,
     tracking: PropTypes.number.isRequired,
     leading: PropTypes.number.isRequired,
     opentype: PropTypes.array.isRequired

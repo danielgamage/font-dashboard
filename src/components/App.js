@@ -8,6 +8,23 @@ import ActionBar from './ActionBar'
 import './App.css'
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this.handleEsc = this.handleEsc.bind(this)
+  }
+  componentDidMount () {
+    document.addEventListener('keydown', this.handleEsc)
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleEsc)
+  }
+  handleEsc() {
+    if (this.props.view.fullscreen) {
+      this.props.dispatch({
+        type: 'TOGGLE_FULLSCREEN'
+      })
+    }
+  }
   render () {
     return (
       <div className={'App' + (this.props.view.fullscreen ? ' fullscreen' : '')}>

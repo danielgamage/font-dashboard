@@ -19,48 +19,11 @@ class ControlPanelText extends Component {
       value: e.target.value || family
     })
   }
-  // fold these together and pass action.type as argument
-  updateProp (action, value) {
+  updateProp (action, value, key) {
     this.props.dispatch({
       type: action,
-      value: value
-    })
-  }
-  updateColor (e) {
-    this.props.dispatch({
-      type: 'UPDATE_COLOR',
-      value: e.target.value
-    })
-  }
-  updateBackgroundColor (e) {
-    this.props.dispatch({
-      type: 'UPDATE_BACKGROUND_COLOR',
-      value: e.target.value
-    })
-  }
-  updateRendering (e) {
-    this.props.dispatch({
-      type: 'UPDATE_RENDERING',
-      value: e.target.value
-    })
-  }
-  updateGutters (e) {
-    this.props.dispatch({
-      type: 'UPDATE_GUTTERS',
-      value: e.target.value
-    })
-  }
-  updateAlignment (e) {
-    this.props.dispatch({
-      type: 'UPDATE_ALIGNMENT',
-      value: e.target.value
-    })
-  }
-  updateOpenType (e) {
-    this.props.dispatch({
-      type: 'UPDATE_OPENTYPE',
-      key: e.target.value,
-      value: e.target.checked
+      value: value,
+      key: key
     })
   }
   render () {
@@ -119,7 +82,7 @@ class ControlPanelText extends Component {
         <div className='Control half'>
           <div className='ControlTitle'>Text</div>
           <label>
-            <input type='color' onChange={this.updateColor.bind(this)}/>
+            <input type='color' onChange={(e) => { this.updateProp('UPDATE_COLOR', e.target.value) }}/>
             <div style={{color: textBox && textBox.color}} className='input--color' />
           </label>
           <output>{textBox && `${textBox.color}`}</output>
@@ -127,7 +90,7 @@ class ControlPanelText extends Component {
         <div className='Control half'>
           <div className='ControlTitle'>Background</div>
           <label>
-            <input type='color' onChange={this.updateBackgroundColor.bind(this)}/>
+            <input type='color' onChange={(e) => { this.updateProp('UPDATE_BACKGROUND_COLOR', e.target.value) }}/>
             <div style={{color: textBox && textBox.backgroundColor}} className='input--color' />
           </label>
           <output>{textBox && `${textBox.color}`}</output>
@@ -139,7 +102,7 @@ class ControlPanelText extends Component {
               <input id={`alignment-${el}`} name='alignment' type='radio'
                 value={el}
                 checked={(textBox && textBox.alignment === el)}
-                onChange={this.updateAlignment.bind(this)}/>
+                onChange={(e) => { this.updateProp('UPDATE_ALIGNMENT', e.target.value) }}/>
               <svg viewBox='0 0 16 16'>
                 <use xlinkHref={alignIcon + `#${el}`}></use>
               </svg>
@@ -170,7 +133,7 @@ class ControlPanelText extends Component {
         </div>
         <div className='Control half'>
           <label htmlFor='rendering' className='ControlTitle'>Font Rendering</label>
-          <select id='rendering' onChange={this.updateRendering.bind(this)}>
+          <select id='rendering' onChange={(e) => { this.updateProp('UPDATE_RENDERING', e.target.value) }}>
             <option>Subpixel</option>
             <option>Grayscale</option>
             <option>None</option>
@@ -222,7 +185,7 @@ class ControlPanelText extends Component {
           <div className='ControlTitle'>OpenType Features</div>
           {opentypeFeatures.map(el => (
             <label key={el.value} className='hide-checkbox'>
-              <input className='hide-checkbox__input' type='checkbox' value={el.value} onChange={this.updateOpenType.bind(this)} />
+              <input className='hide-checkbox__input' type='checkbox' value={el.value} onChange={(e) => { this.updateProp('UPDATE_OPENTYPE', e.target.checked, e.target.value) }} />
               <div className='hide-checkbox__replacement-input'>{el.description}</div>
             </label>
           ))}

@@ -25,7 +25,7 @@ const Layout = ({ textBoxes, dispatch, page }) => {
           <div key={i}>
             <TextBox
               key={textbox.id}
-              {...textbox} />
+              textBox={textbox} />
             <AddButton index={i + 1} />
           </div>
         ))}
@@ -35,24 +35,6 @@ const Layout = ({ textBoxes, dispatch, page }) => {
       </div>
     </div>
   )
-}
-
-Layout.propTypes = {
-  textBoxes: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
-    fontSize: PropTypes.number.isRequired,
-    fontFamily: PropTypes.string.isRequired,
-    padding: PropTypes.object.isRequired,
-    margin: PropTypes.object.isRequired,
-    tracking: PropTypes.number.isRequired,
-    leading: PropTypes.number.isRequired,
-    alignment: PropTypes.string.isRequired,
-    textTransform: PropTypes.string.isRequired,
-    opentype: PropTypes.array.isRequired
-  }).isRequired).isRequired
 }
 
 const mapStateToProps = (state) => ({

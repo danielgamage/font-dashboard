@@ -37,7 +37,7 @@ class ControlPanelText extends Component {
     // grab props for below by first putting the selected object into mem
     const textBox = this.props.textBoxes && this.props.textBoxes[0]
     return (
-      <div className='ControlPanelTab'>
+      <div className={`ControlPanelTab ${textBox ? 'active' : 'inactive'}`}>
         <div className='Control full'>
           <div className='sample'>{textBox ? textBox.text : `Selected text`}</div>
         </div>
@@ -124,7 +124,7 @@ class ControlPanelText extends Component {
                 className='hide-checkbox__input'
                 type='radio'
                 value={el.key.toLowerCase()}
-                checked={(textBox && textBox.textTransform === el.key)}
+                checked={(textBox && textBox.textTransform === el.key.toLowerCase())}
                 onChange={(e) => { this.updateProp('UPDATE_TEXT_TRANSFORM', e.target.value.toLowerCase()) }}/>
               <span className='text-transform__label hide-checkbox__replacement-input'>{el.rep}</span>
             </label>
@@ -161,9 +161,22 @@ class ControlPanelText extends Component {
           </select>
         </div>
         <div className='Control half flex'>
+          <div className='ControlTitle'>
+            Padding
+            <label className='lock hide-checkbox'>
+              <input
+                className='hide-checkbox__input'
+                type='checkbox'
+                onClick={(e) => { this.updateProp('UPDATE_PADDING_LOCK', e.target.checked) }}
+                />
+              <svg className='small hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+                <use xlinkHref={lockIcon + `#${textBox && textBox.padding.lock ? 'locked' : 'unlocked'}`}></use>
+              </svg>
+            </label>
+          </div>
           {['Top', 'Left', 'Right', 'Bottom'].map((el) => (
             <NumericInput
-              className={el}
+              className={`trbl ${el}`}
               label={el}
               key={el}
               id={`padding-${el.toLowerCase()}`}
@@ -174,21 +187,24 @@ class ControlPanelText extends Component {
               actionKey={el.toLowerCase()}
               />
           ))}
-          <label className='lock hide-checkbox'>
-            <input
-              className='hide-checkbox__input'
-              type='checkbox'
-              onClick={(e) => { this.updateProp('UPDATE_PADDING_LOCK', e.target.checked) }}
-              />
-            <svg className='small hide-checkbox__replacement-input' viewBox='0 0 16 16'>
-              <use xlinkHref={lockIcon + `#${textBox && textBox.padding.lock ? 'locked' : 'unlocked'}`}></use>
-            </svg>
-          </label>
         </div>
         <div className='Control half flex'>
+          <div className='ControlTitle'>
+            Margin
+            <label className='lock hide-checkbox'>
+              <input
+                className='hide-checkbox__input'
+                type='checkbox'
+                onClick={(e) => { this.updateProp('UPDATE_MARGIN_LOCK', e.target.checked) }}
+                />
+              <svg className='small hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+                <use xlinkHref={lockIcon + `#${textBox && textBox.margin.lock ? 'locked' : 'unlocked'}`}></use>
+              </svg>
+            </label>
+          </div>
           {['Top', 'Left', 'Right', 'Bottom'].map((el) => (
             <NumericInput
-              className={el}
+              className={`trbl ${el}`}
               label={el}
               key={el}
               id={`margin-${el.toLowerCase()}`}
@@ -199,16 +215,6 @@ class ControlPanelText extends Component {
               actionKey={el.toLowerCase()}
               />
           ))}
-          <label className='lock hide-checkbox'>
-            <input
-              className='hide-checkbox__input'
-              type='checkbox'
-              onClick={(e) => { this.updateProp('UPDATE_MARGIN_LOCK', e.target.checked) }}
-              />
-            <svg className='small hide-checkbox__replacement-input' viewBox='0 0 16 16'>
-              <use xlinkHref={lockIcon + `#${textBox && textBox.margin.lock ? 'locked' : 'unlocked'}`}></use>
-            </svg>
-          </label>
         </div>
         <div className='Control full'>
           <div className='ControlTitle'>OpenType Features</div>

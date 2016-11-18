@@ -46,6 +46,8 @@ Layout.propTypes = {
     margin: PropTypes.object.isRequired,
     tracking: PropTypes.number.isRequired,
     leading: PropTypes.number.isRequired,
+    alignment: PropTypes.string.isRequired,
+    textTransform: PropTypes.string.isRequired,
     opentype: PropTypes.array.isRequired
   }).isRequired).isRequired
 }

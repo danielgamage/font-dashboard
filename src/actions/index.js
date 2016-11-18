@@ -100,6 +100,11 @@ export const updateAlignment = (value) => ({
   value
 })
 
+export const updateTextTransform = (value) => ({
+  type: 'UPDATE_TEXT_TRANSFORM',
+  value
+})
+
 export const updateOpenType = (key, value) => ({
   type: 'UPDATE_OPENTYPE',
   key,

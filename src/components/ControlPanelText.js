@@ -98,14 +98,30 @@ class ControlPanelText extends Component {
         <div className='Control half'>
           <div className='ControlTitle'>Alignment</div>
           {['left', 'center', 'right', 'justify'].map(el => (
-            <label htmlFor={`alignment-${el}`} key={el}>
-              <input id={`alignment-${el}`} name='alignment' type='radio'
+            <label key={el}>
+              <input
+                name='alignment'
+                type='radio'
                 value={el}
                 checked={(textBox && textBox.alignment === el)}
                 onChange={(e) => { this.updateProp('UPDATE_ALIGNMENT', e.target.value) }}/>
               <svg viewBox='0 0 16 16'>
                 <use xlinkHref={alignIcon + `#${el}`}></use>
               </svg>
+            </label>
+          ))}
+        </div>
+        <div className='Control half'>
+          <div className='ControlTitle'>Text Transform</div>
+          {[{key: 'Uppercase', rep: 'AA'}, {key: 'Lowercase', rep: 'aa'}, {key: 'Capitalize', rep: 'Aa'}, {key: 'None', rep: '--'}].map(el => (
+            <label className='hide-checkbox' key={el.key}>
+              <input
+                className='hide-checkbox__input'
+                type='radio'
+                value={el.key.toLowerCase()}
+                checked={(textBox && textBox.textTransform === el.key)}
+                onChange={(e) => { this.updateProp('UPDATE_TEXT_TRANSFORM', e.target.value.toLowerCase()) }}/>
+              <span>{el.rep}</span>
             </label>
           ))}
         </div>
@@ -131,8 +147,8 @@ class ControlPanelText extends Component {
             action='UPDATE_GUTTERS'
             />
         </div>
-        <div className='Control half'>
-          <label htmlFor='rendering' className='ControlTitle'>Font Rendering</label>
+        <div className='Control third'>
+          <label htmlFor='rendering' className='ControlTitle'>Rendering</label>
           <select id='rendering' onChange={(e) => { this.updateProp('UPDATE_RENDERING', e.target.value) }}>
             <option>Subpixel</option>
             <option>Grayscale</option>

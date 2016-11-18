@@ -16,6 +16,7 @@ const textBox = (state, action) => {
         columns: 1,
         gutters: 1,
         alignment: 'left',
+        textTransform: 'none',
         padding: {
           top: 0,
           right: 0,
@@ -59,6 +60,9 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_ALIGNMENT':
       state.alignment = action.value
+      return state
+    case 'UPDATE_TEXT_TRANSFORM':
+      state.textTransform = action.value
       return state
     case 'UPDATE_TEXT':
       state.text = action.value || ''
@@ -152,6 +156,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_COLUMNS':
     case 'UPDATE_GUTTERS':
     case 'UPDATE_ALIGNMENT':
+    case 'UPDATE_TEXT_TRANSFORM':
     case 'UPDATE_RENDERING':
     case 'UPDATE_PADDING':
     case 'UPDATE_MARGIN':

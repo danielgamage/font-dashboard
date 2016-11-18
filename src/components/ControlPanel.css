@@ -65,7 +65,7 @@
 .Top {
   width: 100%;
   text-align: center;
-  
+
 }
 .Left {
   width: 50%;
@@ -117,13 +117,22 @@
   margin: 0;
 }
 
-.Control input[type=radio][name=alignment]:checked + svg {
-  fill: #fff;
+input + .hide-checkbox__replacement-input {
+  color: #777;
+}
+
+input:checked + .hide-checkbox__replacement-input {
+  color: #fff;
+}
+
+.text-transform__label {
+  font-weight: bold;
+  padding: 0.5rem;
+  width: 2rem;
 }
 
 .hide-checkbox {
   display: inline-block;
-  margin-right: 1rem;
   line-height: 1.5rem;
   height: 1.5rem;
 }
@@ -135,9 +144,11 @@
   position: absolute;
   opacity: 0;
 }
-.hide-checkbox__input:checked + .hide-checkbox__replacement-input {
-  box-shadow: 0 -0.15em 0 #039BE5 inset;
+
+.hide-checkbox + .hide-checkbox {
+  /*margin-left: 1rem;*/
 }
+
 .font-family {
   display: flex;
   align-items: center;
@@ -200,7 +211,10 @@ input[type=color]:focus + .input--color {
 .Control svg {
   width: 2rem;
   height: 2rem;
-  fill: #777;
+}
+
+.Control svg.small {
+  padding: 0.5rem;
 }
 
 .Control output {

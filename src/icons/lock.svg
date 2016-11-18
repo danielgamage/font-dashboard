@@ -1,0 +1,11 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <title>lock</title>
+  <g id="locked">
+    <path d="M12,8H10V5.5c0-1.44-.56-2-2-2s-2,.56-2,2V8H4V5.5a3.64,3.64,0,0,1,4-4,3.64,3.64,0,0,1,4,4Z"/>
+    <path d="M2,7v7H14V7Zm6,6H3V12l5,.5Zm0-2H3V10l5,.5ZM8,9H3V8l5,.5Z"/>
+  </g>
+  <g id="unlocked">
+    <path d="M12,8H10V4.5c0-1.44-.56-2-2-2s-2,.56-2,2V5H4V4.5a3.64,3.64,0,0,1,4-4,3.64,3.64,0,0,1,4,4Z"/>
+    <path d="M2,7v7H14V7Zm6,6H3V12l5,.5Zm0-2H3V10l5,.5ZM8,9H3V8l5,.5Z"/>
+  </g>
+</svg>

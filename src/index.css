@@ -20,3 +20,7 @@ body,
 .cursor--lr label {
   cursor: ew-resize !important;
 }
+
+svg {
+  fill: currentColor;
+}

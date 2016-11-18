@@ -21,6 +21,13 @@
   padding: 2rem 0;
 }
 
+.Layout__instructions {
+  margin: 2rem 0;
+  font-style: italic;
+  color: #888;
+  line-height: 1.6rem;
+}
+
 .fullscreen .ControlPanel {
   width: 0;
 }

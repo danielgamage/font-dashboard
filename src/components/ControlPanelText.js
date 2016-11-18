@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import alignIcon from '../icons/align.svg'
+import lockIcon from '../icons/lock.svg'
+
 import readFile from '../utils/readFile.js'
 import opentypeFeatures from '../data/opentypeFeatures.js'
+
 import NumericInput from './NumericInput.js'
 
 class ControlPanelText extends Component {
@@ -98,14 +102,15 @@ class ControlPanelText extends Component {
         <div className='Control half'>
           <div className='ControlTitle'>Alignment</div>
           {['left', 'center', 'right', 'justify'].map(el => (
-            <label key={el}>
+            <label key={el} className='hide-checkbox'>
               <input
                 name='alignment'
+                className='hide-checkbox__input'
                 type='radio'
                 value={el}
                 checked={(textBox && textBox.alignment === el)}
                 onChange={(e) => { this.updateProp('UPDATE_ALIGNMENT', e.target.value) }}/>
-              <svg viewBox='0 0 16 16'>
+              <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
                 <use xlinkHref={alignIcon + `#${el}`}></use>
               </svg>
             </label>
@@ -114,14 +119,14 @@ class ControlPanelText extends Component {
         <div className='Control half'>
           <div className='ControlTitle'>Text Transform</div>
           {[{key: 'Uppercase', rep: 'AA'}, {key: 'Lowercase', rep: 'aa'}, {key: 'Capitalize', rep: 'Aa'}, {key: 'None', rep: '--'}].map(el => (
-            <label className='hide-checkbox' key={el.key}>
+            <label className='hide-checkbox text-transform' key={el.key}>
               <input
                 className='hide-checkbox__input'
                 type='radio'
                 value={el.key.toLowerCase()}
                 checked={(textBox && textBox.textTransform === el.key)}
                 onChange={(e) => { this.updateProp('UPDATE_TEXT_TRANSFORM', e.target.value.toLowerCase()) }}/>
-              <span>{el.rep}</span>
+              <span className='text-transform__label hide-checkbox__replacement-input'>{el.rep}</span>
             </label>
           ))}
         </div>
@@ -169,11 +174,15 @@ class ControlPanelText extends Component {
               actionKey={el.toLowerCase()}
               />
           ))}
-          <label className='lock'>
+          <label className='lock hide-checkbox'>
             <input
+              className='hide-checkbox__input'
               type='checkbox'
               onClick={(e) => { this.updateProp('UPDATE_PADDING_LOCK', e.target.checked) }}
               />
+            <svg className='small hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+              <use xlinkHref={lockIcon + `#${textBox && textBox.padding.lock ? 'locked' : 'unlocked'}`}></use>
+            </svg>
           </label>
         </div>
         <div className='Control half flex'>
@@ -190,11 +199,15 @@ class ControlPanelText extends Component {
               actionKey={el.toLowerCase()}
               />
           ))}
-          <label className='lock'>
+          <label className='lock hide-checkbox'>
             <input
+              className='hide-checkbox__input'
               type='checkbox'
               onClick={(e) => { this.updateProp('UPDATE_MARGIN_LOCK', e.target.checked) }}
               />
+            <svg className='small hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+              <use xlinkHref={lockIcon + `#${textBox && textBox.margin.lock ? 'locked' : 'unlocked'}`}></use>
+            </svg>
           </label>
         </div>
         <div className='Control full'>

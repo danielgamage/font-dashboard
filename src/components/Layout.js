@@ -29,6 +29,9 @@ const Layout = ({ textBoxes, dispatch, page }) => {
             <AddButton index={i + 1} />
           </div>
         ))}
+        {(textBoxes.length === 0) &&
+          <p className='Layout__instructions'>To get started, add a text block with the add button above. Then you can select it and change properties using the panel on the right ☞, or perform actions on the text block using the panel below ☟.</p>
+        }
       </div>
     </div>
   )

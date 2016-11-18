@@ -20,13 +20,15 @@ const textBox = (state, action) => {
           top: 0,
           right: 0,
           bottom: 0,
-          left: 0
+          left: 0,
+          lock: false
         },
         margin: {
           top: 0,
           right: 0,
           bottom: 0,
-          left: 0
+          left: 0,
+          lock: false
         },
         rendering: 'Subpixel',
         opentype: opentypeFeatures.map(el => ({key: el.value, value: 0}))
@@ -65,10 +67,30 @@ const textBox = (state, action) => {
       state.rendering = action.value
       return state
     case 'UPDATE_PADDING':
-      state.padding[action.key] = parseFloat(action.value)
+      if (state.padding.lock) {
+        state.padding.top = parseFloat(action.value)
+        state.padding.right = parseFloat(action.value)
+        state.padding.bottom = parseFloat(action.value)
+        state.padding.left = parseFloat(action.value)
+      } else {
+        state.padding[action.key] = parseFloat(action.value)
+      }
+      return state
+    case 'UPDATE_PADDING_LOCK':
+      state.padding.lock = action.value
       return state
     case 'UPDATE_MARGIN':
-      state.margin[action.key] = parseFloat(action.value)
+      if (state.margin.lock) {
+        state.margin.top = parseFloat(action.value)
+        state.margin.right = parseFloat(action.value)
+        state.margin.bottom = parseFloat(action.value)
+        state.margin.left = parseFloat(action.value)
+      } else {
+        state.margin[action.key] = parseFloat(action.value)
+      }
+      return state
+    case 'UPDATE_MARGIN_LOCK':
+      state.margin.lock = action.value
       return state
     case 'UPDATE_OPENTYPE':
       state.opentype.map(el => {
@@ -133,6 +155,8 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_RENDERING':
     case 'UPDATE_PADDING':
     case 'UPDATE_MARGIN':
+    case 'UPDATE_PADDING_LOCK':
+    case 'UPDATE_MARGIN_LOCK':
     case 'UPDATE_OPENTYPE':
       return ([...state].map(el => {
         if ((selectedIDs && selectedIDs.indexOf(el.id) !== -1) || el.id === action.id) {

@@ -64,9 +64,19 @@ export const updatePadding = (key, value) => ({
   value
 })
 
+export const togglePaddingLock = (value) => ({
+  type: 'TOGGLE_PADDING_LOCK',
+  value
+})
+
 export const updateMargin = (key, value) => ({
   type: 'UPDATE_MARGIN',
   key,
+  value
+})
+
+export const toggleMarginLock = (value) => ({
+  type: 'TOGGLE_MARGIN_LOCK',
   value
 })
 

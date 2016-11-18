@@ -19,6 +19,13 @@ class ControlPanelText extends Component {
       value: e.target.value || family
     })
   }
+  // fold these together and pass action.type as argument
+  updateProp (action, value) {
+    this.props.dispatch({
+      type: action,
+      value: value
+    })
+  }
   updateColor (e) {
     this.props.dispatch({
       type: 'UPDATE_COLOR',
@@ -176,13 +183,19 @@ class ControlPanelText extends Component {
               label={el}
               key={el}
               id={`padding-${el.toLowerCase()}`}
-              step='0.1'
+              step='1'
               min='0'
               value={textBox && textBox.padding[`${el.toLowerCase()}`]}
               action={`UPDATE_PADDING`}
               actionKey={el.toLowerCase()}
               />
           ))}
+          <label className='lock'>
+            <input
+              type='checkbox'
+              onClick={(e) => { this.updateProp('UPDATE_PADDING_LOCK', e.target.checked) }}
+              />
+          </label>
         </div>
         <div className='Control half flex'>
           {['Top', 'Left', 'Right', 'Bottom'].map((el) => (
@@ -191,13 +204,19 @@ class ControlPanelText extends Component {
               label={el}
               key={el}
               id={`margin-${el.toLowerCase()}`}
-              step='0.1'
+              step='1'
               min='0'
               value={textBox && textBox.margin[`${el.toLowerCase()}`]}
               action={`UPDATE_MARGIN`}
               actionKey={el.toLowerCase()}
               />
           ))}
+          <label className='lock'>
+            <input
+              type='checkbox'
+              onClick={(e) => { this.updateProp('UPDATE_MARGIN_LOCK', e.target.checked) }}
+              />
+          </label>
         </div>
         <div className='Control full'>
           <div className='ControlTitle'>OpenType Features</div>

@@ -13,8 +13,6 @@ const TextBox = ({ text, dispatch, id, selected, fontFamily, tracking, leading, 
   } else {
     fontSmoothing = { WebkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
   }
-  console.log('padding:' + padding)
-  console.log(margin)
   const opentypeValue = opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
   const styles = {
     fontFamily: `'${fontFamily}'`,

@@ -27,7 +27,6 @@ class ControlPanelText extends Component {
             label='Page Width'
             id='width'
             append='rem'
-            step='0.1'
             min='0'
             value={this.props.page.width.value}
             unit={this.props.page.width.unit}

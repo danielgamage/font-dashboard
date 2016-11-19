@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import units from '../data/units.js'
 
 class NumericInput extends Component {
   constructor (props) {
@@ -19,9 +20,14 @@ class NumericInput extends Component {
   }
   onDrag (e) {
     let value = this.props.value
-    value += (e.movementX * (this.props.step || 1))
+    let step
+    // use some opinionated incrementation
+    units.map(el => { if (el.value === this.props.unit) { step = el.step } })
+
+    value += (e.movementX * (step || 1))
     value = this.props.min ? Math.max(this.props.min, value) : value
     value = this.props.max ? Math.min(this.props.max, value) : value
+
     this.updateStore(value, 'value')
   }
   onChange (e) {
@@ -54,7 +60,6 @@ class NumericInput extends Component {
           inputMode='numeric'
           min={this.props.min}
           max={this.props.max}
-          step={this.props.step}
           value={this.props.value}
           onChange={this.onChange.bind(this)}
           />
@@ -63,8 +68,8 @@ class NumericInput extends Component {
             <select
               value={this.props.unit}
               onChange={this.onChangeUnit.bind(this)}>
-              {['rem', 'em', '%', 'px', 'vw', 'vh', 'vmin', 'vmax'].map(el => (
-                <option key={el} value={el}>{el}</option>
+              {units.map(el => (
+                <option key={el.value} value={el.value}>{el.value}</option>
               ))}
             </select>
           </div>

@@ -66,7 +66,6 @@ class ControlPanelText extends Component {
             label='Leading'
             id='leading'
             append='em'
-            step='0.05'
             min='0'
             value={textBox && textBox.leading.value}
             unit={textBox && textBox.leading.unit}
@@ -78,7 +77,6 @@ class ControlPanelText extends Component {
             label='Tracking'
             id='tracking'
             append='em'
-            step='0.01'
             min='-0.5'
             max='1'
             value={textBox && textBox.tracking.value}
@@ -137,7 +135,6 @@ class ControlPanelText extends Component {
           <NumericInput
             label='Columns'
             id='columns'
-            step='1'
             min='1'
             max='4'
             value={textBox && textBox.columns}
@@ -149,7 +146,6 @@ class ControlPanelText extends Component {
             label='Gutter Size'
             id='gutter'
             append='rem'
-            step='0.1'
             min='0'
             value={textBox && textBox.gutters.value}
             unit={textBox && textBox.gutters.unit}
@@ -184,7 +180,6 @@ class ControlPanelText extends Component {
               label={el}
               key={el}
               id={`padding-${el.toLowerCase()}`}
-              step='1'
               min='0'
               value={textBox && textBox.padding[`${el.toLowerCase()}`].value}
               unit={textBox && textBox.padding[`${el.toLowerCase()}`].unit}
@@ -213,7 +208,6 @@ class ControlPanelText extends Component {
               label={el}
               key={el}
               id={`margin-${el.toLowerCase()}`}
-              step='1'
               value={textBox && textBox.margin[`${el.toLowerCase()}`].value}
               unit={textBox && textBox.margin[`${el.toLowerCase()}`].unit}
               action={`UPDATE_MARGIN`}

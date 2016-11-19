@@ -122,6 +122,11 @@ export const updatePageWidth = (value) => ({
   value
 })
 
+export const updatePageBackgroundColor = (value) => ({
+  type: 'UPDATE_PAGE_BACKGROUND_COLOR',
+  value
+})
+
 export const toggleFullscreen = () => ({
   type: 'TOGGLE_FULLSCREEN'
 })

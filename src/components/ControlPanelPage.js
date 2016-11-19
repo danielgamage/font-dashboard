@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import NumericInput from './NumericInput.js'
 
-class ControlPanelText extends Component {
+class ControlPanelPage extends Component {
   updateBackgroundColor (e) {
     this.props.dispatch({
       type: 'UPDATE_PAGE_BACKGROUND_COLOR',
@@ -13,6 +13,13 @@ class ControlPanelText extends Component {
     this.props.dispatch({
       type: 'UPDATE_COLUMNS',
       value: e.target.value
+    })
+  }
+  updateProp (action, value, key) {
+    this.props.dispatch({
+      type: action,
+      value: value,
+      key: key
     })
   }
   render () {
@@ -33,6 +40,14 @@ class ControlPanelText extends Component {
             action='UPDATE_PAGE_WIDTH'
             />
         </div>
+        <div className='Control half'>
+          <div className='ControlTitle'>Background</div>
+          <label>
+            <input type='color' onChange={(e) => { this.updateProp('UPDATE_PAGE_BACKGROUND_COLOR', e.target.value) }}/>
+            <div style={{ color: this.props.page.backgroundColor }} className='input--color' />
+          </label>
+          <output>{`${this.props.page.backgroundColor}`}</output>
+        </div>
       </div>
     )
   }
@@ -42,4 +57,4 @@ const mapStateToProps = (state, ownProps) => {
   return { page: state.page.present }
 }
 
-export default connect(mapStateToProps)(ControlPanelText)
+export default connect(mapStateToProps)(ControlPanelPage)

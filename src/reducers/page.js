@@ -3,6 +3,7 @@ const defaultState = {
     value: 20,
     unit: 'rem'
   },
+  backgroundColor: 'transparent',
   padding: {
     top: 1,
     right: 1,
@@ -25,6 +26,8 @@ const page = (state = defaultState, action) => {
       const newState = { ...state }
       newState.width[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       return newState
+    case 'UPDATE_PAGE_BACKGROUND_COLOR':
+      return { ...state, backgroundColor: action.value }
     default:
       return state
   }

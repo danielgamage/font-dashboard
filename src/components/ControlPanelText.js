@@ -98,7 +98,7 @@ class ControlPanelText extends Component {
             <input type='color' onChange={(e) => { this.updateProp('UPDATE_BACKGROUND_COLOR', e.target.value) }}/>
             <div style={{color: textBox && textBox.backgroundColor}} className='input--color' />
           </label>
-          <output>{textBox && `${textBox.color}`}</output>
+          <output>{textBox && `${textBox.backgroundColor}`}</output>
         </div>
         <div className='Control half'>
           <div className='ControlTitle'>Alignment</div>

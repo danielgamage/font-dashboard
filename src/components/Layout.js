@@ -10,6 +10,9 @@ const Layout = ({ textBoxes, dispatch, page }) => {
   return (
     <div
       className="Layout"
+      style={{
+        backgroundColor: `${page.backgroundColor}`
+      }}
       onClick={(e) => {
         dispatch({
           type: 'DESELECT_TEXTBOXES'
@@ -18,7 +21,9 @@ const Layout = ({ textBoxes, dispatch, page }) => {
       >
       <div
         className='LayoutWrapper'
-        style={styles}
+        style={{
+          width: `${page.width.value}${page.width.unit}`
+        }}
         >
         <AddButton index={0} solo={(textBoxes.length === 0)}/>
         {textBoxes.map((textbox, i) => (

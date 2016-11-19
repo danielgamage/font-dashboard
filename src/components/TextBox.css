@@ -3,14 +3,26 @@
   transition: 0.5s ease;
 }
 
-.TextItem:hover {
+.TextItem::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   transition: 0.15s ease;
-  box-shadow: 0 0 0 2px #eee inset;
+  box-shadow: 0 0 0 2px transparent;
 }
 
-.TextItem.selected {
+.TextItem:hover::before {
   transition: 0.15s ease;
-  box-shadow: 0 0 0 2px #ddd inset;
+  box-shadow: 0 0 0 2px #eee;
+}
+
+.TextItem.selected::before {
+  transition: 0.15s ease;
+  box-shadow: 0 0 0 2px #ddd;
 }
 
 [contenteditable=true]:empty:before{
@@ -26,7 +38,6 @@
   margin: 0;
   appearance: none;
   overflow: visible;
-  width: 100%;
   resize: none;
   background: none;
 }

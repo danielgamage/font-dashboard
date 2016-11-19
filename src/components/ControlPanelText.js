@@ -56,7 +56,8 @@ class ControlPanelText extends Component {
             id='size'
             append='px'
             min='0'
-            value={textBox && textBox.fontSize}
+            value={textBox && textBox.fontSize.value}
+            unit={textBox && textBox.fontSize.unit}
             action='UPDATE_FONT_SIZE'
             />
         </div>
@@ -67,7 +68,8 @@ class ControlPanelText extends Component {
             append='em'
             step='0.05'
             min='0'
-            value={textBox && textBox.leading}
+            value={textBox && textBox.leading.value}
+            unit={textBox && textBox.leading.unit}
             action='UPDATE_FONT_LEADING'
             />
         </div>
@@ -79,7 +81,8 @@ class ControlPanelText extends Component {
             step='0.01'
             min='-0.5'
             max='1'
-            value={textBox && textBox.tracking}
+            value={textBox && textBox.tracking.value}
+            unit={textBox && textBox.tracking.unit}
             action='UPDATE_FONT_TRACKING'
             />
         </div>
@@ -148,7 +151,8 @@ class ControlPanelText extends Component {
             append='rem'
             step='0.1'
             min='0'
-            value={textBox && textBox.gutters}
+            value={textBox && textBox.gutters.value}
+            unit={textBox && textBox.gutters.unit}
             action='UPDATE_GUTTERS'
             />
         </div>
@@ -182,7 +186,8 @@ class ControlPanelText extends Component {
               id={`padding-${el.toLowerCase()}`}
               step='1'
               min='0'
-              value={textBox && textBox.padding[`${el.toLowerCase()}`]}
+              value={textBox && textBox.padding[`${el.toLowerCase()}`].value}
+              unit={textBox && textBox.padding[`${el.toLowerCase()}`].unit}
               action={`UPDATE_PADDING`}
               actionKey={el.toLowerCase()}
               />
@@ -209,8 +214,8 @@ class ControlPanelText extends Component {
               key={el}
               id={`margin-${el.toLowerCase()}`}
               step='1'
-              min='0'
-              value={textBox && textBox.margin[`${el.toLowerCase()}`]}
+              value={textBox && textBox.margin[`${el.toLowerCase()}`].value}
+              unit={textBox && textBox.margin[`${el.toLowerCase()}`].unit}
               action={`UPDATE_MARGIN`}
               actionKey={el.toLowerCase()}
               />

@@ -1,11 +1,11 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import TextBox from './TextBox'
 import AddButton from './AddButton'
 import { connect } from 'react-redux'
 
 const Layout = ({ textBoxes, dispatch, page }) => {
   const styles = {
-    width: `${page.width}rem`
+    width: `${page.width.value}${page.width.unit}`
   }
   return (
     <div

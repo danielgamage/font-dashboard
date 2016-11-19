@@ -7,33 +7,43 @@ import './TextBox.css'
 class TextBox extends Component {
   render () {
     let fontSmoothing
-    if (this.props.textBox.rendering === 'Grayscale') {
+    const item = this.props.textBox
+    if (item.rendering === 'Grayscale') {
       fontSmoothing = { WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
-    } else if (this.props.textBox.rendering === 'None') {
+    } else if (item.rendering === 'None') {
       fontSmoothing = { WebkitFontSmoothing: 'none', MozOsxFontSmoothing: 'none'}
     } else {
       fontSmoothing = { WebkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
     }
-    const opentypeValue = this.props.textBox.opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
+    const opentypeValue = item.opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
     const styles = {
-      fontFamily: `'${this.props.textBox.fontFamily}'`,
-      fontSize: `${this.props.textBox.fontSize}px`,
-      color: this.props.textBox.color,
-      backgroundColor: this.props.textBox.backgroundColor,
-      letterSpacing: `${this.props.textBox.tracking}em`,
-      lineHeight: this.props.textBox.leading,
-      textAlign: this.props.textBox.alignment,
-      textTransform: this.props.textBox.textTransform,
-      columnCount: this.props.textBox.columns,
-      columnGap: `${this.props.textBox.gutters}rem`,
-      padding: `${this.props.textBox.padding.top}px ${this.props.textBox.padding.right}px ${this.props.textBox.padding.bottom}px ${this.props.textBox.padding.left}px`,
-      margin: `${this.props.textBox.margin.top}px ${this.props.textBox.margin.right}px ${this.props.textBox.margin.bottom}px ${this.props.textBox.margin.left}px`,
+      fontFamily: `'${item.fontFamily}'`,
+      fontSize: `${item.fontSize.value}${item.fontSize.unit}`,
+      color: item.color,
+      backgroundColor: item.backgroundColor,
+      letterSpacing: `${item.tracking.value}${item.tracking.unit}`,
+      lineHeight: `${item.leading.value}${item.leading.unit}`,
+      textAlign: `${item.alignment}`,
+      textTransform: item.textTransform,
+      columnCount: item.columns,
+      columnGap: `${item.gutters.value}${item.gutters.unit}`,
+      padding: `
+        ${item.padding.top.value}${item.padding.top.unit}
+        ${item.padding.right.value}${item.padding.right.unit}
+        ${item.padding.bottom.value}${item.padding.bottom.unit}
+        ${item.padding.left.value}${item.padding.left.unit}`,
+      margin: `
+        ${item.margin.top.value}${item.margin.top.unit}
+        ${item.margin.right.value}${item.margin.right.unit}
+        ${item.margin.bottom.value}${item.margin.bottom.unit}
+        ${item.margin.left.value}${item.margin.left.unit}
+        `,
       fontFeatureSettings: opentypeValue,
       ...fontSmoothing
     }
     return (
       <div
-        className={'TextItem' + (this.props.textBox.selected ? ' selected' : '')}
+        className={'TextItem' + (item.selected ? ' selected' : '')}
         onDrop={(e) => {
           e.preventDefault()
           // If dropped items aren't files, reject them
@@ -50,7 +60,7 @@ class TextBox extends Component {
               this.props.dispatch({
                 type: 'UPDATE_FONT_FAMILY',
                 value: file.name,
-                id: this.props.textBox.id
+                id: item.id
               })
               return true
             })
@@ -70,7 +80,7 @@ class TextBox extends Component {
             e.stopPropagation()
             this.props.dispatch({
               type: 'SELECT_TEXTBOX',
-              id: this.props.textBox.id,
+              id: item.id,
               add: e.shiftKey
             })
           }}
@@ -83,7 +93,7 @@ class TextBox extends Component {
           style={styles}
           rows='1'
         >
-          {this.props.textBox.text}
+          {item.text}
         </div>
       </div>
     )

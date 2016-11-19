@@ -9,39 +9,39 @@ const textBox = (state, action) => {
         backgroundColor: 'rgba(255,255,255,0)',
         text: action.text,
         selected: false,
-        fontSize: 16,
         fontFamily: 'sans-serif',
-        tracking: 0,
-        leading: 1.5,
+        fontSize: { value: 1, unit: 'rem' },
+        tracking: { value: 0, unit: 'rem' },
+        leading: { value: 1.5, unit: 'em' },
         columns: 1,
-        gutters: 1,
+        gutters: { value: 1, unit: 'rem' },
         alignment: 'left',
         textTransform: 'none',
         padding: {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
+          top: { value: 0, unit: 'px' },
+          right: { value: 0, unit: 'px' },
+          bottom: { value: 0, unit: 'px' },
+          left: { value: 0, unit: 'px' },
           lock: false
         },
         margin: {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
+          top: { value: 0, unit: 'px' },
+          right: { value: 0, unit: 'px' },
+          bottom: { value: 0, unit: 'px' },
+          left: { value: 0, unit: 'px' },
           lock: false
         },
         rendering: 'Subpixel',
         opentype: opentypeFeatures.map(el => ({key: el.value, value: 0}))
       }
     case 'UPDATE_FONT_SIZE':
-      state.fontSize = parseFloat(action.value)
+      state.fontSize.value = parseFloat(action.value)
       return state
     case 'UPDATE_FONT_TRACKING':
-      state.tracking = parseFloat(action.value)
+      state.tracking.value = parseFloat(action.value)
       return state
     case 'UPDATE_FONT_LEADING':
-      state.leading = parseFloat(action.value)
+      state.leading.value = parseFloat(action.value)
       return state
     case 'UPDATE_FONT_FAMILY':
       state.fontFamily = action.value
@@ -72,12 +72,12 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_PADDING':
       if (state.padding.lock) {
-        state.padding.top = parseFloat(action.value)
-        state.padding.right = parseFloat(action.value)
-        state.padding.bottom = parseFloat(action.value)
-        state.padding.left = parseFloat(action.value)
+        state.padding.top.value = parseFloat(action.value)
+        state.padding.right.value = parseFloat(action.value)
+        state.padding.bottom.value = parseFloat(action.value)
+        state.padding.left.value = parseFloat(action.value)
       } else {
-        state.padding[action.key] = parseFloat(action.value)
+        state.padding[action.key].value = parseFloat(action.value)
       }
       return state
     case 'UPDATE_PADDING_LOCK':
@@ -85,12 +85,12 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_MARGIN':
       if (state.margin.lock) {
-        state.margin.top = parseFloat(action.value)
-        state.margin.right = parseFloat(action.value)
-        state.margin.bottom = parseFloat(action.value)
-        state.margin.left = parseFloat(action.value)
+        state.margin.top.value = parseFloat(action.value)
+        state.margin.right.value = parseFloat(action.value)
+        state.margin.bottom.value = parseFloat(action.value)
+        state.margin.left.value = parseFloat(action.value)
       } else {
-        state.margin[action.key] = parseFloat(action.value)
+        state.margin[action.key].value = parseFloat(action.value)
       }
       return state
     case 'UPDATE_MARGIN_LOCK':

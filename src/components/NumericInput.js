@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class ControlPanelText extends Component {
+class NumericInput extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -31,6 +31,7 @@ class ControlPanelText extends Component {
     this.updateStore(e.target.value)
   }
   updateStore (v) {
+    console.log(v)
     this.props.dispatch({
       type: this.props.action,
       key: this.props.actionKey || null,
@@ -57,10 +58,16 @@ class ControlPanelText extends Component {
           value={this.props.value}
           onChange={this.onChange.bind(this)}
           />
-        {this.props.append}
+        <div className='select'>
+          <select value={this.props.property && this.props.property.unit}>
+            {['rem', 'em', '%', 'px', 'vw', 'vh', 'vmin', 'vmax'].map(el => (
+              <option key={el} value={el}>{el}</option>
+            ))}
+          </select>
+        </div>
       </div>
     )
   }
 }
 
-export default connect()(ControlPanelText)
+export default connect()(NumericInput)

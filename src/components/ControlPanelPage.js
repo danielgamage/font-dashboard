@@ -46,7 +46,6 @@ class ControlPanelPage extends Component {
             <input type='color' onChange={(e) => { this.updateProp('UPDATE_PAGE_BACKGROUND_COLOR', e.target.value) }}/>
             <div style={{ color: this.props.page.backgroundColor }} className='input--color' />
           </label>
-          <output>{`${this.props.page.backgroundColor}`}</output>
         </div>
       </div>
     )

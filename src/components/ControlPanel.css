@@ -1,11 +1,12 @@
 .ControlPanel {
   background: #33383f;
   color: #fff;
-  width: 32rem;
+  width: 22rem;
   font-size: 14px;
   text-align: left;
   overflow-x: hidden;
   display: flex;
+  flex: 1 0 auto;
   flex-flow: column;
   justify-content: flex-start;
   line-height: 1.4;
@@ -17,6 +18,7 @@
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
+  justify-content: space-between;
 }
 .ControlPanelTab.inactive {
   opacity: 0.2;
@@ -45,9 +47,16 @@
   box-shadow: 0 -0.2rem 0 #039BE5 inset;
 }
 .Control {
-  border-bottom: 1px solid #3e4247;
   display: block;
   padding: 1rem 0;
+}
+.Control::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transform: translate(0, -1rem);
+  border-bottom: 1px solid #3e4247;
 }
 
 .Control.flex {
@@ -60,13 +69,13 @@
   width: 100%;
 }
 .half {
-  width: 50%;
+  width: calc((100% - (1rem / 2)) / 2);
 }
 .third {
-  width: calc(100% / 3);
+  width: calc((100% - 2rem) / 3);
 }
 .quarter {
-  width: 25%;
+  width: calc((100% - 3rem) / 4);
 }
 
 .trbl + .trbl {
@@ -100,11 +109,16 @@
   display: block;
   text-transform: uppercase;
   font-size: 0.65rem;
+  line-height: 1;
   letter-spacing: 0.15em;
   color: #ddd;
   font-weight: bold;
   margin-bottom: 0.5rem;
   user-select: none;
+}
+
+.draggable {
+  cursor: ew-resize !important;
 }
 
 /*.Control input[type=number] {
@@ -170,11 +184,11 @@ input:checked + .hide-checkbox__replacement-input {
 input[type=text],
 input[type=number] {
   display: inline-block;
-  max-width: 3rem;
+  max-width: 2.5rem;
   background-color: #3c4148;
   color: white;
   border: 1px solid #464646;
-  padding: 0.4rem 0 0.5rem 0.7rem;
+  padding: 0.3rem 0 0.4rem 0.5rem;
 }
 
 input[type=color] {
@@ -253,7 +267,7 @@ input[type=color]:focus + .input--color::after {
   display: inline-block;
   width: 100%;
   margin: 0;
-  padding: 0.5rem;
+  padding: 0.4rem 0.3rem;
   line-height: 1.5;
   color: inherit;
   background-color: transparent;

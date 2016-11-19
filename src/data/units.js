@@ -1,11 +1,11 @@
 export default [
   {
     'value': 'rem',
-    'step': 0.1
+    'step': 0.01
   },
   {
     'value': 'em',
-    'step': 0.1
+    'step': 0.01
   },
   {
     'value': '%',

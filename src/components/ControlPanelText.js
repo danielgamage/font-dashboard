@@ -77,28 +77,21 @@ class ControlPanelText extends Component {
             label='Tracking'
             id='tracking'
             append='em'
-            min='-0.5'
-            max='1'
             value={textBox && textBox.tracking.value}
             unit={textBox && textBox.tracking.unit}
             action='UPDATE_FONT_TRACKING'
             />
         </div>
         <div className='Control half'>
-          <div className='ControlTitle'>Text</div>
+          <div className='ControlTitle'>Text/BG</div>
           <label>
             <input type='color' onChange={(e) => { this.updateProp('UPDATE_COLOR', e.target.value) }}/>
             <div style={{color: textBox && textBox.color}} className='input--color' />
           </label>
-          <output>{textBox && `${textBox.color}`}</output>
-        </div>
-        <div className='Control half'>
-          <div className='ControlTitle'>Background</div>
           <label>
             <input type='color' onChange={(e) => { this.updateProp('UPDATE_BACKGROUND_COLOR', e.target.value) }}/>
             <div style={{color: textBox && textBox.backgroundColor}} className='input--color' />
           </label>
-          <output>{textBox && `${textBox.backgroundColor}`}</output>
         </div>
         <div className='Control half'>
           <div className='ControlTitle'>Alignment</div>

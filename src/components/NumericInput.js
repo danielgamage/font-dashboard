@@ -49,32 +49,33 @@ class NumericInput extends Component {
       <div className={this.props.className}>
         <label
           htmlFor={this.props.id}
-          className='ControlTitle'
+          className='ControlTitle draggable'
           onMouseDown={this.onMouseDown.bind(this)}
           >
           {this.props.label}
         </label>
-        <input
-          id={this.props.id}
-          type='number'
-          inputMode='numeric'
-          min={this.props.min}
-          max={this.props.max}
-          value={this.props.value}
-          onChange={this.onChange.bind(this)}
-          />
-        {this.props.unit &&
-          <div className='select'>
-            <select
-              value={this.props.unit}
-              onChange={this.onChangeUnit.bind(this)}>
-              {units.map(el => (
-                <option key={el.value} value={el.value}>{el.value}</option>
-              ))}
-            </select>
-          </div>
-        }
-
+        <div className='ControlFlex'>
+          <input
+            id={this.props.id}
+            type='number'
+            inputMode='numeric'
+            min={this.props.min}
+            max={this.props.max}
+            value={this.props.value}
+            onChange={this.onChange.bind(this)}
+            />
+          {this.props.unit &&
+            <div className='select'>
+              <select
+                value={this.props.unit}
+                onChange={this.onChangeUnit.bind(this)}>
+                {units.map(el => (
+                  <option key={el.value} value={el.value}>{el.value}</option>
+                ))}
+              </select>
+            </div>
+          }
+        </div>
       </div>
     )
   }

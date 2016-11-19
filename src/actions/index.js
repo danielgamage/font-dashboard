@@ -27,19 +27,22 @@ export const updateText = (value) => ({
   value
 })
 
-export const updateFontSize = (value) => ({
+export const updateFontSize = (value, valueOrUnit) => ({
   type: 'UPDATE_FONT_SIZE',
-  value
+  value,
+  valueOrUnit
 })
 
-export const updateFontTracking = (value) => ({
+export const updateFontTracking = (value, valueOrUnit) => ({
   type: 'UPDATE_FONT_TRACKING',
-  value
+  value,
+  valueOrUnit
 })
 
-export const updateFontLeading = (value) => ({
+export const updateFontLeading = (value, valueOrUnit) => ({
   type: 'UPDATE_FONT_LEADING',
-  value
+  value,
+  valueOrUnit
 })
 
 export const updateFontFamily = (value, id) => ({
@@ -53,15 +56,17 @@ export const updateColumns = (value) => ({
   value
 })
 
-export const updateGutters = (value) => ({
+export const updateGutters = (value, valueOrUnit) => ({
   type: 'UPDATE_GUTTERS',
-  value
+  value,
+  valueOrUnit
 })
 
-export const updatePadding = (key, value) => ({
+export const updatePadding = (key, value, valueOrUnit) => ({
   type: 'UPDATE_PADDING',
   key,
-  value
+  value,
+  valueOrUnit
 })
 
 export const togglePaddingLock = (value) => ({
@@ -69,10 +74,11 @@ export const togglePaddingLock = (value) => ({
   value
 })
 
-export const updateMargin = (key, value) => ({
+export const updateMargin = (key, value, valueOrUnit) => ({
   type: 'UPDATE_MARGIN',
   key,
-  value
+  value,
+  valueOrUnit
 })
 
 export const toggleMarginLock = (value) => ({
@@ -109,12 +115,6 @@ export const updateOpenType = (key, value) => ({
   type: 'UPDATE_OPENTYPE',
   key,
   value
-})
-
-export const updatePagePadding = (value, direction) => ({
-  type: 'UPDATE_PAGE_PADDING',
-  value,
-  direction
 })
 
 export const updatePageWidth = (value) => ({

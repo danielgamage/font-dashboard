@@ -11,12 +11,19 @@ const defaultState = {
   }
 }
 
+const parseValue = (value, valueOrUnit) => {
+  if (valueOrUnit === 'value') {
+    return parseFloat(value)
+  } else {
+    return value
+  }
+}
+
 const page = (state = defaultState, action) => {
   switch (action.type) {
     case 'UPDATE_PAGE_WIDTH':
       const newState = { ...state }
-      console.log(action)
-      newState.width.value = parseFloat(action.value)
+      newState.width[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       return newState
     default:
       return state

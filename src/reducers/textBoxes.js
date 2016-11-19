@@ -1,5 +1,13 @@
 import opentypeFeatures from '../data/opentypeFeatures.js'
 
+const parseValue = (value, valueOrUnit) => {
+  if (valueOrUnit === 'value') {
+    return parseFloat(value)
+  } else {
+    return value
+  }
+}
+
 const textBox = (state, action) => {
   switch (action.type) {
     case 'ADD_TEXTBOX':
@@ -35,13 +43,13 @@ const textBox = (state, action) => {
         opentype: opentypeFeatures.map(el => ({key: el.value, value: 0}))
       }
     case 'UPDATE_FONT_SIZE':
-      state.fontSize.value = parseFloat(action.value)
+      state.fontSize[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       return state
     case 'UPDATE_FONT_TRACKING':
-      state.tracking.value = parseFloat(action.value)
+      state.tracking[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       return state
     case 'UPDATE_FONT_LEADING':
-      state.leading.value = parseFloat(action.value)
+      state.leading[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       return state
     case 'UPDATE_FONT_FAMILY':
       state.fontFamily = action.value
@@ -72,12 +80,12 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_PADDING':
       if (state.padding.lock) {
-        state.padding.top.value = parseFloat(action.value)
-        state.padding.right.value = parseFloat(action.value)
-        state.padding.bottom.value = parseFloat(action.value)
-        state.padding.left.value = parseFloat(action.value)
+        state.padding.top[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+        state.padding.right[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+        state.padding.bottom[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+        state.padding.left[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       } else {
-        state.padding[action.key].value = parseFloat(action.value)
+        state.padding[action.key][action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       }
       return state
     case 'UPDATE_PADDING_LOCK':
@@ -85,12 +93,12 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_MARGIN':
       if (state.margin.lock) {
-        state.margin.top.value = parseFloat(action.value)
-        state.margin.right.value = parseFloat(action.value)
-        state.margin.bottom.value = parseFloat(action.value)
-        state.margin.left.value = parseFloat(action.value)
+        state.margin.top[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+        state.margin.right[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+        state.margin.bottom[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+        state.margin.left[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       } else {
-        state.margin[action.key].value = parseFloat(action.value)
+        state.margin[action.key][action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       }
       return state
     case 'UPDATE_MARGIN_LOCK':
@@ -159,7 +167,9 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_TEXT_TRANSFORM':
     case 'UPDATE_RENDERING':
     case 'UPDATE_PADDING':
+    case 'UPDATE_PADDING_UNIT':
     case 'UPDATE_MARGIN':
+    case 'UPDATE_MARGIN_UNIT':
     case 'UPDATE_PADDING_LOCK':
     case 'UPDATE_MARGIN_LOCK':
     case 'UPDATE_OPENTYPE':

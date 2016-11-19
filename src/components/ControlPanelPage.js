@@ -29,7 +29,8 @@ class ControlPanelText extends Component {
             append='rem'
             step='0.1'
             min='0'
-            property={this.props.page && this.props.page.width}
+            value={this.props.page.width.value}
+            unit={this.props.page.width.unit}
             action='UPDATE_PAGE_WIDTH'
             />
         </div>

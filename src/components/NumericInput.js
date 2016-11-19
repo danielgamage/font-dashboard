@@ -3,10 +3,7 @@ import { connect } from 'react-redux'
 
 class NumericInput extends Component {
   constructor (props) {
-    super(props);
-    this.state = {
-      tab: 'Text'
-    }
+    super(props)
     this.onDrag = this.onDrag.bind(this)
     this.onMouseUp = this.onMouseUp.bind(this)
   }
@@ -25,17 +22,20 @@ class NumericInput extends Component {
     value += (e.movementX * (this.props.step || 1))
     value = this.props.min ? Math.max(this.props.min, value) : value
     value = this.props.max ? Math.min(this.props.max, value) : value
-    this.updateStore(value)
+    this.updateStore(value, 'value')
   }
   onChange (e) {
-    this.updateStore(e.target.value)
+    this.updateStore(e.target.value, 'value')
   }
-  updateStore (v) {
-    console.log(v)
+  onChangeUnit (e) {
+    this.updateStore(e.target.value, 'unit')
+  }
+  updateStore (v, vOrU) {
     this.props.dispatch({
       type: this.props.action,
       key: this.props.actionKey || null,
-      value: v
+      value: v,
+      valueOrUnit: vOrU
     })
   }
   render () {
@@ -58,13 +58,18 @@ class NumericInput extends Component {
           value={this.props.value}
           onChange={this.onChange.bind(this)}
           />
-        <div className='select'>
-          <select value={this.props.property && this.props.property.unit}>
-            {['rem', 'em', '%', 'px', 'vw', 'vh', 'vmin', 'vmax'].map(el => (
-              <option key={el} value={el}>{el}</option>
-            ))}
-          </select>
-        </div>
+        {this.props.unit &&
+          <div className='select'>
+            <select
+              value={this.props.unit}
+              onChange={this.onChangeUnit.bind(this)}>
+              {['rem', 'em', '%', 'px', 'vw', 'vh', 'vmin', 'vmax'].map(el => (
+                <option key={el} value={el}>{el}</option>
+              ))}
+            </select>
+          </div>
+        }
+
       </div>
     )
   }

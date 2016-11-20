@@ -19,6 +19,7 @@ body,
 .cursor--lr,
 .cursor--lr label {
   cursor: ew-resize !important;
+  user-select: none;
 }
 
 svg {

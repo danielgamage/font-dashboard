@@ -24,6 +24,7 @@ class NumericInput extends Component {
     // use some opinionated incrementation
     units.map(el => { if (el.value === this.props.unit) { step = el.step } })
 
+    step = step || this.props.step
     value += (e.movementX * (step || 1))
     value = this.props.min ? Math.max(this.props.min, value) : value
     value = this.props.max ? Math.min(this.props.max, value) : value

@@ -10,10 +10,15 @@ import opentypeFeatures from '../data/opentypeFeatures.js'
 import NumericInput from './NumericInput.js'
 
 class ControlPanelText extends Component {
+  componentDidMount() {
+    this.updateFonts = this.updateFonts.bind(this)
+    this.updateFontFamily = this.updateFontFamily.bind(this)
+  }
   updateFonts (e) {
     ;[...e.target.files].map((file) => {
-      const family = readFile(file)
-      this.updateFontFamily(family).bind(this)
+      readFile(file).then((font) => {
+        this.updateFontFamily(font.names.preferredFamily.en)
+      })
       return true
     })
   }

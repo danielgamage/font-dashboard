@@ -51,11 +51,12 @@ class TextBox extends Component {
           var dt = e.dataTransfer
           if (dt.files) {
             [...dt.files].map((file) => {
-              const family = readFile(file)
-              this.props.dispatch({
-                type: 'UPDATE_FONT_FAMILY',
-                value: family,
-                id: item.id
+              readFile(file).then((font) => {
+                this.props.dispatch({
+                  type: 'UPDATE_FONT_FAMILY',
+                  value: font.names.preferredFamily.en,
+                  id: item.id
+                })
               })
               return true
             })

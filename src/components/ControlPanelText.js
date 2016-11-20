@@ -11,16 +11,16 @@ import NumericInput from './NumericInput.js'
 
 class ControlPanelText extends Component {
   updateFonts (e) {
-    readFile(...e.target.files)
     ;[...e.target.files].map((file) => {
-      this.updateFontFamily(e, file.name).bind(this)
+      const family = readFile(file)
+      this.updateFontFamily(family).bind(this)
       return true
     })
   }
-  updateFontFamily (e, family) {
+  updateFontFamily (family) {
     this.props.dispatch({
       type: 'UPDATE_FONT_FAMILY',
-      value: e.target.value || family
+      value: family
     })
   }
   updateProp (action, value, key) {
@@ -45,7 +45,7 @@ class ControlPanelText extends Component {
           <div className='ControlTitle'>Font File</div>
           <label className='font-family'>
             {`font-face:`}
-            <input id='font' type='text' value={textBox ? textBox.fontFamily : ''} onChange={this.updateFontFamily.bind(this)}/>
+            <input id='font' type='text' value={textBox ? textBox.fontFamily : ''} onChange={(e) => {this.updateFontFamily(e.target.value).bind(this)}}/>
           </label>
           <input id='font' type='file' onChange={this.updateFonts.bind(this)} />
           <p>You can also drag your font directly onto the text block you want to apply the font to.</p>

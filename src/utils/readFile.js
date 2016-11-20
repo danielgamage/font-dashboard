@@ -1,16 +1,15 @@
-const readFile = (files) => {
+const readFile = (file) => {
   // Side effects: add font to document.fonts
   // should probably cache if font already exists
-  console.log(files)
-  ;[files].map((file, i) => {
-    let reader = new FileReader()
-    reader.addEventListener('load', () => {
-      let newFont = new FontFace(file.name, reader.result)
-      document.fonts.add(newFont)
-    }, false)
-    reader.readAsArrayBuffer(file)
-    return file
-  })
+  let font
+  let reader = new FileReader()
+  const family = file.name.replace('.', '').replace('-', '')
+  reader.addEventListener('load', () => {
+    font = new FontFace(family, reader.result)
+    document.fonts.add(font)
+  }, false)
+  reader.readAsArrayBuffer(file)
+  return family
 }
 
 export default readFile

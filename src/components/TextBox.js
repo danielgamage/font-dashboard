@@ -49,18 +49,12 @@ class TextBox extends Component {
           e.preventDefault()
           // If dropped items aren't files, reject them
           var dt = e.dataTransfer
-          if (dt.items) {
-            const files = [...dt.items].map((file, i) => {
-              if (dt.items[i].kind === "file") {
-                return dt.items[i].getAsFile()
-              }
-              return false
-            })
-            readFile(files[0])
-            files.map((file) => {
+          if (dt.files) {
+            [...dt.files].map((file) => {
+              const family = readFile(file)
               this.props.dispatch({
                 type: 'UPDATE_FONT_FAMILY',
-                value: file.name,
+                value: family,
                 id: item.id
               })
               return true

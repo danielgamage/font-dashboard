@@ -39,7 +39,7 @@
   border: 0;
   color: inherit;
   display: block;
-  width: 50%;
+  flex: 1 1 auto;
   height: 3rem;
   padding: 1rem;
 }

@@ -20,7 +20,7 @@ class ControlPanel extends Component {
     return (
       <div className='ControlPanel'>
         <div className='TabBar'>
-          {['Text', 'Page'].map(tab => (
+          {['Text', 'Page', 'Info'].map(tab => (
             <button
               key={tab}
               onClick={() => this.switchTabs(tab)}
@@ -32,6 +32,7 @@ class ControlPanel extends Component {
         </div>
         {this.state.tab === 'Text' && <ControlPanelText />}
         {this.state.tab === 'Page' && <ControlPanelPage />}
+        {this.state.tab === 'Info' && <ControlPanelInfo />}
       </div>
     )
   }

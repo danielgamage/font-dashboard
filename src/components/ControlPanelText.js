@@ -10,7 +10,13 @@ import opentypeFeatures from '../data/opentypeFeatures.js'
 import NumericInput from './NumericInput.js'
 
 class ControlPanelText extends Component {
-  componentDidMount() {
+  constructor (props) {
+    super(props)
+    this.state = {
+      opentypeQuery: ''
+    }
+  }
+  componentDidMount () {
     this.updateFonts = this.updateFonts.bind(this)
     this.updateFontFamily = this.updateFontFamily.bind(this)
   }
@@ -35,12 +41,23 @@ class ControlPanelText extends Component {
       key: key
     })
   }
+  filterOpentypeFeatures (text) {
+    this.setState({ opentypeQuery: text })
+  }
   render () {
     // determine whether an option will display as single value or multi value
     // if this.props.selection.every(el => el.prop == this.props.selection[0].prop)
 
     // grab props for below by first putting the selected object into mem
     const textBox = this.props.textBoxes && this.props.textBoxes[0]
+    const filteredOpentypeFeatures = opentypeFeatures.filter(el => {
+      if (el.value.toLowerCase().indexOf(this.state.opentypeQuery.toLowerCase()) !== -1 ||
+          el.description.toLowerCase().indexOf(this.state.opentypeQuery.toLowerCase()) !== -1) {
+        return true
+      } else {
+        return false
+      }
+    })
     return (
       <div className={`ControlPanelTab ${textBox ? 'active' : 'inactive'}`}>
         <div className='Control full'>
@@ -225,7 +242,13 @@ class ControlPanelText extends Component {
         </div>
         <div className='Control full'>
           <div className='ControlTitle'>OpenType Features</div>
-          {opentypeFeatures.map(el => (
+          <input
+            type='text'
+            className='search'
+            placeholder='Search for a feature'
+            onChange={(e) => { this.filterOpentypeFeatures(e.target.value) }}
+            />
+          {filteredOpentypeFeatures.map(el => (
             <label key={el.value} className='hide-checkbox'>
               <input className='hide-checkbox__input' type='checkbox' value={el.value} onChange={(e) => { this.updateProp('UPDATE_OPENTYPE', e.target.checked, e.target.value) }} />
               <div className='hide-checkbox__replacement-input'>{el.description}</div>

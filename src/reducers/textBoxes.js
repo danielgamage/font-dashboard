@@ -68,7 +68,7 @@ const textBox = (state, action) => {
       state.columns = action.value
       return state
     case 'UPDATE_GUTTERS':
-      state.gutters = action.value
+      state.gutters[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       return state
     case 'UPDATE_ALIGNMENT':
       state.alignment = action.value

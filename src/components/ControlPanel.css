@@ -191,6 +191,13 @@ input[type=number] {
   padding: 0.3rem 0 0.4rem 0.5rem;
 }
 
+input.search {
+  display: block;
+  max-width: none;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
 input[type=color] {
   appearance: none;
   width: 0;

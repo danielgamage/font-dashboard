@@ -17,12 +17,6 @@ class ControlPanelInfo extends Component {
             className='Control full'
             key={el.names.fullName.en} >
             <div className='ControlTitle'>{el.names.fullName.en}</div>
-            <dl>
-              <dt>Glyph Count</dt>
-              <dd>{el.numGlyphs}</dd>
-              <dt>UPM</dt>
-              <dd>{el.unitsPerEm}</dd>
-            </dl>
             <div
               className='metrics'>
               {[
@@ -37,15 +31,18 @@ class ControlPanelInfo extends Component {
                   style={{
                   top: `${(-1 * metric.value + el.tables.os2.sTypoAscender) / el.unitsPerEm * 10}em`
                 }}>
-                  <dt>{metric.name}</dt>
-                  <dd>{metric.value}</dd>
+                  <dt
+                    className='metrics__dt'
+                    >{metric.name}</dt>
+                  <dd
+                    className='metrics__dd'
+                    >{metric.value}</dd>
                 </dl>
               ))}
-              <div style={{
-                fontSize: '10em',
-                whiteSpace: 'nowrap',
+              <div
+                className='metrics__sample-text'
+                style={{
                 lineHeight: (el.tables.os2.sTypoAscender - el.tables.os2.sTypoDescender) / el.unitsPerEm,
-                color: '#484c52',
                 fontFamily: el.names.fullName.en
               }}>
                 Achg
@@ -53,6 +50,10 @@ class ControlPanelInfo extends Component {
             </div>
 
             <dl>
+              <dt>Glyph Count</dt>
+              <dd>{el.numGlyphs}</dd>
+              <dt>UPM</dt>
+              <dd>{el.unitsPerEm}</dd>
               <dt>Designer</dt>
               <dd>
                 <a

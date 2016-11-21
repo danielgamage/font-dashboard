@@ -1,7 +1,7 @@
 .ControlPanel {
   background: #33383f;
   color: #fff;
-  width: 22rem;
+  width: 24rem;
   font-size: 14px;
   text-align: left;
   overflow-x: hidden;
@@ -40,8 +40,8 @@
   color: inherit;
   display: block;
   flex: 1 1 auto;
-  height: 3rem;
   padding: 1rem;
+  line-height: 1;
 }
 .TabBar button.active {
   box-shadow: 0 -0.2rem 0 #039BE5 inset;
@@ -157,6 +157,13 @@ input:checked + .hide-checkbox__replacement-input {
 .hide-checkbox {
   display: inline-block;
 }
+.hide-checkbox.list {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  border:1px solid #494949;
+  padding: 0.3rem 0.4rem;
+}
 .hide-checkbox__input {
   width: 0;
   height: 0;
@@ -164,6 +171,11 @@ input:checked + .hide-checkbox__replacement-input {
   margin: 0;
   position: absolute;
   opacity: 0;
+}
+
+.hide-checkbox__input:hover + .hide-checkbox__replacement-input,
+.hide-checkbox__input:focus + .hide-checkbox__replacement-input {
+  color: #ddd;
 }
 
 .hide-checkbox + .hide-checkbox {
@@ -184,7 +196,8 @@ input:checked + .hide-checkbox__replacement-input {
 input[type=text],
 input[type=number] {
   display: inline-block;
-  max-width: 2.5rem;
+  max-width: 3rem;
+  height: 2rem;
   background-color: #3c4148;
   color: white;
   border: 1px solid #464646;
@@ -260,7 +273,38 @@ input[type=color]:focus + .input--color::after {
   font-size: 12px;
 }
 
+dl {
+  overflow: hidden;
+}
+dt {
+  float: left;
+  padding-right: 4rem;
+  color: #ddd;
+}
+dd {
+  text-align: right;
+}
 
+.metrics {
+  margin: 2rem 0;
+  position: relative;
+}
+
+.metric {
+  position: absolute;
+  width: 100%;
+  line-height: 1;
+  margin: 0;
+  transform: translateY(-100%);
+}
+.metric::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  border-top: 1px solid #039be5;
+  mix-blend-mode: screen;
+}
 
 /*
  * Select

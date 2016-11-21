@@ -39,7 +39,7 @@ class App extends Component {
 }
 
 function mapStateToProps (state) {
-  return { textBoxes: state.textBoxes, view: state.view.present }
+  return { textBoxes: state.textBoxes, view: state.view }
 }
 
 export default connect(mapStateToProps)(App)

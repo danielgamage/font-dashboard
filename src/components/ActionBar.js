@@ -68,7 +68,7 @@ class ActionBar extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  return { view: state.view.present }
+  return { view: state.view }
 }
 
 export default connect(mapStateToProps)(ActionBar)

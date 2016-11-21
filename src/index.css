@@ -25,3 +25,7 @@ body,
 svg {
   fill: currentColor;
 }
+
+a {
+  color: inherit;
+}

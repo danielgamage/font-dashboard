@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import './ControlPanel.css'
 import ControlPanelText from './ControlPanelText'
 import ControlPanelPage from './ControlPanelPage'
+import ControlPanelInfo from './ControlPanelInfo'
 
 class ControlPanel extends Component {
   constructor (props) {

@@ -54,8 +54,12 @@ class TextBox extends Component {
               readFile(file).then((font) => {
                 this.props.dispatch({
                   type: 'UPDATE_FONT_FAMILY',
-                  value: font.names.preferredFamily.en,
+                  value: font.names.fullName.en,
                   id: item.id
+                })
+                this.props.dispatch({
+                  type: 'ADD_FONT',
+                  value: font
                 })
               })
               return true

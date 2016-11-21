@@ -9,7 +9,7 @@ const readFile = (file) => {
     let reader = new FileReader()
     reader.addEventListener('load', () => {
       opentypeFont = opentype.parse(reader.result)
-      const family = opentypeFont.names.preferredFamily.en
+      const family = opentypeFont.names.fullName.en
       font = new FontFace(family, reader.result)
       document.fonts.add(font)
       resolve(opentypeFont)

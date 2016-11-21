@@ -22,8 +22,12 @@ class ControlPanelText extends Component {
   }
   updateFonts (e) {
     ;[...e.target.files].map((file) => {
-      readFile(file).then((font) => {
-        this.updateFontFamily(font.names.preferredFamily.en)
+      readFile(file, this.props.dispatch).then((font) => {
+        this.updateFontFamily(font.names.fullName.en)
+        this.props.dispatch({
+          type: 'ADD_FONT',
+          value: font
+        })
       })
       return true
     })
@@ -241,17 +245,18 @@ class ControlPanelText extends Component {
           ))}
         </div>
         <div className='Control full'>
-          <div className='ControlTitle'>OpenType Features</div>
+          <label htmlFor='featureSearch' className='ControlTitle'>OpenType Features</label>
           <input
+            id='featureSearch'
             type='text'
             className='search'
             placeholder='Search for a feature'
             onChange={(e) => { this.filterOpentypeFeatures(e.target.value) }}
             />
           {filteredOpentypeFeatures.map(el => (
-            <label key={el.value} className='hide-checkbox'>
+            <label key={el.value} className='hide-checkbox list'>
               <input className='hide-checkbox__input' type='checkbox' value={el.value} onChange={(e) => { this.updateProp('UPDATE_OPENTYPE', e.target.checked, e.target.value) }} />
-              <div className='hide-checkbox__replacement-input'>{el.description}</div>
+              <div title={el.value} className='hide-checkbox__replacement-input'>{el.description}</div>
             </label>
           ))}
         </div>

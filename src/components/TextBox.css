@@ -25,10 +25,11 @@
   box-shadow: 0 0 0 2px var(--color-white-dull);
 }
 
-[contenteditable=true]:empty:before{
+.text:empty:before{
   content: attr(placeholder);
   display: block; /* For Firefox */
   color: var(--color-gray-light);
+  user-select: none;
   cursor: text;
 }
 
@@ -40,6 +41,10 @@
   overflow: visible;
   resize: none;
   background: none;
+}
+
+.text:not([contenteditable=true]) {
+  user-select: none;
 }
 
 .text:focus {

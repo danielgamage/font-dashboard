@@ -73,7 +73,7 @@ class TextBox extends Component {
         }}>
         <div
           className='text'
-          contentEditable='true'
+          contentEditable={item.selected}
           placeholder='Type here...'
           onClick={(e) => {
             // prevent deselection

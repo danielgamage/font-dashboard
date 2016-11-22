@@ -1,18 +1,28 @@
 import opentype from 'opentype.js'
 
+const parseFeatures = (font) => {
+  const features = font.tables.gsub.features.map(feature => {
+    return feature.tag
+  })
+  const featuresSet = new Set([...features])
+  const uniqueFeatures = [...featuresSet]
+  return uniqueFeatures
+}
+
 const readFile = (file) => {
   // Side effects: add font to document.fonts
   // should probably cache if font already exists
   return new Promise(function(resolve, reject) {
-    let font
-    let opentypeFont
     let reader = new FileReader()
     reader.addEventListener('load', () => {
-      opentypeFont = opentype.parse(reader.result)
+      const opentypeFont = opentype.parse(reader.result)
       const family = opentypeFont.names.fullName.en
-      font = new FontFace(family, reader.result)
+      const font = new FontFace(family, reader.result)
       document.fonts.add(font)
-      resolve(opentypeFont)
+      const availableFeatures = parseFeatures(opentypeFont)
+      const data = {...opentypeFont, availableFeatures: availableFeatures}
+      console.log(data)
+      resolve(data)
     }, false)
     reader.readAsArrayBuffer(file)
   });

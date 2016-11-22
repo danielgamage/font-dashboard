@@ -54,7 +54,25 @@ class ControlPanelText extends Component {
 
     // grab props for below by first putting the selected object into mem
     const textBox = this.props.textBoxes && this.props.textBoxes[0]
-    const filteredOpentypeFeatures = opentypeFeatures.filter(el => {
+    let showingAvailableFeatures = false
+    const associatedFont = this.props.fonts.filter(font => {
+      if (textBox) {
+        return font.names.fullName.en === textBox.fontFamily
+      } else {
+        return false
+      }
+    })[0]
+    const availableOpentypeFeatures = opentypeFeatures.filter(el => {
+      if (!associatedFont) {
+        return true
+      } else if (associatedFont.availableFeatures.indexOf(el.value) !== -1) {
+        showingAvailableFeatures = true
+        return true
+      } else {
+        return false
+      }
+    })
+    const filteredOpentypeFeatures = availableOpentypeFeatures.filter(el => {
       if (el.value.toLowerCase().indexOf(this.state.opentypeQuery.toLowerCase()) !== -1 ||
           el.description.toLowerCase().indexOf(this.state.opentypeQuery.toLowerCase()) !== -1) {
         return true
@@ -245,7 +263,10 @@ class ControlPanelText extends Component {
           ))}
         </div>
         <div className='Control full'>
-          <label htmlFor='featureSearch' className='ControlTitle'>OpenType Features</label>
+          <label htmlFor='featureSearch' className='ControlTitle'>
+            OpenType Features
+            <span className='info-label'>{showingAvailableFeatures ? 'Showing Available' : ''}</span>
+          </label>
           <input
             id='featureSearch'
             type='text'
@@ -267,7 +288,7 @@ class ControlPanelText extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const selectedTextBoxes = state.textBoxes.present.filter(el => el.selected)
-  return { textBoxes: selectedTextBoxes }
+  return { textBoxes: selectedTextBoxes, fonts: state.fonts }
 }
 
 export default connect(mapStateToProps)(ControlPanelText)

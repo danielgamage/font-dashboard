@@ -212,6 +212,11 @@ input.search {
   margin: 0.5rem 0;
 }
 
+.info-label {
+  color: #777;
+  float: right;
+}
+
 input[type=color] {
   appearance: none;
   width: 0;

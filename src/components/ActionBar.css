@@ -5,10 +5,11 @@
   transition: 0.2s ease;
   display: flex;
   justify-content: space-between;
+  flex: 1 0 auto;
 }
 .ActionBar button {
   appearance: none;
-  padding: 0.2em 0.5em 0.3em;
+  padding: 0.5rem;
   color: #fff;
   background: none;
   font-weight: bold;

@@ -11,8 +11,8 @@
   appearance: none;
   border: 0.2em solid currentColor;
   padding: 0.2em 0.2em 0.3em;
-  background: #fff;
-  color: #4be;
+  background: var(--color-white-pure);
+  color: var(--color-accent-bright);
   font-weight: bold;
   text-align: center;
   letter-spacing: 0;
@@ -29,7 +29,7 @@
 
 .AddBackground {
   transition: 0.3s ease;
-  border-top: 2px solid #eee;
+  border-top: 2px solid var(--color-white-main);
   opacity: 0;
 }
 

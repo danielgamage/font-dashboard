@@ -1,9 +1,7 @@
-export const addTextBox = (text) => ({
+export const addTextBox = (text, id, index) => ({
   type: 'ADD_TEXTBOX',
-  id: 0,
-  index: 0,
-  color: "#fff",
-  fontFamily: 'sans-serif',
+  id,
+  index,
   text
 })
 

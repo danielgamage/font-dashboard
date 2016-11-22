@@ -13,7 +13,7 @@ const textBox = (state, action) => {
     case 'ADD_TEXTBOX':
       return {
         id: action.id,
-        color: action.color,
+        color: '#333',
         backgroundColor: 'rgba(255,255,255,0)',
         text: action.text,
         selected: false,

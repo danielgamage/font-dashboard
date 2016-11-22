@@ -17,18 +17,18 @@
 
 .TextItem:hover::before {
   transition: 0.15s ease;
-  box-shadow: 0 0 0 2px #eee;
+  box-shadow: 0 0 0 2px var(--color-white-main);
 }
 
 .TextItem.selected::before {
   transition: 0.15s ease;
-  box-shadow: 0 0 0 2px #ddd;
+  box-shadow: 0 0 0 2px var(--color-white-dull);
 }
 
 [contenteditable=true]:empty:before{
   content: attr(placeholder);
   display: block; /* For Firefox */
-  color: #999;
+  color: var(--color-gray-light);
   cursor: text;
 }
 

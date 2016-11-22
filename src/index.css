@@ -1,3 +1,17 @@
+:root {
+  --color-accent-bright: #34baec;
+  --color-accent: #039BE5;
+  --color-accent-dull: #236eab;
+  --color-gray-darkest: #31363d;
+  --color-gray-darker: #3d434a;
+  --color-gray-dark: #454a4e;
+  --color-gray-inactive: #72777e;
+  --color-gray-light: #93969a;
+  --color-white-dull: #dad8d6;
+  --color-white-main: #f1efeb;
+  --color-white-pure: #fff;
+}
+
 html, body {
   margin: 0;
   padding: 0;

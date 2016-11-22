@@ -1,6 +1,6 @@
 .ControlPanel {
-  background: #33383f;
-  color: #fff;
+  background: var(--color-gray-darkest);
+  color: var(--color-white-main);
   width: 24rem;
   font-size: 14px;
   text-align: left;
@@ -45,7 +45,7 @@
   line-height: 1;
 }
 .TabBar button.active {
-  box-shadow: 0 -0.2rem 0 #039BE5 inset;
+  box-shadow: 0 -0.2rem 0 var(--color-accent) inset;
 }
 .Control {
   display: block;
@@ -57,7 +57,7 @@
   width: 100%;
   left: 0;
   transform: translate(0, -1rem);
-  border-bottom: 1px solid #3e4247;
+  border-bottom: 1px solid var(--color-gray-darker);
 }
 
 .Control.flex {
@@ -112,7 +112,7 @@
   font-size: 0.65rem;
   line-height: 1;
   letter-spacing: 0.15em;
-  color: #ddd;
+  color: var(--color-white-main);
   font-weight: bold;
   margin-bottom: 0.5rem;
   user-select: none;
@@ -121,15 +121,6 @@
 .draggable {
   cursor: ew-resize !important;
 }
-
-/*.Control input[type=number] {
-  padding: 0.2rem 0;
-  max-width: 3rem;
-  background: none;
-  color: white;
-  border: 0;
-  border-bottom: 0.15em solid #888;
-}*/
 
 .Control input[type=radio][name=alignment] {
   appearance: none;
@@ -140,11 +131,15 @@
 }
 
 input + .hide-checkbox__replacement-input {
-  color: #777;
+  color: var(--color-gray-inactive);
 }
 
 input:checked + .hide-checkbox__replacement-input {
-  color: #fff;
+  color: var(--color-white-main);
+}
+
+.list input:checked + .hide-checkbox__replacement-input {
+  border-color: var(--color-white-main);
 }
 
 .text-transform__label {
@@ -162,8 +157,10 @@ input:checked + .hide-checkbox__replacement-input {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
   line-height: 1;
-  border:1px solid #494949;
+}
+.hide-checkbox.list .hide-checkbox__replacement-input {
   padding: 0.3rem 0.4rem;
+  border: 1px solid var(--color-gray-dark);
 }
 .hide-checkbox__input {
   width: 0;
@@ -176,11 +173,7 @@ input:checked + .hide-checkbox__replacement-input {
 
 .hide-checkbox__input:hover + .hide-checkbox__replacement-input,
 .hide-checkbox__input:focus + .hide-checkbox__replacement-input {
-  color: #ddd;
-}
-
-.hide-checkbox + .hide-checkbox {
-  /*margin-left: 1rem;*/
+  color: var(--color-white-main);
 }
 
 .font-family {
@@ -199,9 +192,9 @@ input[type=number] {
   display: inline-block;
   max-width: 3rem;
   height: 2rem;
-  background-color: #3c4148;
-  color: white;
-  border: 1px solid #464646;
+  background-color: var(--color-gray-darker);
+  color: var(--color-white-main);
+  border: 1px solid var(--color-gray-dark);
   padding: 0.3rem 0 0.4rem 0.5rem;
 }
 
@@ -213,7 +206,7 @@ input.search {
 }
 
 .info-label {
-  color: #777;
+  color: var(--color-gray-inactive);
   float: right;
 }
 
@@ -256,7 +249,7 @@ input[type=color]:focus {
   border-radius: 1rem;
 }
 input[type=color]:focus + .input--color::after {
-  box-shadow: 0 0 0 0.25rem #fff inset;
+  box-shadow: 0 0 0 0.25rem var(--color-white-main) inset;
 }
 
 .Control svg {
@@ -275,14 +268,14 @@ input[type=color]:focus + .input--color::after {
 }
 
 .Control p {
-  color: #919699;
+  color: var(--color-gray-inactive);
   font-size: 12px;
 }
 
 dt {
   float: left;
   padding-right: 4rem;
-  color: #ddd;
+  color: var(--color-white-main);
 }
 dd {
   text-align: right;
@@ -296,7 +289,7 @@ dd {
 .metrics__sample-text {
   font-size: 10em;
   white-space: nowrap;
-  color: #444a52;
+  color: var(--color-gray-dark);
 }
 
 .metrics__dt,
@@ -317,7 +310,7 @@ dd {
   position: absolute;
   width: 100%;
   bottom: 0;
-  border-top: 1px solid #039be5;
+  border-top: 1px solid var(--color-accent);
 }
 
 /*
@@ -349,13 +342,13 @@ dd {
 
 /* Focus */
 .select select:focus {
-  box-shadow: 0 0 0 .2rem #0074d9;
+  box-shadow: 0 0 0 .2rem var(--color-accent-dull);
 }
 
 /* Active/open */
 .select select:active {
-  color: #fff;
-  background-color: #0074d9;
+  color: var(--color-white-main);
+  background-color: var(--color-accent-dull);
 }
 
 /* Hide the arrow in IE10 and up */
@@ -374,7 +367,7 @@ dd {
 
   /* <option> elements inherit styles from <select>, so reset them. */
   .select option {
-    background-color: #fff;
+    background-color: var(--color-white-main);
   }
 }
 
@@ -396,12 +389,12 @@ dd {
     content: "";
     display: block;
     width: 1.5rem;
-    background-color: #eee;
+    background-color: var(--color-white-main);
   }
   .select select:hover,
   .select select:focus,
   .select select:active {
-    color: #555;
-    background-color: #eee;
+    color: var(--color-gray-darkest);
+    background-color: var(--color-white-main);
   }
 }

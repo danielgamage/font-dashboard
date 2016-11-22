@@ -24,7 +24,7 @@
 .Layout__instructions {
   margin: 2rem 0;
   font-style: italic;
-  color: #888;
+  color: var(--color-gray-light);
   line-height: 1.6rem;
 }
 

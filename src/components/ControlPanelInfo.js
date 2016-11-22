@@ -57,9 +57,9 @@ class ControlPanelInfo extends Component {
               <dt>Designer</dt>
               <dd>
                 <a
-                  href={el.tables.name.designerURL.en}
+                  href={el.names.designerURL && el.names.designerURL.en}
                   target='_blank'>
-                  {el.tables.name.designer.en}
+                  {el.names.designer && el.names.designer.en}
                 </a>
               </dd>
             </dl>

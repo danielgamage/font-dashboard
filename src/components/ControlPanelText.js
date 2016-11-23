@@ -4,10 +4,9 @@ import { connect } from 'react-redux'
 import alignIcon from '../icons/align.svg'
 import lockIcon from '../icons/lock.svg'
 import languages from '../data/languages.js'
+import opentypeFeatures from '../data/opentypeFeatures.js'
 
 import readFile from '../utils/readFile.js'
-import getLanguage from '../utils/getLanguage.js'
-import opentypeFeatures from '../data/opentypeFeatures.js'
 
 import NumericInput from './NumericInput.js'
 
@@ -17,8 +16,6 @@ class ControlPanelText extends Component {
     this.state = {
       opentypeQuery: ''
     }
-  }
-  componentDidMount () {
     this.updateFonts = this.updateFonts.bind(this)
     this.updateFontFamily = this.updateFontFamily.bind(this)
   }
@@ -65,26 +62,14 @@ class ControlPanelText extends Component {
         return false
       }
     })[0]
-    let availableLanguages
-    if (!associatedFont) {
-      availableLanguages = languages
-    } else {
-      availableLanguages = associatedFont.tables.gsub.scripts.map(system => {
-        return system.script.langSysRecords.map((language, i) => {
-          return getLanguage(language.tag.trim())
-        })
-      }).reduce((a, b) => a.concat(b), [])
-    }
-    const availableOpentypeFeatures = opentypeFeatures.filter(el => {
-      if (!associatedFont) {
-        return true
-      } else if (associatedFont.availableFeatures.indexOf(el.value) !== -1) {
-        showingAvailableFeatures = true
-        return true
-      } else {
-        return false
-      }
-    })
+    const availableLanguages =
+      (!associatedFont || associatedFont.availableLanguages.length === 0)
+      ? languages
+      : associatedFont.availableLanguages
+    const availableOpentypeFeatures =
+      (!associatedFont || associatedFont.availableFeatures.length === 0)
+      ? opentypeFeatures
+      : associatedFont.availableFeatures
     const filteredOpentypeFeatures = availableOpentypeFeatures.filter(el => {
       if (el.value.toLowerCase().indexOf(this.state.opentypeQuery.toLowerCase()) !== -1 ||
           el.description.toLowerCase().indexOf(this.state.opentypeQuery.toLowerCase()) !== -1) {
@@ -93,6 +78,7 @@ class ControlPanelText extends Component {
         return false
       }
     })
+
     return (
       <div className={`ControlPanelTab ${textBox ? 'active' : 'inactive'}`}>
         <div className='Control full'>

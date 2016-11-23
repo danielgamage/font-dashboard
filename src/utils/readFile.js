@@ -1,4 +1,14 @@
 import opentype from 'opentype.js'
+import getLanguage from './getLanguage.js'
+import opentypeFeatures from '../data/opentypeFeatures.js'
+
+const parseLanguages = (font) => {
+  return font.tables.gsub.scripts.map(system => {
+    return system.script.langSysRecords.map((language, i) => {
+      return getLanguage(language.tag.trim())
+    })
+  }).reduce((a, b) => a.concat(b), [])
+}
 
 const parseFeatures = (font) => {
   const features = font.tables.gsub.features.map(feature => {
@@ -6,7 +16,10 @@ const parseFeatures = (font) => {
   })
   const featuresSet = new Set([...features])
   const uniqueFeatures = [...featuresSet]
-  return uniqueFeatures
+  const featureObjects = opentypeFeatures.filter(el => {
+    return (uniqueFeatures.indexOf(el.value) !== -1)
+  })
+  return featureObjects
 }
 
 const readFile = (file) => {
@@ -20,7 +33,13 @@ const readFile = (file) => {
       const font = new FontFace(family, reader.result)
       document.fonts.add(font)
       const availableFeatures = parseFeatures(opentypeFont)
-      const data = {...opentypeFont, availableFeatures: availableFeatures}
+      const availableLanguages = parseLanguages(opentypeFont)
+      const data = {
+        ...opentypeFont,
+        availableFeatures: availableFeatures,
+        availableLanguages: availableLanguages
+
+      }
       resolve(data)
     }, false)
     reader.readAsArrayBuffer(file)

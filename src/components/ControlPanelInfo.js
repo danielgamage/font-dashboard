@@ -64,10 +64,8 @@ class ControlPanelInfo extends Component {
                 </dd>
                 <dt>Languages</dt>
                 <dd>
-                  {el.tables.gsub.scripts.map(system => (
-                    system.script.langSysRecords.map((language, i) => (
-                      <span>{language.tag.trim()}{i < system.script.langSysRecords.length - 1 && ', '}</span>
-                    ))
+                  {el.availableLanguages.map((language, i) => (
+                    <span>{language.description}{i < el.availableLanguages.length - 1 && ', '}</span>
                   ))}
                 </dd>
               </dl>

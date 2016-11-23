@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import readFile from '../utils/readFile.js'
+import getLanguage from '../utils/getLanguage.js'
 
 import './TextBox.css'
 
@@ -75,6 +76,7 @@ class TextBox extends Component {
           className='text'
           contentEditable={item.selected}
           placeholder='Type here...'
+          lang={item.language}
           onClick={(e) => {
             // prevent deselection
             e.stopPropagation()

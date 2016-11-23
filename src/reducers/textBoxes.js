@@ -41,7 +41,8 @@ const textBox = (state, action) => {
           lock: false
         },
         rendering: 'Subpixel',
-        opentype: opentypeFeatures.map(el => ({key: el.value, value: 0}))
+        opentype: opentypeFeatures.map(el => ({key: el.value, value: 0})),
+        language: 'ENG'
       }
     case 'UPDATE_FONT_SIZE':
       state.fontSize[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
@@ -116,6 +117,9 @@ const textBox = (state, action) => {
         return el
       })
       return state
+    case 'UPDATE_LANGUAGE':
+      state.language = action.value
+      return state
     case 'DELETE_TEXTBOX':
       return false
     default:
@@ -178,6 +182,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_PADDING_LOCK':
     case 'UPDATE_MARGIN_LOCK':
     case 'UPDATE_OPENTYPE':
+    case 'UPDATE_LANGUAGE':
       return ([...state].map(el => {
         if ((selectedIDs && selectedIDs.indexOf(el.id) !== -1) || el.id === action.id) {
           el = textBox(el, action)

@@ -21,7 +21,6 @@ const readFile = (file) => {
       document.fonts.add(font)
       const availableFeatures = parseFeatures(opentypeFont)
       const data = {...opentypeFont, availableFeatures: availableFeatures}
-      console.log(data)
       resolve(data)
     }, false)
     reader.readAsArrayBuffer(file)

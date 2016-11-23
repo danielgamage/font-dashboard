@@ -121,6 +121,11 @@ export const updateOpenType = (key, value) => ({
   value
 })
 
+export const updateOpenType = (value) => ({
+  type: 'UPDATE_LANGUAGE',
+  value
+})
+
 export const updatePageWidth = (value) => ({
   type: 'UPDATE_PAGE_WIDTH',
   value

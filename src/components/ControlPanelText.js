@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 
 import alignIcon from '../icons/align.svg'
 import lockIcon from '../icons/lock.svg'
+import languages from '../data/languages.js'
 
 import readFile from '../utils/readFile.js'
+import getLanguage from '../utils/getLanguage.js'
 import opentypeFeatures from '../data/opentypeFeatures.js'
 
 import NumericInput from './NumericInput.js'
@@ -55,6 +57,7 @@ class ControlPanelText extends Component {
     // grab props for below by first putting the selected object into mem
     const textBox = this.props.textBoxes && this.props.textBoxes[0]
     let showingAvailableFeatures = false
+    let showingAvailableLanguages = false
     const associatedFont = this.props.fonts.filter(font => {
       if (textBox) {
         return font.names.fullName.en === textBox.fontFamily
@@ -62,6 +65,16 @@ class ControlPanelText extends Component {
         return false
       }
     })[0]
+    let availableLanguages
+    if (!associatedFont) {
+      availableLanguages = languages
+    } else {
+      availableLanguages = associatedFont.tables.gsub.scripts.map(system => {
+        return system.script.langSysRecords.map((language, i) => {
+          return getLanguage(language.tag.trim())
+        })
+      }).reduce((a, b) => a.concat(b), [])
+    }
     const availableOpentypeFeatures = opentypeFeatures.filter(el => {
       if (!associatedFont) {
         return true
@@ -205,6 +218,14 @@ class ControlPanelText extends Component {
             <option>Subpixel</option>
             <option>Grayscale</option>
             <option>None</option>
+          </select>
+        </div>
+        <div className='Control third'>
+          <label htmlFor='language' className='ControlTitle'>Language</label>
+          <select id='language' onChange={(e) => { this.updateProp('UPDATE_LANGUAGE', e.target.value) }}>
+            {availableLanguages.map(language => (
+              <option value={language.subtag}>{language.description}</option>
+            ))}
           </select>
         </div>
         <div className='Control half flex'>

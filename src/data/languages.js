@@ -740,7 +740,9 @@ export default [
     "iso": [
       "cat"
     ],
-    "subtag": []
+    "subtag": [
+      "ca"
+    ]
   },
   {
     "tag": "CBK",
@@ -1237,7 +1239,9 @@ export default [
     "iso": [
       "ell"
     ],
-    "subtag": []
+    "subtag": [
+      "el"
+    ]
   },
   {
     "tag": "EMK",
@@ -1275,7 +1279,9 @@ export default [
     "iso": [
       "spa"
     ],
-    "subtag": []
+    "subtag": [
+      "es"
+    ]
   },
   {
     "tag": "ESU",
@@ -1399,7 +1405,9 @@ export default [
     "iso": [
       "vls"
     ],
-    "subtag": []
+    "subtag": [
+      "nl"
+    ]
   },
   {
     "tag": "FMP",
@@ -1757,7 +1765,9 @@ export default [
     "iso": [
       "hat"
     ],
-    "subtag": []
+    "subtag": [
+      "ht"
+    ]
   },
   {
     "tag": "HAL",
@@ -2132,7 +2142,9 @@ export default [
     "iso": [
       "jam"
     ],
-    "subtag": []
+    "subtag": [
+      "jam"
+    ]
   },
   {
     "tag": "JAN",
@@ -2346,7 +2358,9 @@ export default [
     "iso": [
       "khm"
     ],
-    "subtag": []
+    "subtag": [
+      "km"
+    ]
   },
   {
     "tag": "KHS",
@@ -3366,7 +3380,9 @@ export default [
     "iso": [
       "mal"
     ],
-    "subtag": []
+    "subtag": [
+      "ml"
+    ]
   },
   {
     "tag": "MLY",
@@ -3374,7 +3390,9 @@ export default [
     "iso": [
       "msa"
     ],
-    "subtag": []
+    "subtag": [
+      "ms"
+    ]
   },
   {
     "tag": "MND",
@@ -3457,7 +3475,9 @@ export default [
     "iso": [
       "mol"
     ],
-    "subtag": []
+    "subtag": [
+      "ro"
+    ]
   },
   {
     "tag": "MON",
@@ -3475,7 +3495,9 @@ export default [
     "iso": [
       ""
     ],
-    "subtag": []
+    "subtag": [
+      "ary"
+    ]
   },
   {
     "tag": "MOS",
@@ -3561,7 +3583,9 @@ export default [
     "iso": [
       "myn"
     ],
-    "subtag": []
+    "subtag": [
+      "myn"
+    ]
   },
   {
     "tag": "MZN",
@@ -3633,7 +3657,9 @@ export default [
     "iso": [
       "nav"
     ],
-    "subtag": []
+    "subtag": [
+      "nv"
+    ]
   },
   {
     "tag": "NCR",
@@ -3688,7 +3714,10 @@ export default [
     "iso": [
       "nep"
     ],
-    "subtag": []
+    "subtag": [
+      "ne" // macro
+      // "npi" // individual
+    ]
   },
   {
     "tag": "NEW",
@@ -3766,7 +3795,9 @@ export default [
     "iso": [
       "nld"
     ],
-    "subtag": []
+    "subtag": [
+      "nl"
+    ]
   },
   {
     "tag": "NOE",
@@ -3860,7 +3891,9 @@ export default [
     "iso": [
       "nno"
     ],
-    "subtag": []
+    "subtag": [
+      "nn"
+    ]
   },
   {
     "tag": "NZA",
@@ -4066,7 +4099,9 @@ export default [
     "iso": [
       "fil"
     ],
-    "subtag": []
+    "subtag": [
+      "fil"
+    ]
   },
   {
     "tag": "PLG",
@@ -4960,7 +4995,10 @@ export default [
       "syc",
       "syr"
     ],
-    "subtag": []
+    "subtag": [
+      "syc",
+      "syr"
+    ]
   },
   {
     "tag": "SYRJ",
@@ -4969,7 +5007,10 @@ export default [
       "syc",
       "syr"
     ],
-    "subtag": []
+    "subtag": [
+      "syc",
+      "syr"
+    ]
   },
   {
     "tag": "SYRN",
@@ -4978,7 +5019,10 @@ export default [
       "syc",
       "syr"
     ],
-    "subtag": []
+    "subtag": [
+      "syc",
+      "syr"
+    ]
   },
   {
     "tag": "SZL",
@@ -5676,7 +5720,9 @@ export default [
     "iso": [
       "zho"
     ],
-    "subtag": []
+    "subtag": [
+      "yue"
+    ]
   },
   {
     "tag": "ZHP",
@@ -5684,7 +5730,9 @@ export default [
     "iso": [
       "zho"
     ],
-    "subtag": []
+    "subtag": [
+      "zh"
+    ]
   },
   {
     "tag": "ZHS",
@@ -5692,7 +5740,9 @@ export default [
     "iso": [
       "zho"
     ],
-    "subtag": []
+    "subtag": [
+      "zh"
+    ]
   },
   {
     "tag": "ZHT",
@@ -5700,7 +5750,9 @@ export default [
     "iso": [
       "zho"
     ],
-    "subtag": []
+    "subtag": [
+      "zh"
+    ]
   },
   {
     "tag": "ZND",

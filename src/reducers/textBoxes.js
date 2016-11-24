@@ -1,4 +1,6 @@
 import opentypeFeatures from '../data/opentypeFeatures.js'
+import languages from '../data/languages.js'
+import getLanguage from '../utils/getLanguage.js'
 
 const parseValue = (value, valueOrUnit) => {
   if (valueOrUnit === 'value') {
@@ -42,7 +44,7 @@ const textBox = (state, action) => {
         },
         rendering: 'Subpixel',
         opentype: opentypeFeatures.map(el => ({key: el.value, value: 0})),
-        language: 'ENG'
+        language: getLanguage('ENG')
       }
     case 'UPDATE_FONT_SIZE':
       state.fontSize[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)

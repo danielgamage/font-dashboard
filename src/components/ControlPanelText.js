@@ -53,8 +53,7 @@ class ControlPanelText extends Component {
 
     // grab props for below by first putting the selected object into mem
     const textBox = this.props.textBoxes && this.props.textBoxes[0]
-    let showingAvailableFeatures = false
-    let showingAvailableLanguages = false
+
     const associatedFont = this.props.fonts.filter(font => {
       if (textBox) {
         return font.names.fullName.en === textBox.fontFamily
@@ -62,14 +61,18 @@ class ControlPanelText extends Component {
         return false
       }
     })[0]
-    const availableLanguages =
-      (!associatedFont || associatedFont.availableLanguages.length === 0)
-      ? languages
-      : associatedFont.availableLanguages
-    const availableOpentypeFeatures =
-      (!associatedFont || associatedFont.availableFeatures.length === 0)
-      ? opentypeFeatures
-      : associatedFont.availableFeatures
+    let showingAvailableLanguages = false
+    let availableLanguages = languages
+    if (associatedFont && associatedFont.availableLanguages.length !== 0) {
+      showingAvailableLanguages = true
+      availableLanguages = associatedFont.availableLanguages
+    }
+    let showingAvailableFeatures = false
+    let availableOpentypeFeatures = opentypeFeatures
+    if (associatedFont && associatedFont.availableFeatures.length !== 0) {
+      showingAvailableFeatures = true
+      availableOpentypeFeatures = associatedFont.availableFeatures
+    }
     const filteredOpentypeFeatures = availableOpentypeFeatures.filter(el => {
       if (el.value.toLowerCase().indexOf(this.state.opentypeQuery.toLowerCase()) !== -1 ||
           el.description.toLowerCase().indexOf(this.state.opentypeQuery.toLowerCase()) !== -1) {
@@ -200,19 +203,23 @@ class ControlPanelText extends Component {
         </div>
         <div className='Control third'>
           <label htmlFor='rendering' className='ControlTitle'>Rendering</label>
-          <select id='rendering' onChange={(e) => { this.updateProp('UPDATE_RENDERING', e.target.value) }}>
-            <option>Subpixel</option>
-            <option>Grayscale</option>
-            <option>None</option>
-          </select>
+          <div className='select'>
+            <select id='rendering' onChange={(e) => { this.updateProp('UPDATE_RENDERING', e.target.value) }}>
+              <option>Subpixel</option>
+              <option>Grayscale</option>
+              <option>None</option>
+            </select>
+          </div>
         </div>
         <div className='Control third'>
           <label htmlFor='language' className='ControlTitle'>Language</label>
-          <select id='language' onChange={(e) => { this.updateProp('UPDATE_LANGUAGE', e.target.value) }}>
-            {availableLanguages.map(language => (
-              <option value={language.subtag}>{language.description}</option>
-            ))}
-          </select>
+          <div className='select'>
+            <select id='language' onChange={(e) => { this.updateProp('UPDATE_LANGUAGE', e.target.value) }}>
+              {availableLanguages.map(language => (
+                <option value={language.subtag}>{language.description}</option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className='Control half flex'>
           <div className='ControlTitle'>

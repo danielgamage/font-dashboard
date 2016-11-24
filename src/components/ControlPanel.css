@@ -142,6 +142,10 @@ input:checked + .hide-checkbox__replacement-input {
   border-color: var(--color-white-main);
 }
 
+.lock.hide-checkbox {
+  margin-left: 0.5rem;
+}
+
 .text-transform__label {
   font-weight: bold;
   padding: 0.5rem 0.2rem;
@@ -230,6 +234,7 @@ input[type=color]:focus {
   width: 2rem;
   height: 2rem;
   border-radius: 1rem;
+
   display: inline-block;
   vertical-align: middle;
   margin-right: 0.5rem;
@@ -247,9 +252,12 @@ input[type=color]:focus {
 }
 .input--color::after {
   border-radius: 1rem;
+  box-shadow: 0 0 0 0.05rem var(--color-gray-inactive) inset,
+              0 0 0 0.05rem var(--color-gray-inactive);
 }
 input[type=color]:focus + .input--color::after {
-  box-shadow: 0 0 0 0.25rem var(--color-white-main) inset;
+  box-shadow: 0 0 0 0.20rem var(--color-accent-bright) inset,
+              0 0 0 0.05rem var(--color-accent-bright);
 }
 
 .Control svg {
@@ -320,6 +328,7 @@ dd {
 .select {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 .select select {
   display: inline-block;
@@ -329,10 +338,28 @@ dd {
   line-height: 1.5;
   color: inherit;
   background-color: transparent;
-  border: 0;
   cursor: pointer;
   outline: 0;
   appearance: none;
+  border: 0.1rem solid var(--color-gray-darker);
+  border-radius: 0;
+  background: var(--color-gray-darker);
+  color: var(--color-white-main);
+}
+.select select:hover {
+  background: var(--color-gray-dark);
+}
+
+.select.no-border {
+  width: auto;
+}
+.select.no-border select {
+  background: transparent;
+  border: 0;
+  color: var(--color-white-main);
+}
+.select.no-border select:hover {
+  background: var(--color-gray-darker);
 }
 /* Undo the Firefox inner focus ring */
 .select select:focus:-moz-focusring {

@@ -66,7 +66,7 @@ class NumericInput extends Component {
             onChange={this.onChange.bind(this)}
             />
           {this.props.unit &&
-            <div className='select'>
+            <div className='select no-border'>
               <select
                 value={this.props.unit}
                 onChange={this.onChangeUnit.bind(this)}>

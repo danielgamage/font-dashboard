@@ -44,7 +44,7 @@ const textBox = (state, action) => {
         },
         rendering: 'Subpixel',
         opentype: opentypeFeatures.map(el => ({key: el.value, value: 0})),
-        language: getLanguage('ENG')
+        language: getLanguage('ENG') && getLanguage('ENG').subtag[0]
       }
     case 'UPDATE_FONT_SIZE':
       state.fontSize[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)

@@ -216,7 +216,7 @@ class ControlPanelText extends Component {
           <div className='select'>
             <select id='language' onChange={(e) => { this.updateProp('UPDATE_LANGUAGE', e.target.value) }}>
               {availableLanguages.map(language => (
-                <option value={language.subtag}>{language.description}</option>
+                <option key={language.tag} value={language.subtag}>{language.description}</option>
               ))}
             </select>
           </div>

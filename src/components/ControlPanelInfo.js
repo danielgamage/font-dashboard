@@ -27,6 +27,7 @@ class ControlPanelInfo extends Component {
                   {name: 'Descender', value: el.tables.os2.sTypoDescender}
                 ].map(metric => (
                   <dl
+                    key={metric.name}
                     className='metric'
                     style={{
                     top: `${(-1 * metric.value + el.tables.os2.sTypoAscender) / el.unitsPerEm * 10}em`

@@ -1,5 +1,4 @@
 import opentypeFeatures from '../data/opentypeFeatures.js'
-import languages from '../data/languages.js'
 import getLanguage from '../utils/getLanguage.js'
 
 const parseValue = (value, valueOrUnit) => {

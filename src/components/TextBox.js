@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import readFile from '../utils/readFile.js'
-import getLanguage from '../utils/getLanguage.js'
 
 import './TextBox.css'
 

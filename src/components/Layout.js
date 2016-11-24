@@ -4,9 +4,6 @@ import AddButton from './AddButton'
 import { connect } from 'react-redux'
 
 const Layout = ({ textBoxes, dispatch, page }) => {
-  const styles = {
-    width: `${page.width.value}${page.width.unit}`
-  }
   return (
     <div
       className="Layout"

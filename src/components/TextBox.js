@@ -78,17 +78,21 @@ class TextBox extends Component {
           placeholder='Type here...'
           lang={item.language}
           onMouseDown={(e) => {
-            if (item.selected) {
-              e.stopPropagation()
-            }
+            e.stopPropagation()
           }}
           onClick={(e) => {
             // prevent deselection
             e.stopPropagation()
+            let operation = false
+            if (e.shiftKey) {
+              operation = "ADD"
+            } else if (e.altKey) {
+              operation = "SUBTRACT"
+            }
             this.props.dispatch({
               type: 'SELECT_TEXTBOXES',
               ids: [item.id],
-              add: e.shiftKey
+              operation: operation
             })
           }}
           onInput={(e) => {

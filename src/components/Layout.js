@@ -17,7 +17,10 @@ class Layout extends Component {
     this.handleMouseUp = this.handleMouseUp.bind(this)
   }
   handleMouseUp (e) {
-    if (this.mousedown && !this.mousemove) {
+    if (this.mousedown
+    && !this.mousemove
+    && !e.shiftKey
+    && !e.altKey) {
       // basic click, deselect
       this.mousedown = false
       this.props.dispatch({
@@ -39,10 +42,16 @@ class Layout extends Component {
           matches.push(this.props.textBoxes[i].id)
         }
       })
+      let operation = false
+      if (e.shiftKey) {
+        operation = "ADD"
+      } else if (e.altKey) {
+        operation = "SUBTRACT"
+      }
       this.props.dispatch({
         type: 'SELECT_TEXTBOXES',
         ids: matches,
-        add: e.shiftKey
+        operation: operation
       })
       this.setState({
         xInit: false,

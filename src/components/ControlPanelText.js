@@ -138,6 +138,16 @@ class ControlPanelText extends Component {
             action='UPDATE_FONT_TRACKING'
             />
         </div>
+        <div className='Control third'>
+          <NumericInput
+            label='Word Spacing'
+            id='wordSpacing'
+            append='em'
+            value={textBox && textBox.wordSpacing.value}
+            unit={textBox && textBox.wordSpacing.unit}
+            action='UPDATE_FONT_WORD_SPACING'
+            />
+        </div>
         <div className='Control half'>
           <div className='ControlTitle'>Text/BG</div>
           <label>

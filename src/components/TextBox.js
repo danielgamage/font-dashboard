@@ -22,6 +22,7 @@ class TextBox extends Component {
       color: item.color,
       backgroundColor: item.backgroundColor,
       letterSpacing: `${item.tracking.value}${item.tracking.unit}`,
+      wordSpacing: `${item.wordSpacing.value}${item.wordSpacing.unit}`,
       lineHeight: `${item.leading.value}${item.leading.unit}`,
       textAlign: `${item.alignment}`,
       textTransform: item.textTransform,

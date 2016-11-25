@@ -3,23 +3,31 @@ import getLanguage from './getLanguage.js'
 import opentypeFeatures from '../data/opentypeFeatures.js'
 
 const parseLanguages = (font) => {
-  return font.tables.gsub.scripts.map(system => {
-    return system.script.langSysRecords.map((language, i) => {
-      return getLanguage(language.tag.trim())
-    })
-  }).reduce((a, b) => a.concat(b), [])
+  if (font.tables.gsub.scripts){
+    return font.tables.gsub.scripts.map(system => {
+      return system.script.langSysRecords.map((language, i) => {
+        return getLanguage(language.tag.trim())
+      })
+    }).reduce((a, b) => a.concat(b), [])
+  } else {
+    return []
+  }
 }
 
 const parseFeatures = (font) => {
-  const features = font.tables.gsub.features.map(feature => {
-    return feature.tag
-  })
-  const featuresSet = new Set([...features])
-  const uniqueFeatures = [...featuresSet]
-  const featureObjects = opentypeFeatures.filter(el => {
-    return (uniqueFeatures.indexOf(el.value) !== -1)
-  })
-  return featureObjects
+  if (font.tables.gsub.features){
+    const features = font.tables.gsub.features.map(feature => {
+      return feature.tag
+    })
+    const featuresSet = new Set([...features])
+    const uniqueFeatures = [...featuresSet]
+    const featureObjects = opentypeFeatures.filter(el => {
+      return (uniqueFeatures.indexOf(el.value) !== -1)
+    })
+    return featureObjects
+  } else {
+    return []
+  }
 }
 
 const readFile = (file) => {

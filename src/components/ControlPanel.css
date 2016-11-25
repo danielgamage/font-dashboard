@@ -44,6 +44,11 @@
   padding: 1rem;
   line-height: 1;
 }
+.TabBar button:hover,
+.TabBar button:focus {
+  background: var(--color-gray-darker);
+  cursor: pointer;
+}
 .TabBar button.active {
   box-shadow: 0 -0.2rem 0 var(--color-accent) inset;
 }

@@ -145,14 +145,14 @@ const textBoxes = (state = [], action) => {
       return ([...state].map(el => {
         return { ...el, selected: false }
       }))
-    case 'SELECT_TEXTBOX':
+    case 'SELECT_TEXTBOXES':
       return ([...state].map(el => {
         if (action.add) {
-          if (el.id === action.id) {
+          if (action.ids.indexOf(el.id) !== -1) {
             el = { ...el, selected: true }
           }
         } else {
-          el = { ...el, selected: el.id === action.id }
+          el = { ...el, selected: action.ids.indexOf(el.id) !== -1 }
         }
         return { ...el }
       }))

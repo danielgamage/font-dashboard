@@ -17,7 +17,7 @@ class Layout extends Component {
     this.handleMouseUp = this.handleMouseUp.bind(this)
   }
   handleMouseUp (e) {
-    if (!this.mousemove) {
+    if (this.mousedown && !this.mousemove) {
       // basic click, deselect
       this.mousedown = false
       this.props.dispatch({
@@ -29,20 +29,21 @@ class Layout extends Component {
       this.mousedown = false
       this.mousemove = false
       const elements = document.querySelectorAll('.TextItem')
+      let matches = []
       ;[...elements].map((textBox, i) => {
         const box = textBox.getBoundingClientRect()
         if (this.state.x + this.state.w < box.left || box.left + box.width < this.state.x || this.state.y + this.state.h < box.top || box.top + box.height < this.state.y) {
           // selection doesn't intersect with element
         } else {
           // selection intersects with element
-          this.props.dispatch({
-            type: 'SELECT_TEXTBOX',
-            id: this.props.textBoxes[i].id,
-            add: e.shiftKey
-          })
+          matches.push(this.props.textBoxes[i].id)
         }
       })
-
+      this.props.dispatch({
+        type: 'SELECT_TEXTBOXES',
+        ids: matches,
+        add: e.shiftKey
+      })
       this.setState({
         xInit: false,
         yInit: false,

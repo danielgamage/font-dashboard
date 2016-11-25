@@ -80,8 +80,8 @@ class TextBox extends Component {
             // prevent deselection
             e.stopPropagation()
             this.props.dispatch({
-              type: 'SELECT_TEXTBOX',
-              id: item.id,
+              type: 'SELECT_TEXTBOXES',
+              ids: [item.id],
               add: e.shiftKey
             })
           }}

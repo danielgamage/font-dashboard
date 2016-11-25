@@ -214,7 +214,10 @@ class ControlPanelText extends Component {
         <div className='Control third'>
           <label htmlFor='rendering' className='ControlTitle'>Rendering</label>
           <div className='select'>
-            <select id='rendering' onChange={(e) => { this.updateProp('UPDATE_RENDERING', e.target.value) }}>
+            <select
+              id='rendering'
+              value={textBox && textBox.rendering}
+              onChange={(e) => { this.updateProp('UPDATE_RENDERING', e.target.value) }}>
               <option>Subpixel</option>
               <option>Grayscale</option>
               <option>None</option>
@@ -224,7 +227,10 @@ class ControlPanelText extends Component {
         <div className='Control third'>
           <label htmlFor='language' className='ControlTitle'>Language</label>
           <div className='select'>
-            <select id='language' onChange={(e) => { this.updateProp('UPDATE_LANGUAGE', e.target.value) }}>
+            <select
+              id='language'
+              value={textBox && textBox.language}
+              onChange={(e) => { this.updateProp('UPDATE_LANGUAGE', e.target.value) }}>
               {availableLanguages.map(language => (
                 <option key={language.tag} value={language.subtag}>{language.description}</option>
               ))}

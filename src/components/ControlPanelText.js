@@ -288,10 +288,19 @@ class ControlPanelText extends Component {
             placeholder='Search for a feature'
             onChange={(e) => { this.filterOpentypeFeatures(e.target.value) }}
             />
-          {filteredOpentypeFeatures.map(el => (
-            <label key={el.value} className='hide-checkbox list'>
-              <input className='hide-checkbox__input' type='checkbox' value={el.value} onChange={(e) => { this.updateProp('UPDATE_OPENTYPE', e.target.checked, e.target.value) }} />
-              <div title={el.value} className='hide-checkbox__replacement-input'>{el.description}</div>
+          {filteredOpentypeFeatures.map(feature => (
+            <label key={feature.value} className='hide-checkbox list'>
+              <input
+                className='hide-checkbox__input'
+                type='checkbox'
+                value={feature.value}
+                checked={(textBox && textBox.opentype.filter(el => (el.key === feature.value))[0].value)}
+                onChange={(e) => { this.updateProp('UPDATE_OPENTYPE', e.target.checked, e.target.value) }} />
+              <div
+                title={feature.value}
+                className='hide-checkbox__replacement-input'>
+                {feature.description}
+              </div>
             </label>
           ))}
         </div>

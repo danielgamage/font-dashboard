@@ -76,6 +76,9 @@ class TextBox extends Component {
           contentEditable={item.selected}
           placeholder='Type here...'
           lang={item.language}
+          onMouseDown={(e) => {
+            e.stopPropagation()
+          }}
           onClick={(e) => {
             // prevent deselection
             e.stopPropagation()

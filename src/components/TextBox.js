@@ -97,6 +97,13 @@ class TextBox extends Component {
               operation: operation
             })
           }}
+          onFocus={(e) => {
+            this.props.dispatch({
+              type: 'SELECT_TEXTBOXES',
+              ids: [item.id],
+              operation: false
+            })
+          }}
           onInput={(e) => {
             this.props.dispatch({
               type: 'UPDATE_TEXT',

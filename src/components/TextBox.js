@@ -76,7 +76,7 @@ class TextBox extends Component {
         }}>
         <div
           className='text'
-          contentEditable={item.selected}
+          contentEditable='true'
           placeholder='Type here...'
           lang={item.language}
           onMouseDown={(e) => {

@@ -28,7 +28,7 @@ class TextBox extends Component {
       textTransform: item.textTransform,
       columnCount: item.columns,
       columnGap: `${item.gutters.value}${item.gutters.unit}`,
-      fontVariationSettings: `"wght" ${item.weight}`,
+      fontVariationSettings: `"wght" ${item.weight}, "wdth" ${item.width}`,
       padding: `
         ${item.padding.top.value}${item.padding.top.unit}
         ${item.padding.right.value}${item.padding.right.unit}

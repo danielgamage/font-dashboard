@@ -96,17 +96,6 @@ class ControlPanelText extends Component {
           <input id='font' type='file' onChange={this.updateFonts.bind(this)} />
           <p>You can also drag your font directly onto the text block you want to apply the font to.</p>
         </div>
-        <div className='Control half'>
-          <NumericInput
-            label='Font Weight'
-            id='weight'
-            min='0.01'
-            max='1.99'
-            step='0.01'
-            value={textBox && textBox.weight}
-            action='UPDATE_FONT_WEIGHT'
-            />
-        </div>
         <div className='Control third'>
           <NumericInput
             label='Font Size'
@@ -115,6 +104,28 @@ class ControlPanelText extends Component {
             value={textBox && textBox.fontSize.value}
             unit={textBox && textBox.fontSize.unit}
             action='UPDATE_FONT_SIZE'
+            />
+        </div>
+        <div className='Control third'>
+          <NumericInput
+            label='Font Weight'
+            id='weight'
+            min='1'
+            max='999'
+            step='1'
+            value={textBox && textBox.weight}
+            action='UPDATE_FONT_WEIGHT'
+            />
+        </div>
+        <div className='Control third'>
+          <NumericInput
+            label='Font Width'
+            id='width'
+            min='50'
+            max='200'
+            step='1'
+            value={textBox && textBox.width}
+            action='UPDATE_FONT_WIDTH'
             />
         </div>
         <div className='Control third'>

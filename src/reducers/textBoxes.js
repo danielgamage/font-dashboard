@@ -20,7 +20,8 @@ const textBox = (state, action) => {
         selected: false,
         fontFamily: 'sans-serif',
         fontSize: { value: 1, unit: 'rem' },
-        weight: 0.3,
+        weight: 400,
+        width: 100,
         tracking: { value: 0, unit: 'em' },
         wordSpacing: { value: 0, unit: 'em' },
         leading: { value: 1.5, unit: 'em' },
@@ -51,6 +52,9 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_FONT_WEIGHT':
       state.weight = parseValue(action.value, 'value')
+      return state
+    case 'UPDATE_FONT_WIDTH':
+      state.width = parseValue(action.value, 'value')
       return state
     case 'UPDATE_FONT_TRACKING':
       state.tracking[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
@@ -174,6 +178,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_TEXT':
     case 'UPDATE_FONT_SIZE':
     case 'UPDATE_FONT_WEIGHT':
+    case 'UPDATE_FONT_WIDTH':
     case 'UPDATE_FONT_TRACKING':
     case 'UPDATE_FONT_WORD_SPACING':
     case 'UPDATE_FONT_LEADING':

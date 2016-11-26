@@ -37,6 +37,12 @@ export const updateFontSize = (value, valueOrUnit) => ({
   valueOrUnit
 })
 
+export const updateFontSize = (value, valueOrUnit) => ({
+  type: 'UPDATE_FONT_WIDTH',
+  value,
+  valueOrUnit
+})
+
 export const updateFontTracking = (value, valueOrUnit) => ({
   type: 'UPDATE_FONT_TRACKING',
   value,

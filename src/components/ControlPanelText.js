@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import alignIcon from '../icons/align.svg'
 import lockIcon from '../icons/lock.svg'
 import kerningIcon from '../icons/kerning.svg'
+import textTransformIcon from '../icons/textTransform.svg'
 import languages from '../data/languages.js'
 import opentypeFeatures from '../data/opentypeFeatures.js'
 
@@ -179,15 +180,17 @@ class ControlPanelText extends Component {
         </div>
         <div className='Control half'>
           <div className='ControlTitle'>Text Transform</div>
-          {[{key: 'Uppercase', rep: 'AA'}, {key: 'Lowercase', rep: 'aa'}, {key: 'Capitalize', rep: 'Aa'}, {key: 'None', rep: '--'}].map(el => (
-            <label className='hide-checkbox text-transform' key={el.key}>
+          {[{key: 'Uppercase', description: 'Uppercase'}, {key: 'Lowercase', description: 'Lowercase'}, {key: 'Capitalize', description: 'Title case'}, {key: 'None', description: 'No transformation'}].map(el => (
+            <label className='hide-checkbox text-transform' key={el.key} title={el.description}>
               <input
                 className='hide-checkbox__input'
                 type='radio'
                 value={el.key.toLowerCase()}
                 checked={(textBox && textBox.textTransform === el.key.toLowerCase())}
                 onChange={(e) => { this.updateProp('UPDATE_TEXT_TRANSFORM', e.target.value.toLowerCase()) }}/>
-              <span className='text-transform__label hide-checkbox__replacement-input'>{el.rep}</span>
+              <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+                <use xlinkHref={textTransformIcon + `#${el.key}`}></use>
+              </svg>
             </label>
           ))}
         </div>

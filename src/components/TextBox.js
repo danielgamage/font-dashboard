@@ -28,6 +28,8 @@ class TextBox extends Component {
       textTransform: item.textTransform,
       columnCount: item.columns,
       columnGap: `${item.gutters.value}${item.gutters.unit}`,
+      fontWeight: `${item.weight}`,
+      fontStretch: `${item.width}%`,
       fontVariationSettings: `"wght" ${item.weight}, "wdth" ${item.width}`,
       padding: `
         ${item.padding.top.value}${item.padding.top.unit}

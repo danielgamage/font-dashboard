@@ -100,7 +100,7 @@ class TextBox extends Component {
           onInput={(e) => {
             this.props.dispatch({
               type: 'UPDATE_TEXT',
-              value: e.target.innerText
+              value: e.target.textContent
             })
           }}
           style={styles}

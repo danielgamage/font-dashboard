@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import alignIcon from '../icons/align.svg'
 import lockIcon from '../icons/lock.svg'
+import kerningIcon from '../icons/kerning.svg'
 import languages from '../data/languages.js'
 import opentypeFeatures from '../data/opentypeFeatures.js'
 
@@ -160,17 +161,6 @@ class ControlPanelText extends Component {
             />
         </div>
         <div className='Control half'>
-          <div className='ControlTitle'>Text/BG</div>
-          <label>
-            <input type='color' onChange={(e) => { this.updateProp('UPDATE_COLOR', e.target.value) }}/>
-            <div style={{color: textBox && textBox.color}} className='input--color' />
-          </label>
-          <label>
-            <input type='color' onChange={(e) => { this.updateProp('UPDATE_BACKGROUND_COLOR', e.target.value) }}/>
-            <div style={{color: textBox && textBox.backgroundColor}} className='input--color' />
-          </label>
-        </div>
-        <div className='Control half'>
           <div className='ControlTitle'>Alignment</div>
           {['left', 'center', 'right', 'justify'].map(el => (
             <label key={el} className='hide-checkbox'>
@@ -202,6 +192,19 @@ class ControlPanelText extends Component {
           ))}
         </div>
         <div className='Control third'>
+          <div className='ControlTitle'>Kerning</div>
+          <label className='hide-checkbox'>
+            <input
+              className='hide-checkbox__input'
+              type='checkbox'
+              checked={(textBox && textBox.kerning)}
+              onChange={(e) => { this.updateProp('UPDATE_FONT_KERNING', e.target.checked) }}/>
+            <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+              <use xlinkHref={kerningIcon + `#${(textBox && textBox.kerning) ? 'On' : 'Off'}`}></use>
+            </svg>
+          </label>
+        </div>
+        <div className='Control third'>
           <NumericInput
             label='Columns'
             id='columns'
@@ -221,6 +224,17 @@ class ControlPanelText extends Component {
             unit={textBox && textBox.gutters.unit}
             action='UPDATE_GUTTERS'
             />
+        </div>
+        <div className='Control third'>
+          <div className='ControlTitle'>Text/BG</div>
+          <label>
+            <input type='color' onChange={(e) => { this.updateProp('UPDATE_COLOR', e.target.value) }}/>
+            <div style={{color: textBox && textBox.color}} className='input--color' />
+          </label>
+          <label>
+            <input type='color' onChange={(e) => { this.updateProp('UPDATE_BACKGROUND_COLOR', e.target.value) }}/>
+            <div style={{color: textBox && textBox.backgroundColor}} className='input--color' />
+          </label>
         </div>
         <div className='Control third'>
           <label htmlFor='rendering' className='ControlTitle'>Rendering</label>

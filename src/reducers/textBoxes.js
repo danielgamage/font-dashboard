@@ -23,6 +23,7 @@ const textBox = (state, action) => {
         weight: 400,
         width: 100,
         tracking: { value: 0, unit: 'em' },
+        kerning: true,
         wordSpacing: { value: 0, unit: 'em' },
         leading: { value: 1.5, unit: 'em' },
         columns: 1,
@@ -70,6 +71,9 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_COLOR':
       state.color = action.value
+      return state
+    case 'UPDATE_FONT_KERNING':
+      state.kerning = action.value
       return state
     case 'UPDATE_BACKGROUND_COLOR':
       state.backgroundColor = action.value
@@ -180,6 +184,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_FONT_WEIGHT':
     case 'UPDATE_FONT_WIDTH':
     case 'UPDATE_FONT_TRACKING':
+    case 'UPDATE_FONT_KERNING':
     case 'UPDATE_FONT_WORD_SPACING':
     case 'UPDATE_FONT_LEADING':
     case 'UPDATE_FONT_FAMILY':

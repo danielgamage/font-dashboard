@@ -49,6 +49,11 @@ export const updateFontTracking = (value, valueOrUnit) => ({
   valueOrUnit
 })
 
+export const updateFontKerning = (value) => ({
+  type: 'UPDATE_FONT_KERNING',
+  value
+})
+
 export const updateFontWordSpacing = (value, valueOrUnit) => ({
   type: 'UPDATE_FONT_WORD_SPACING',
   value,

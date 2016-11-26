@@ -182,7 +182,7 @@ input:checked + .hide-checkbox__replacement-input {
 
 .hide-checkbox__input:hover + .hide-checkbox__replacement-input,
 .hide-checkbox__input:focus + .hide-checkbox__replacement-input {
-  color: var(--color-white-main);
+  background: var(--color-gray-darker);
 }
 
 .font-family {

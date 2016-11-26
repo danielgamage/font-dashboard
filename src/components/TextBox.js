@@ -15,7 +15,7 @@ class TextBox extends Component {
     } else {
       fontSmoothing = { WebkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
     }
-    const opentypeValue = item.opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
+    const opentypeValues = item.opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
     const styles = {
       fontFamily: `'${item.fontFamily}'`,
       fontSize: `${item.fontSize.value}${item.fontSize.unit}`,
@@ -29,6 +29,7 @@ class TextBox extends Component {
       columnCount: item.columns,
       columnGap: `${item.gutters.value}${item.gutters.unit}`,
       fontWeight: `${item.weight}`,
+      fontKerning: item.kerning ? 'normal' : 'none',
       fontStretch: `${item.width}%`,
       fontVariationSettings: `"wght" ${item.weight}, "wdth" ${item.width}`,
       padding: `
@@ -42,7 +43,7 @@ class TextBox extends Component {
         ${item.margin.bottom.value}${item.margin.bottom.unit}
         ${item.margin.left.value}${item.margin.left.unit}
         `,
-      fontFeatureSettings: opentypeValue,
+      fontFeatureSettings: opentypeValues,
       ...fontSmoothing
     }
     return (

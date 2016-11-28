@@ -6,8 +6,8 @@ import './TextBox.css'
 
 class TextBox extends Component {
   render () {
-    let fontSmoothing
     const item = this.props.textBox
+    let fontSmoothing
     if (item.rendering === 'Grayscale') {
       fontSmoothing = { WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
     } else if (item.rendering === 'None') {

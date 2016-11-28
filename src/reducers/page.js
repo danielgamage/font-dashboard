@@ -3,6 +3,8 @@ const defaultState = {
     value: 20,
     unit: 'rem'
   },
+  writingMode: 'horizontal',
+  direction: 'ltr',
   backgroundColor: 'transparent',
   padding: {
     top: 1,
@@ -28,6 +30,10 @@ const page = (state = defaultState, action) => {
       return newState
     case 'UPDATE_PAGE_BACKGROUND_COLOR':
       return { ...state, backgroundColor: action.value }
+    case 'UPDATE_PAGE_WRITING_MODE':
+      return { ...state, writingMode: action.value }
+    case 'UPDATE_PAGE_DIRECTION':
+      return { ...state, direction: action.value }
     default:
       return state
   }

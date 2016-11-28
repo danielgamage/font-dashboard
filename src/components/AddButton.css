@@ -34,6 +34,10 @@
   opacity: 0;
 }
 
+.AddContainer.solo {
+  position: relative;
+}
+
 .AddContainer.solo .AddButton,
 .AddContainer:hover .AddButton,
 .AddButton:focus,

@@ -64,9 +64,11 @@ class Layout extends Component {
     }
   }
   render () {
+    const width = `${this.props.page.width.value}${this.props.page.width.unit}`
+    const pageStyles = this.props.page.writingMode === 'horizontal' ? { maxWidth: width } : { maxHeight: width }
     return (
       <div
-        className="Layout"
+        className={`Layout ${this.props.page.direction} ${this.props.page.writingMode}`}
         style={{
           backgroundColor: `${this.props.page.backgroundColor}`
         }}
@@ -115,13 +117,10 @@ class Layout extends Component {
             height: this.state.h
           }}
           className="rect">
-
         </div>
         <div
           className='LayoutWrapper'
-          style={{
-            width: `${this.props.page.width.value}${this.props.page.width.unit}`
-          }}
+          style={pageStyles}
           >
           <AddButton index={0} solo={(this.props.textBoxes.length === 0)}/>
           {this.props.textBoxes.map((textbox, i) => (

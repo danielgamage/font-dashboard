@@ -26,6 +26,9 @@
   writing-mode: vertical-rl;
 }
 
+.Layout:not(.horizontal) .Layout__instructions {
+  margin: 0 2rem;
+}
 .Layout:not(.horizontal) .AddContainer {
   width: 0;
   height: 100%;

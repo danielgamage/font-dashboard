@@ -50,6 +50,16 @@ class ActionBar extends Component {
             }}>
             Redo
           </button>
+          <button
+            onClick={() => {
+              if (window.confirm("Are you sure you want to reset all your work?")) { 
+                dispatch({
+                  type: 'RESET_STATE'
+                })
+              }
+            }}>
+            Reset
+          </button>
         </div>
         <div className='right'>
           <button

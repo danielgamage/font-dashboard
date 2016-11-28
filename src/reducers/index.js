@@ -12,4 +12,12 @@ const todoApp = combineReducers({
   fonts: fonts
 })
 
-export default todoApp
+const rootReducer = (state, action) => {
+  // Reset state to default
+  if (action.type === 'RESET_STATE') {
+    state = undefined
+  }
+  return todoApp(state, action)
+}
+
+export default rootReducer

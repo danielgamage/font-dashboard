@@ -41,7 +41,18 @@ class ControlPanelPage extends Component {
             action='UPDATE_PAGE_WIDTH'
             />
         </div>
-        <div className='Control half'>
+        <div className='Control third'>
+          <NumericInput
+            label='Page Padding'
+            id='padding'
+            append='rem'
+            min='0'
+            value={this.props.page.padding.value}
+            unit={this.props.page.padding.unit}
+            action='UPDATE_PAGE_PADDING'
+            />
+        </div>
+        <div className='Control third'>
           <div className='ControlTitle'>Background</div>
           <label>
             <input type='color' onChange={(e) => { this.updateProp('UPDATE_PAGE_BACKGROUND_COLOR', e.target.value) }}/>

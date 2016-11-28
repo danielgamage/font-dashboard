@@ -5,13 +5,9 @@ const defaultState = {
   },
   writingMode: 'horizontal',
   direction: 'ltr',
+  padding: { value: 2, unit: 'rem' },
   backgroundColor: 'transparent',
-  padding: {
-    top: 1,
-    right: 1,
-    bottom: 1,
-    left: 1
-  }
+  gutters: { value: 2, unit: 'rem' }
 }
 
 const parseValue = (value, valueOrUnit) => {
@@ -21,19 +17,38 @@ const parseValue = (value, valueOrUnit) => {
     return value
   }
 }
+const updateProp = (state, action) => {
+  switch (action.type) {
+    case 'UPDATE_PAGE_WIDTH':
+      state.width[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+      return state
+    case 'UPDATE_PAGE_PADDING':
+      state.padding[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+      return state
+    case 'UPDATE_PAGE_BACKGROUND_COLOR':
+      state.backgroundColor = action.value
+      return state
+    case 'UPDATE_PAGE_WRITING_MODE':
+      state.writingMode = action.value
+      return state
+    case 'UPDATE_PAGE_DIRECTION':
+      state.direction = action.value
+      return state
+    default:
+      return state
+  }
+}
+
 
 const page = (state = defaultState, action) => {
   switch (action.type) {
     case 'UPDATE_PAGE_WIDTH':
-      const newState = { ...state }
-      newState.width[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
-      return newState
+    case 'UPDATE_PAGE_PADDING':
     case 'UPDATE_PAGE_BACKGROUND_COLOR':
-      return { ...state, backgroundColor: action.value }
     case 'UPDATE_PAGE_WRITING_MODE':
-      return { ...state, writingMode: action.value }
     case 'UPDATE_PAGE_DIRECTION':
-      return { ...state, direction: action.value }
+      const newState = { ...state }
+      return updateProp(newState, action)
     default:
       return state
   }

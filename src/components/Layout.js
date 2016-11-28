@@ -70,7 +70,8 @@ class Layout extends Component {
       <div
         className={`Layout ${this.props.page.direction} ${this.props.page.writingMode}`}
         style={{
-          backgroundColor: `${this.props.page.backgroundColor}`
+          backgroundColor: `${this.props.page.backgroundColor}`,
+          padding: `${this.props.page.padding.value}${this.props.page.padding.unit}`
         }}
         onMouseDown={(e) => {
           this.mousedown = true

@@ -18,7 +18,7 @@ export default [
   { 'value': 'cpsp', 'description': 'Capital Spacing' },
   { 'value': 'cswh', 'description': 'Contextual Swash' },
   { 'value': 'curs', 'description': 'Cursive Positioning' },
-  { 'value': 'cv01-cv99', 'description': 'Character Variants' },
+  // { 'value': 'cv01-cv99', 'description': 'Character Variants' },
   { 'value': 'c2pc', 'description': 'Petite Capitals From Capitals' },
   { 'value': 'c2sc', 'description': 'Small Capitals From Capitals' },
   { 'value': 'dist', 'description': 'Distances' },

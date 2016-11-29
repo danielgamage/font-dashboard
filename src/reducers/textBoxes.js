@@ -46,7 +46,7 @@ const textBox = (state, action) => {
           lock: false
         },
         rendering: 'Subpixel',
-        opentype: opentypeFeatures.map(el => ({key: el.value, value: 0})),
+        opentype: opentypeFeatures.map(el => ({key: el.value, value: false})),
         language: getLanguage('ENG') && getLanguage('ENG').subtag[0]
       }
     case 'UPDATE_FONT_SIZE':

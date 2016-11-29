@@ -203,7 +203,7 @@ class ControlPanelText extends Component {
                 className='hide-checkbox__input'
                 type='radio'
                 value={el.key}
-                checked={(textBox && textBox.textTransform === el.key)}
+                checked={(textBox && textBox.textOrientation === el.key)}
                 onChange={(e) => { this.updateProp('UPDATE_TEXT_ORIENTATION', e.target.value) }}/>
               <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
                 <use xlinkHref={textOrientationIcon + `#${el.key}`}></use>

@@ -5,6 +5,7 @@ import alignIcon from '../icons/align.svg'
 import lockIcon from '../icons/lock.svg'
 import kerningIcon from '../icons/kerning.svg'
 import textTransformIcon from '../icons/textTransform.svg'
+import textOrientationIcon from '../icons/textOrientation.svg'
 import languages from '../data/languages.js'
 import opentypeFeatures from '../data/opentypeFeatures.js'
 
@@ -179,7 +180,7 @@ class ControlPanelText extends Component {
           ))}
         </div>
         <div className='Control half'>
-          <div className='ControlTitle'>Text Transform</div>
+          <div className='ControlTitle'>Transform</div>
           {[{key: 'Uppercase', description: 'Uppercase'}, {key: 'Lowercase', description: 'Lowercase'}, {key: 'Capitalize', description: 'Title case'}, {key: 'None', description: 'No transformation'}].map(el => (
             <label className='hide-checkbox text-transform' key={el.key} title={el.description}>
               <input
@@ -190,6 +191,22 @@ class ControlPanelText extends Component {
                 onChange={(e) => { this.updateProp('UPDATE_TEXT_TRANSFORM', e.target.value.toLowerCase()) }}/>
               <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
                 <use xlinkHref={textTransformIcon + `#${el.key}`}></use>
+              </svg>
+            </label>
+          ))}
+        </div>
+        <div className='Control half'>
+          <div className='ControlTitle'>Orientation</div>
+          {[{key: 'upright', description: 'Upright for all letters'}, {key: 'mixed', description: 'Upright for native vertical letters and sideways for letters from horizontal scripts'}, {key: 'sideways', description: 'Sideways for all letters'}].map(el => (
+            <label className='hide-checkbox text-transform' key={el.key} title={el.description}>
+              <input
+                className='hide-checkbox__input'
+                type='radio'
+                value={el.key}
+                checked={(textBox && textBox.textTransform === el.key)}
+                onChange={(e) => { this.updateProp('UPDATE_TEXT_ORIENTATION', e.target.value) }}/>
+              <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+                <use xlinkHref={textOrientationIcon + `#${el.key}`}></use>
               </svg>
             </label>
           ))}

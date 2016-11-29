@@ -24,6 +24,7 @@ const textBox = (state, action) => {
         width: 100,
         tracking: { value: 0, unit: 'em' },
         kerning: true,
+        textOrientation: "upright",
         wordSpacing: { value: 0, unit: 'em' },
         leading: { value: 1.5, unit: 'em' },
         columns: 1,
@@ -86,6 +87,9 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_ALIGNMENT':
       state.alignment = action.value
+      return state
+    case 'UPDATE_TEXT_ORIENTATION':
+      state.textOrientation = action.value
       return state
     case 'UPDATE_TEXT_TRANSFORM':
       state.textTransform = action.value
@@ -185,6 +189,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_FONT_WIDTH':
     case 'UPDATE_FONT_TRACKING':
     case 'UPDATE_FONT_KERNING':
+    case 'UPDATE_TEXT_ORIENTATION':
     case 'UPDATE_FONT_WORD_SPACING':
     case 'UPDATE_FONT_LEADING':
     case 'UPDATE_FONT_FAMILY':

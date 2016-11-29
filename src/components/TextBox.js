@@ -15,6 +15,11 @@ class TextBox extends Component {
     } else {
       fontSmoothing = { WebkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
     }
+    const textOrientation = {
+      WebkitTextOrientation: item.textOrientation,
+      MozTextOrientation: item.textOrientation,
+      textOrientation: item.textOrientation
+    }
     const opentypeValues = item.opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
     const styles = {
       fontFamily: `'${item.fontFamily}'`,
@@ -44,7 +49,8 @@ class TextBox extends Component {
         ${item.margin.left.value}${item.margin.left.unit}
         `,
       fontFeatureSettings: opentypeValues,
-      ...fontSmoothing
+      ...fontSmoothing,
+      ...textOrientation
     }
     return (
       <div

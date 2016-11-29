@@ -40,19 +40,7 @@ class ActionBar extends Component {
           { this.state.samplesOpen && <TextSamples/> }
           <button
             onClick={() => {
-              dispatch(ActionCreators.undo()) // undo the last action
-            }}>
-            Undo
-          </button>
-          <button
-            onClick={() => {
-              dispatch(ActionCreators.redo()) // undo the last action
-            }}>
-            Redo
-          </button>
-          <button
-            onClick={() => {
-              if (window.confirm("Are you sure you want to reset all your work?")) { 
+              if (window.confirm("Are you sure you want to reset all your work?")) {
                 dispatch({
                   type: 'RESET_STATE'
                 })

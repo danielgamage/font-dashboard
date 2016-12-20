@@ -1,12 +1,30 @@
 .App {
   display: flex;
+  flex-flow: column-reverse;
 }
 
 .Container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 50%;
   padding-bottom: 4rem;
+}
+
+.ControlPanel {
+  height: 50%;
+}
+
+@media (min-width: 40rem) {
+  .App {
+    flex-flow: row;
+  }
+  .Container {
+    height: 100%;
+  }
+  .ControlPanel {
+    height: 100%;
+    width: 24rem;
+  }
 }
 
 .Layout {
@@ -55,6 +73,10 @@
 
 .fullscreen .ControlPanel {
   width: 0;
+  height: 0;
+}
+.fullscreen .Container {
+  height: 100%;
 }
 .fullscreen .ActionBar {
   opacity: 0;

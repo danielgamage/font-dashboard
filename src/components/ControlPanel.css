@@ -1,7 +1,6 @@
 .ControlPanel {
   background: var(--color-gray-darkest);
   color: var(--color-white-main);
-  width: 24rem;
   font-size: 14px;
   text-align: left;
   overflow-x: hidden;

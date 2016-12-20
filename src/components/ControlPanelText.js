@@ -84,6 +84,7 @@ class ControlPanelText extends Component {
         return false
       }
     })
+    const hasVariations = associatedFont && associatedFont.tables.fvar && associatedFont.tables.fvar.axes.length > 0
 
     return (
       <div className={`ControlPanelTab ${textBox ? 'active' : 'inactive'}`}>
@@ -109,28 +110,49 @@ class ControlPanelText extends Component {
             action='UPDATE_FONT_SIZE'
             />
         </div>
-        <div className='Control third'>
-          <NumericInput
-            label='Font Weight'
-            id='weight'
-            min='1'
-            max='999'
-            step='1'
-            value={textBox && textBox.weight}
-            action='UPDATE_FONT_WEIGHT'
-            />
-        </div>
-        <div className='Control third'>
-          <NumericInput
-            label='Font Width'
-            id='width'
-            min='50'
-            max='200'
-            step='1'
-            value={textBox && textBox.width}
-            action='UPDATE_FONT_WIDTH'
-            />
-        </div>
+        { hasVariations &&
+          associatedFont.tables.fvar.axes.map(axis => (
+            <div className='Control third'>
+              <NumericInput
+                label={axis.name.en}
+                id={axis.tag}
+                actionKey={axis.tag}
+                min={axis.minValue}
+                max={axis.maxValue}
+                step='1'
+                defaultValue={axis.defaultValue}
+                value={textBox && textBox.variations.filter(el => (el.key === axis.tag))[0] && textBox.variations.filter(el => (el.key === axis.tag))[0].value}
+                action='UPDATE_FONT_VARIATION'
+                />
+            </div>
+          ))
+        }
+        { !hasVariations &&
+          <div className='Control third'>
+            <NumericInput
+              label='Font Weight'
+              id='weight'
+              min='100'
+              max='900'
+              step='100'
+              value={textBox && textBox.weight}
+              action='UPDATE_FONT_WEIGHT'
+              />
+          </div>
+        }
+        { !hasVariations &&
+          <div className='Control third'>
+            <NumericInput
+              label='Font Width'
+              id='width'
+              min='50'
+              max='200'
+              step='1'
+              value={textBox && textBox.width}
+              action='UPDATE_FONT_WIDTH'
+              />
+          </div>
+        }
         <div className='Control third'>
           <NumericInput
             label='Leading'

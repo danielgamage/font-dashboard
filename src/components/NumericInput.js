@@ -19,7 +19,7 @@ class NumericInput extends Component {
     document.body.classList.remove('cursor--lr')
   }
   onDrag (e) {
-    let value = this.props.value
+    let value = this.props.value || this.props.defaultValue
     let step
     // use some opinionated incrementation
     units.map(el => { if (el.value === this.props.unit) { step = el.step } })
@@ -63,6 +63,7 @@ class NumericInput extends Component {
             min={this.props.min}
             max={this.props.max}
             value={this.props.value}
+            defaultValue={this.props.defaultValue}
             onChange={this.onChange.bind(this)}
             />
           {this.props.unit &&

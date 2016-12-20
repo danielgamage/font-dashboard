@@ -21,6 +21,8 @@ class TextBox extends Component {
       textOrientation: item.textOrientation
     }
     const opentypeValues = item.opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
+    const variations = item.variations.map(el => (`"${el.key}" ${el.value}`)).join(', ')
+
     const styles = {
       fontFamily: `'${item.fontFamily}'`,
       fontSize: `${item.fontSize.value}${item.fontSize.unit}`,
@@ -36,7 +38,7 @@ class TextBox extends Component {
       fontWeight: `${item.weight}`,
       fontKerning: item.kerning ? 'normal' : 'none',
       fontStretch: `${item.width}%`,
-      fontVariationSettings: `"wght" ${item.weight}, "wdth" ${item.width}`,
+      fontVariationSettings: variations,
       padding: `
         ${item.padding.top.value}${item.padding.top.unit}
         ${item.padding.right.value}${item.padding.right.unit}

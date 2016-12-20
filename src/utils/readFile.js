@@ -37,6 +37,7 @@ const readFile = (file) => {
     let reader = new FileReader()
     reader.addEventListener('load', () => {
       const opentypeFont = opentype.parse(reader.result)
+      console.log(opentypeFont)
       const family = opentypeFont.names.fullName.en
       const font = new FontFace(family, reader.result)
       document.fonts.add(font)

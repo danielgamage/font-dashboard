@@ -47,10 +47,19 @@ const textBox = (state, action) => {
         },
         rendering: 'Subpixel',
         opentype: opentypeFeatures.map(el => ({key: el.value, value: false})),
-        language: getLanguage('ENG') && getLanguage('ENG').subtag[0]
+        language: getLanguage('ENG') && getLanguage('ENG').subtag[0],
+        variations: []
       }
     case 'UPDATE_FONT_SIZE':
       state.fontSize[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
+      return state
+    case 'UPDATE_FONT_VARIATION':
+      const index = state.variations.findIndex(el => (el.key === action.key))
+      if (index === -1) {
+        state.variations.push({key: action.key, value: parseValue(action.value, 'value')})
+      } else {
+        state.variations[index].value = parseValue(action.value, 'value')
+      }
       return state
     case 'UPDATE_FONT_WEIGHT':
       state.weight = parseValue(action.value, 'value')
@@ -187,6 +196,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_FONT_SIZE':
     case 'UPDATE_FONT_WEIGHT':
     case 'UPDATE_FONT_WIDTH':
+    case 'UPDATE_FONT_VARIATION':
     case 'UPDATE_FONT_TRACKING':
     case 'UPDATE_FONT_KERNING':
     case 'UPDATE_TEXT_ORIENTATION':

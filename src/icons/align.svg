@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
 <style type="text/css">
@@ -7,25 +7,25 @@
 	.st1{display:inline;}
 </style>
 <title>align</title>
-<g id="left" class="st0">
+<g id="left-horizontal" class="st0">
 	<rect x="3" y="3" class="st1" width="8" height="1"/>
 	<rect x="3" y="6" class="st1" width="10" height="1"/>
 	<rect x="3" y="12" class="st1" width="8" height="1"/>
 	<rect x="3" y="9" class="st1" width="6" height="1"/>
 </g>
-<g id="center" class="st0">
+<g id="center-horizontal" class="st0">
 	<rect x="4" y="3" class="st1" width="8" height="1"/>
 	<rect x="3" y="6" class="st1" width="10" height="1"/>
 	<rect x="4" y="12" class="st1" width="8" height="1"/>
 	<rect x="5" y="9" class="st1" width="6" height="1"/>
 </g>
-<g id="right">
-	<rect x="5" y="3" width="8" height="1"/>
-	<rect x="3" y="6" width="10" height="1"/>
-	<rect x="5" y="12" width="8" height="1"/>
-	<rect x="7" y="9" width="6" height="1"/>
+<g id="right-horizontal" class="st0">
+	<rect x="5" y="3" class="st1" width="8" height="1"/>
+	<rect x="3" y="6" class="st1" width="10" height="1"/>
+	<rect x="5" y="12" class="st1" width="8" height="1"/>
+	<rect x="7" y="9" class="st1" width="6" height="1"/>
 </g>
-<g id="justify" class="st0">
+<g id="justify-horizontal" class="st0">
 	<rect x="3" y="3" class="st1" width="10" height="1"/>
 	<rect x="3" y="9" class="st1" width="10" height="1"/>
 	<rect x="3" y="9" class="st1" width="10" height="1"/>
@@ -41,5 +41,40 @@
 	<rect x="3" y="6" class="st1" width="10" height="1"/>
 	<rect x="3" y="6" class="st1" width="10" height="1"/>
 	<rect x="3" y="12" class="st1" width="10" height="1"/>
+</g>
+<g id="left-vertical" class="st0">
+	<rect x="12" y="3" class="st1" width="1" height="8"/>
+	<rect x="9" y="3" class="st1" width="1" height="10"/>
+	<rect x="3" y="3" class="st1" width="1" height="8"/>
+	<rect x="6" y="3" class="st1" width="1" height="6"/>
+</g>
+<g id="center-vertical" class="st0">
+	<rect x="12" y="4" class="st1" width="1" height="8"/>
+	<rect x="9" y="3" class="st1" width="1" height="10"/>
+	<rect x="3" y="4" class="st1" width="1" height="8"/>
+	<rect x="6" y="5" class="st1" width="1" height="6"/>
+</g>
+<g id="right-vertical" class="st0">
+	<rect x="12" y="5" class="st1" width="1" height="8"/>
+	<rect x="9" y="3" class="st1" width="1" height="10"/>
+	<rect x="3" y="5" class="st1" width="1" height="8"/>
+	<rect x="6" y="7" class="st1" width="1" height="6"/>
+</g>
+<g id="justify-vertical">
+	<rect x="12" y="3" width="1" height="10"/>
+	<rect x="6" y="3" width="1" height="10"/>
+	<rect x="6" y="3" width="1" height="10"/>
+	<rect x="6" y="3" width="1" height="10"/>
+	<rect x="6" y="3" width="1" height="10"/>
+	<rect x="6" y="3" width="1" height="10"/>
+	<rect x="9" y="3" width="1" height="10"/>
+	<rect x="9" y="3" width="1" height="10"/>
+	<rect x="9" y="3" width="1" height="10"/>
+	<rect x="9" y="3" width="1" height="10"/>
+	<rect x="9" y="3" width="1" height="10"/>
+	<rect x="9" y="3" width="1" height="10"/>
+	<rect x="9" y="3" width="1" height="10"/>
+	<rect x="9" y="3" width="1" height="10"/>
+	<rect x="3" y="3" width="1" height="10"/>
 </g>
 </svg>

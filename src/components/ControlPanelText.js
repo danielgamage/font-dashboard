@@ -85,6 +85,7 @@ class ControlPanelText extends Component {
       }
     })
     const hasVariations = associatedFont && associatedFont.tables.fvar && associatedFont.tables.fvar.axes.length > 0
+    const orientation = this.props.page.writingMode === 'horizontal' ? 'horizontal' : 'vertical'
 
     return (
       <div className={`ControlPanelTab ${textBox ? 'active' : 'inactive'}`}>
@@ -196,7 +197,7 @@ class ControlPanelText extends Component {
                 checked={(textBox && textBox.alignment === el)}
                 onChange={(e) => { this.updateProp('UPDATE_ALIGNMENT', e.target.value) }}/>
               <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
-                <use xlinkHref={alignIcon + `#${el}`}></use>
+                <use xlinkHref={alignIcon + `#${el}-${orientation}`}></use>
               </svg>
             </label>
           ))}
@@ -217,22 +218,24 @@ class ControlPanelText extends Component {
             </label>
           ))}
         </div>
-        <div className='Control half'>
-          <div className='ControlTitle'>Orientation</div>
-          {[{key: 'upright', description: 'Upright for all letters'}, {key: 'mixed', description: 'Upright for native vertical letters and sideways for letters from horizontal scripts'}, {key: 'sideways', description: 'Sideways for all letters'}].map(el => (
-            <label className='hide-checkbox text-transform' key={el.key} title={el.description}>
-              <input
-                className='hide-checkbox__input'
-                type='radio'
-                value={el.key}
-                checked={(textBox && textBox.textOrientation === el.key)}
-                onChange={(e) => { this.updateProp('UPDATE_TEXT_ORIENTATION', e.target.value) }}/>
-              <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
-                <use xlinkHref={textOrientationIcon + `#${el.key}`}></use>
-              </svg>
-            </label>
-          ))}
-        </div>
+        {orientation === 'vertical' &&
+          <div className='Control half'>
+            <div className='ControlTitle'>Orientation</div>
+            {[{key: 'upright', description: 'Upright for all letters'}, {key: 'mixed', description: 'Upright for native vertical letters and sideways for letters from horizontal scripts'}, {key: 'sideways', description: 'Sideways for all letters'}].map(el => (
+              <label className='hide-checkbox text-transform' key={el.key} title={el.description}>
+                <input
+                  className='hide-checkbox__input'
+                  type='radio'
+                  value={el.key}
+                  checked={(textBox && textBox.textOrientation === el.key)}
+                  onChange={(e) => { this.updateProp('UPDATE_TEXT_ORIENTATION', e.target.value) }}/>
+                <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+                  <use xlinkHref={textOrientationIcon + `#${el.key}`}></use>
+                </svg>
+              </label>
+            ))}
+          </div>
+        }
         <div className='Control third'>
           <div className='ControlTitle'>Kerning</div>
           <label className='hide-checkbox'>
@@ -242,7 +245,7 @@ class ControlPanelText extends Component {
               checked={(textBox && textBox.kerning)}
               onChange={(e) => { this.updateProp('UPDATE_FONT_KERNING', e.target.checked) }}/>
             <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
-              <use xlinkHref={kerningIcon + `#${(textBox && textBox.kerning) ? 'On' : 'Off'}`}></use>
+              <use xlinkHref={kerningIcon + `#${(textBox && textBox.kerning) ? 'on' : 'off'}-${orientation}`}></use>
             </svg>
           </label>
         </div>
@@ -394,7 +397,7 @@ class ControlPanelText extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const selectedTextBoxes = state.textBoxes.present.filter(el => el.selected)
-  return { textBoxes: selectedTextBoxes, fonts: state.fonts }
+  return { textBoxes: selectedTextBoxes, fonts: state.fonts, page: state.page.present }
 }
 
 export default connect(mapStateToProps)(ControlPanelText)

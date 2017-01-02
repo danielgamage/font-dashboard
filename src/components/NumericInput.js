@@ -7,25 +7,36 @@ class NumericInput extends Component {
     super(props)
     this.onDrag = this.onDrag.bind(this)
     this.onMouseUp = this.onMouseUp.bind(this)
+    this.initialX = 0
   }
   onMouseDown (e) {
+    this.initialX = e.pageX || e.touches[0].pageX
     document.addEventListener('mousemove', this.onDrag)
     document.addEventListener('mouseup', this.onMouseUp)
+    document.addEventListener('touchmove', this.onDrag)
+    document.addEventListener('touchend', this.onMouseUp)
     document.body.classList.add('cursor--lr')
   }
   onMouseUp (e) {
     document.removeEventListener('mousemove', this.onDrag)
     document.removeEventListener('mouseup', this.onMouseUp)
+    document.removeEventListener('touchmove', this.onDrag)
+    document.removeEventListener('touchend', this.onMouseUp)
     document.body.classList.remove('cursor--lr')
   }
   onDrag (e) {
     let value = this.props.value || this.props.defaultValue
-    let step
+    const movement = e.touches ? e.touches[0].pageX - this.initialX : e.movementX
+    if (e.touches) {
+      this.initialX = e.touches[0].pageX
+    }
+
     // use some opinionated incrementation
+    let step
     units.map(el => { if (el.value === this.props.unit) { step = el.step } })
 
     step = step || this.props.step
-    value += (e.movementX * (step || 1))
+    value += (movement * (step || 1))
     value = this.props.min ? Math.max(this.props.min, value) : value
     value = this.props.max ? Math.min(this.props.max, value) : value
 
@@ -52,6 +63,7 @@ class NumericInput extends Component {
           htmlFor={this.props.id}
           className='ControlTitle draggable'
           onMouseDown={this.onMouseDown.bind(this)}
+          onTouchStart={this.onMouseDown.bind(this)}
           >
           {this.props.label}
         </label>

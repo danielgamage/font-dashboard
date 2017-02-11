@@ -25,7 +25,7 @@ class NumericInput extends Component {
     document.body.classList.remove('cursor--lr')
   }
   onDrag (e) {
-    let value = this.props.value || this.props.defaultValue
+    let value = this.props.value || this.props.defaultValue || 0
     const movement = e.touches ? e.touches[0].pageX - this.initialX : e.movementX
     if (e.touches) {
       this.initialX = e.touches[0].pageX

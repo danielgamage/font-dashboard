@@ -3,7 +3,7 @@ import getLanguage from './getLanguage.js'
 import opentypeFeatures from '../data/opentypeFeatures.js'
 
 const parseLanguages = (font) => {
-  if (font.tables.gsub.scripts){
+  if (font.tables.gsub && font.tables.gsub.scripts){
     return font.tables.gsub.scripts.map(system => {
       return system.script.langSysRecords.map((language, i) => {
         return getLanguage(language.tag.trim())
@@ -15,7 +15,7 @@ const parseLanguages = (font) => {
 }
 
 const parseFeatures = (font) => {
-  if (font.tables.gsub.features){
+  if (font.tables.gsub && font.tables.gsub.features){
     const features = font.tables.gsub.features.map(feature => {
       return feature.tag
     })

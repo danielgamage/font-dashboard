@@ -282,6 +282,18 @@ class ControlPanelText extends Component {
           </label>
         </div>
         <div className='Control third'>
+          <NumericInput
+            label='Blur'
+            id='blur'
+            append='px'
+            step='0.1'
+            min='0'
+            value={textBox && textBox.blur.value}
+            unit={textBox && textBox.blur.unit}
+            action='UPDATE_BLUR'
+            />
+        </div>
+        <div className='Control third'>
           <label htmlFor='rendering' className='ControlTitle'>Rendering</label>
           <div className='select'>
             <select

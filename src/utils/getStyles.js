@@ -43,6 +43,7 @@ const getStyles = (item) => {
       ${item.margin.left.value}${item.margin.left.unit}
       `,
     fontFeatureSettings: opentypeValues,
+    filter: `blur(${item.blur.value}${item.blur.unit})`,
     ...fontSmoothing,
     ...textOrientation
   }

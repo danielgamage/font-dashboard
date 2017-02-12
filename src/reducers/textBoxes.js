@@ -45,6 +45,7 @@ const textBox = (state, action) => {
           left: { value: 0, unit: 'px' },
           lock: false
         },
+        blur: { value: 0, unit: 'px' },
         rendering: 'Subpixel',
         opentype: opentypeFeatures.map(el => ({key: el.value, value: false})),
         language: getLanguage('ENG') && getLanguage('ENG').subtag[0],
@@ -105,6 +106,9 @@ const textBox = (state, action) => {
       return state
     case 'UPDATE_TEXT':
       state.text = action.value || ''
+      return state
+    case 'UPDATE_BLUR':
+      state.blur[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       return state
     case 'UPDATE_RENDERING':
       state.rendering = action.value
@@ -209,6 +213,7 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_GUTTERS':
     case 'UPDATE_ALIGNMENT':
     case 'UPDATE_TEXT_TRANSFORM':
+    case 'UPDATE_BLUR':
     case 'UPDATE_RENDERING':
     case 'UPDATE_PADDING':
     case 'UPDATE_PADDING_UNIT':

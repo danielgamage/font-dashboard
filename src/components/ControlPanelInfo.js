@@ -43,7 +43,10 @@ class ControlPanelInfo extends Component {
                 <div
                   className='metrics__sample-text'
                   style={{
-                  lineHeight: (el.tables.os2.sTypoAscender - el.tables.os2.sTypoDescender) / el.unitsPerEm,
+                  lineHeight:
+                    el.unitsPerEm > (el.tables.os2.sTypoAscender - el.tables.os2.sTypoDescender)
+                      ? el.tables.os2.sCapHeight / el.unitsPerEm
+                      : (el.tables.os2.sTypoAscender - el.tables.os2.sTypoDescender) / el.unitsPerEm,
                   fontFamily: el.names.fullName.en
                 }}>
                   Achg

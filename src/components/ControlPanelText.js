@@ -300,7 +300,10 @@ class ControlPanelText extends Component {
             <select
               id='language'
               value={textBox && textBox.language}
-              onChange={(e) => { this.updateProp('UPDATE_LANGUAGE', e.target.value) }}>
+              onChange={(e) => {
+                this.updateProp('UPDATE_LANGUAGE', e.target.value)
+                this.updateProp('UPDATE_OPENTYPE', true, 'locl')
+              }}>
               {availableLanguages.map(language => (
                 <option key={language.tag} value={language.subtag}>{language.description}</option>
               ))}

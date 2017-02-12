@@ -295,7 +295,10 @@ class ControlPanelText extends Component {
           </div>
         </div>
         <div className='Control third'>
-          <label htmlFor='language' className='ControlTitle'>Language</label>
+          <label htmlFor='language' className='ControlTitle'>
+            Language
+            <span className='info-label' title={showingAvailableFeatures ? 'The current font has opentype localizations' : ''}>{showingAvailableFeatures ? '•' : ''}</span>
+          </label>
           <div className='select'>
             <select
               id='language'

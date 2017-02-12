@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { ActionCreators } from 'redux-undo'
+// import { ActionCreators } from 'redux-undo'
 import fullscreenIcon from '../icons/fullscreen.svg'
 
 import TextSamples from './TextSamples'

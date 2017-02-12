@@ -19,7 +19,7 @@ class App extends Component {
     document.removeEventListener('keydown', this.handleEsc)
   }
   handleEsc(e) {
-    if (e.keyCode == 27 && this.props.view.fullscreen) {
+    if (e.keyCode === 27 && this.props.view.fullscreen) {
       this.props.dispatch({
         type: 'TOGGLE_FULLSCREEN'
       })

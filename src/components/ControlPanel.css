@@ -285,13 +285,28 @@ input[type=color]:focus + .input--color::after {
   font-size: 12px;
 }
 
+dl {
+  margin: 0;
+}
 dt {
   float: left;
   padding-right: 4rem;
   color: var(--color-white-main);
 }
-dd {
+.font-info {
+  position: relative;
+  padding-left: 8rem;
   text-align: right;
+}
+.font-info dt {
+  position: absolute;
+  left: 0;
+}
+.font-info dd {
+  display: inline-block;
+}
+.font-info dd + dd {
+  margin: 0 0 0 0.4em;
 }
 
 .metrics {
@@ -313,6 +328,8 @@ dd {
 
 .metric {
   position: absolute;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   line-height: 1;
   margin: 0;

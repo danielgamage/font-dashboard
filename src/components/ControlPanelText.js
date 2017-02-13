@@ -154,6 +154,7 @@ class ControlPanelText extends Component {
               />
           </div>
         }
+        <hr className='Clear'/>
         <div className='Control third'>
           <NumericInput
             label='Leading'
@@ -185,37 +186,39 @@ class ControlPanelText extends Component {
             action='UPDATE_FONT_WORD_SPACING'
             />
         </div>
-        <div className='Control half'>
+        <div className='Control third'>
           <div className='ControlTitle'>Alignment</div>
-          {['left', 'center', 'right', 'justify'].map(el => (
-            <label key={el} className='hide-checkbox'>
-              <input
-                name='alignment'
-                className='hide-checkbox__input'
-                type='radio'
-                value={el}
-                checked={(textBox && textBox.alignment === el)}
-                onChange={(e) => { this.updateProp('UPDATE_ALIGNMENT', e.target.value) }}/>
-              <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
-                <use xlinkHref={alignIcon + `#${el}-${orientation}`}></use>
-              </svg>
-            </label>
+          {['left', 'center', 'right', 'justify'].map((el, index, array) => (
+            (textBox && textBox.alignment === el) &&
+              <label key={el} className='hide-checkbox' title={`Aligning ${el}. Click to change.`}>
+                <input
+                  name='alignment'
+                  className='hide-checkbox__input'
+                  type='button'
+                  value={el}
+                  checked={(textBox && textBox.alignment === el)}
+                  onClick={(e) => { this.updateProp('UPDATE_ALIGNMENT', array[(index + 1) % array.length]) }}/>
+                <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+                  <use xlinkHref={alignIcon + `#${el}-${orientation}`}></use>
+                </svg>
+              </label>
           ))}
         </div>
-        <div className='Control half'>
+        <div className='Control third'>
           <div className='ControlTitle'>Transform</div>
-          {[{key: 'Uppercase', description: 'Uppercase'}, {key: 'Lowercase', description: 'Lowercase'}, {key: 'Capitalize', description: 'Title case'}, {key: 'None', description: 'No transformation'}].map(el => (
-            <label className='hide-checkbox text-transform' key={el.key} title={el.description}>
-              <input
-                className='hide-checkbox__input'
-                type='radio'
-                value={el.key.toLowerCase()}
-                checked={(textBox && textBox.textTransform === el.key.toLowerCase())}
-                onChange={(e) => { this.updateProp('UPDATE_TEXT_TRANSFORM', e.target.value.toLowerCase()) }}/>
-              <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
-                <use xlinkHref={textTransformIcon + `#${el.key}`}></use>
-              </svg>
-            </label>
+          {[{key: 'Uppercase', description: 'Uppercase'}, {key: 'Lowercase', description: 'Lowercase'}, {key: 'Capitalize', description: 'Title case'}, {key: 'None', description: 'No transformation'}].map((el, index, array) => (
+            (textBox && textBox.textTransform === el.key.toLowerCase()) &&
+              <label className='hide-checkbox text-transform' key={el.key} title={`${el.description}. Click to Change.`}>
+                <input
+                  className='hide-checkbox__input'
+                  type='button'
+                  value={el.key.toLowerCase()}
+                  checked={(textBox && textBox.textTransform === el.key.toLowerCase())}
+                  onClick={(e) => { this.updateProp('UPDATE_TEXT_TRANSFORM', array[(index + 1) % array.length].key.toLowerCase()) }}/>
+                <svg className='hide-checkbox__replacement-input' viewBox='0 0 16 16'>
+                  <use xlinkHref={textTransformIcon + `#${el.key}`}></use>
+                </svg>
+              </label>
           ))}
         </div>
         {orientation === 'vertical' &&

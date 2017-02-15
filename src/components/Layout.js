@@ -17,6 +17,8 @@ class Layout extends Component {
     this.yInit = false
     this.offsetX = 0
     this.offsetY = 0
+    this.mousedown = false
+    this.mousemove = false
 
     this.handleMouseDown = this.handleMouseDown.bind(this)
     this.handleMouseMove = this.handleMouseMove.bind(this)
@@ -57,7 +59,7 @@ class Layout extends Component {
         type: 'DESELECT_TEXTBOXES'
       })
     }
-    if (this.mousedown) {
+    if (this.mousedown && this.mousemove) {
       // dragged click, select
       this.mousedown = false
       this.mousemove = false
@@ -72,6 +74,7 @@ class Layout extends Component {
           matches.push(this.props.textBoxes[i].id)
         }
       })
+
       let operation = false
       if (e.shiftKey) {
         operation = "ADD"

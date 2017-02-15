@@ -40,7 +40,8 @@ class TextBox extends Component {
         }}>
         <div
           className='text'
-          contentEditable='true'
+          contentEditable={item.selected ? 'true' : 'false'}
+          tabIndex='0'
           placeholder='Type here...'
           spellCheck='false'
           lang={item.language}
@@ -60,13 +61,6 @@ class TextBox extends Component {
               type: 'SELECT_TEXTBOXES',
               ids: [item.id],
               operation: operation
-            })
-          }}
-          onFocus={(e) => {
-            this.props.dispatch({
-              type: 'SELECT_TEXTBOXES',
-              ids: [item.id],
-              operation: false
             })
           }}
           onInput={(e) => {

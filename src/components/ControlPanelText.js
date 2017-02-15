@@ -98,6 +98,20 @@ class ControlPanelText extends Component {
             {`font-face:`}
             <input id='font' type='text' value={textBox ? textBox.fontFamily : ''} onChange={(e) => {this.updateFontFamily(e.target.value).bind(this)}}/>
           </label>
+          <label className='font-family'>
+            {`Added:`}
+            <div className='select'>
+              <select
+                id='font-face-local'
+                value={textBox ? textBox.fontFamily : '--'}
+                onChange={(e) => {this.updateFontFamily(e.target.value).bind(this)}}>
+                <option>--</option>
+                {this.props.fonts.map(font => (
+                  <option>{font.names.fullName.en}</option>
+                ))}
+              </select>
+            </div>
+          </label>
           <input id='font' type='file' onChange={this.updateFonts.bind(this)} />
           <p>You can also drag your font directly onto the text block you want to apply the font to.</p>
         </div>

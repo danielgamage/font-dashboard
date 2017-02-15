@@ -47,7 +47,6 @@ const readFile = (file) => {
         ...opentypeFont,
         availableFeatures: availableFeatures,
         availableLanguages: availableLanguages
-
       }
       resolve(data)
     }, false)

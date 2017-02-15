@@ -42,6 +42,7 @@ class TextBox extends Component {
           className='text'
           contentEditable='true'
           placeholder='Type here...'
+          spellCheck='false'
           lang={item.language}
           onMouseDown={(e) => {
             e.stopPropagation()

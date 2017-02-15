@@ -7,14 +7,44 @@ class Layout extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      xInit: false,
-      yInit: false,
       x: false,
       y: false,
       w: false,
-      h: false
+      h: false,
     }
+    // keep out of state to avoid re-rendering
+    this.xInit = false
+    this.yInit = false
+    this.offsetX = 0
+    this.offsetY = 0
+
+    this.handleMouseDown = this.handleMouseDown.bind(this)
+    this.handleMouseMove = this.handleMouseMove.bind(this)
     this.handleMouseUp = this.handleMouseUp.bind(this)
+  }
+  handleMouseDown (e) {
+    this.mousedown = true
+    const bounds = document.querySelector('.Layout').getBoundingClientRect()
+    this.offsetX = bounds.left
+    this.offsetY = bounds.top
+    this.xInit = e.pageX
+    this.yInit = e.pageY
+  }
+  handleMouseMove (e) {
+    if (this.mousedown) {
+      this.mousemove = true
+      let x = this.xInit + Math.min(e.pageX - this.xInit, 0)
+      let y = this.yInit + Math.min(e.pageY - this.yInit, 0)
+      let w = Math.abs(e.pageX - this.xInit)
+      let h = Math.abs(e.pageY - this.yInit)
+
+      this.setState({
+        x: x,
+        y: y,
+        w: w,
+        h: h
+      })
+    }
   }
   handleMouseUp (e) {
     if (this.mousedown
@@ -54,8 +84,6 @@ class Layout extends Component {
         operation: operation
       })
       this.setState({
-        xInit: false,
-        yInit: false,
         x: false,
         y: false,
         w: false,
@@ -74,29 +102,10 @@ class Layout extends Component {
           padding: `${this.props.page.padding.value}${this.props.page.padding.unit}`
         }}
         onMouseDown={(e) => {
-          this.mousedown = true
+          this.handleMouseDown(e)
         }}
         onMouseMove={(e) => {
-          if (this.mousedown) {
-            this.mousemove = true
-            if (!this.state.xInit || !this.state.yInit) {
-              this.setState({
-                xInit: e.pageX,
-                yInit: e.pageY
-              })
-            }
-            let x = this.state.xInit + Math.min(e.pageX - this.state.xInit, 0)
-            let y = this.state.yInit + Math.min(e.pageY - this.state.yInit, 0)
-            let w = Math.abs(e.pageX - this.state.xInit)
-            let h = Math.abs(e.pageY - this.state.yInit)
-
-            this.setState({
-              x: x,
-              y: y,
-              w: w,
-              h: h
-            })
-          }
+          this.handleMouseMove(e)
         }}
         onMouseUp={(e) => {
           this.handleMouseUp(e)
@@ -112,8 +121,8 @@ class Layout extends Component {
             opacity: 0.2,
             border: "1px solid var(--color-accent-dull)",
             background: "var(--color-accent-bright)",
-            left: this.state.x,
-            top: this.state.y,
+            left: this.state.x - this.offsetX, // correct for parent position
+            top: this.state.y - this.offsetY,
             width: this.state.w,
             height: this.state.h
           }}

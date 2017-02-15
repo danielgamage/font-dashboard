@@ -76,7 +76,6 @@ class TextBox extends Component {
             })
           }}
           style={styles}
-          rows='1'
         >
           {item.text}
         </div>

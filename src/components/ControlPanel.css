@@ -20,10 +20,13 @@
   align-content: flex-start;
   justify-content: space-between;
 }
-.ControlPanelTab.inactive {
+.ControlPanelTab:not(.active) {
+  display: none;
+}
+.ControlPanelTab.no-textBox {
   opacity: 0.2;
 }
-.ControlPanelTab.inactive * {
+.ControlPanelTab.no-textBox * {
   pointer-events: none;
 }
 .TabBar {

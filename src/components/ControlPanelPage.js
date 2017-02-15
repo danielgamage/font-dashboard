@@ -29,7 +29,7 @@ class ControlPanelPage extends Component {
 
     // grab props for below by first putting the selected object into mem
     return (
-      <div className='ControlPanelTab'>
+      <div className={`ControlPanelTab ${this.props.active ? 'active' : ''}`}>
         <div className='Control third'>
           <NumericInput
             label='Page Width'

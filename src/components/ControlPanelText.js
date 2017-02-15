@@ -88,7 +88,7 @@ class ControlPanelText extends Component {
     const orientation = this.props.page.writingMode === 'horizontal' ? 'horizontal' : 'vertical'
 
     return (
-      <div className={`ControlPanelTab ${textBox ? 'active' : 'inactive'}`}>
+      <div className={`ControlPanelTab ${this.props.active ? 'active' : ''} ${textBox ? 'textBox' : 'no-textBox'}`}>
         <div className='Control full'>
           <div className='sample'>{textBox ? textBox.text : `Selected text`}</div>
         </div>

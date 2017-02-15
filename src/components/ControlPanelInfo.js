@@ -10,7 +10,7 @@ class ControlPanelInfo extends Component {
   }
   render () {
     return (
-      <div className='ControlPanelTab'>
+      <div className={`ControlPanelTab ${this.props.active ? 'active' : ''}`}>
         { this.props.fonts.length > 0 &&
           this.props.fonts.map(el => (
             <div

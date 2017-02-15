@@ -31,9 +31,9 @@ class ControlPanel extends Component {
             </button>
           ))}
         </div>
-        {this.state.tab === 'Text' && <ControlPanelText />}
-        {this.state.tab === 'Page' && <ControlPanelPage />}
-        {this.state.tab === 'Info' && <ControlPanelInfo />}
+        <ControlPanelText active={this.state.tab === 'Text'} />
+        <ControlPanelPage active={this.state.tab === 'Page'} />
+        <ControlPanelInfo active={this.state.tab === 'Info'} />
       </div>
     )
   }

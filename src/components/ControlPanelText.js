@@ -377,7 +377,9 @@ class ControlPanelText extends Component {
             title='Language'
             id='language'
             equal={textBox && this.checkEquality(textBoxes.map(tb => tb.language))}
-            />
+            >
+            <span className='info-label' title={showingAvailableFeatures ? 'The current font has opentype localizations' : ''}>{showingAvailableFeatures ? '•' : ''}</span>
+          </ControlLabel>
           <div className='select'>
             <select
               id='language'

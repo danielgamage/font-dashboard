@@ -7,9 +7,13 @@
   transition: 0.2s ease;
   display: flex;
   justify-content: space-between;
+  overflow: scroll;
+  & .section {
+    display: flex;
+  }
   & button {
     appearance: none;
-    padding: 0.5rem;
+    padding: 1rem;
     color: var(--color-white-pure);
     background: none;
     font-weight: bold;
@@ -18,7 +22,6 @@
     transition: 0.3s ease;
     transform: translate(0, 0);
     cursor: pointer;
-    width: 4rem;
     height: 4rem;
     border: none;
     &:hover,

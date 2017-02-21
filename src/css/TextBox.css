@@ -31,13 +31,11 @@
   resize: none;
   background: none;
   &:not([contenteditable=true]) {
+    user-select: none;
     cursor: default;
   }
   &[contenteditable=true] {
     cursor: text;
-  }
-  &:not(:focus) {
-    user-select: none;
   }
   &:focus {
     outline: none;

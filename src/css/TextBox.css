@@ -31,6 +31,12 @@
   resize: none;
   background: none;
   &:not([contenteditable=true]) {
+    cursor: default;
+  }
+  &[contenteditable=true] {
+    cursor: text;
+  }
+  &:not(:focus) {
     user-select: none;
   }
   &:focus {
@@ -41,6 +47,5 @@
     display: block; /* For Firefox */
     color: var(--color-gray-light);
     user-select: none;
-    cursor: text;
   }
 }

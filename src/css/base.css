@@ -13,6 +13,8 @@
   --color-alert: #FF8A65;
 }
 
+@custom-media --medium (min-width: 40rem);
+
 html, body {
   margin: 0;
   padding: 0;

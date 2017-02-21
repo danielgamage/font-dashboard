@@ -4,6 +4,18 @@
   width: 100%;
   height: 0;
   z-index: 1;
+  &.solo {
+    position: relative;
+  }
+  &.solo .AddButton,
+  &:hover .AddButton,
+  & .AddButton:focus,
+  &.solo .AddButton + .AddBackground,
+  &:hover .AddButton + .AddBackground,
+  & .AddButton:focus + .AddBackground {
+    transition: 0.15s ease;
+    opacity: 1;
+  }
 }
 
 .AddButton {
@@ -32,18 +44,4 @@
   transition: 0.3s ease;
   border-top: 2px solid var(--color-white-main);
   opacity: 0;
-}
-
-.AddContainer.solo {
-  position: relative;
-}
-
-.AddContainer.solo .AddButton,
-.AddContainer:hover .AddButton,
-.AddButton:focus,
-.AddContainer.solo .AddButton + .AddBackground,
-.AddContainer:hover .AddButton + .AddBackground,
-.AddButton:focus + .AddBackground {
-  transition: 0.15s ease;
-  opacity: 1;
 }

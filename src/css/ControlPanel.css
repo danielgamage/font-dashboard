@@ -19,58 +19,81 @@
   flex-flow: row wrap;
   align-content: flex-start;
   justify-content: space-between;
+  &:not(.active) {
+    display: none;
+  }
+  &.no-textBox {
+    opacity: 0.2;
+  }
+  &.no-textBox * {
+    pointer-events: none;
+  }
 }
-.ControlPanelTab:not(.active) {
-  display: none;
-}
-.ControlPanelTab.no-textBox {
-  opacity: 0.2;
-}
-.ControlPanelTab.no-textBox * {
-  pointer-events: none;
-}
+
 .TabBar {
   display: flex;
   box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.2);
   position: relative;
   z-index: 1;
   flex: 0 0 auto;
-}
-.TabBar button {
-  appearance: none;
-  background: none;
-  border: 0;
-  color: inherit;
-  display: block;
-  flex: 1 1 auto;
-  padding: 1rem;
-  line-height: 1;
-}
-.TabBar button:hover,
-.TabBar button:focus {
-  background: var(--color-gray-darker);
-  cursor: pointer;
-}
-.TabBar button.active {
-  box-shadow: 0 -0.2rem 0 var(--color-accent) inset;
+  & button {
+    appearance: none;
+    background: none;
+    border: 0;
+    color: inherit;
+    display: block;
+    flex: 1 1 auto;
+    padding: 1rem;
+    line-height: 1;
+    &:hover,
+    &:focus {
+      background: var(--color-gray-darker);
+      cursor: pointer;
+    }
+    &.active {
+      box-shadow: 0 -0.2rem 0 var(--color-accent) inset;
+    }
+  }
 }
 .Control {
   display: block;
   padding: 1rem 0;
-}
-.Control::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  left: 0;
-  transform: translate(0, -1rem);
-  border-bottom: 1px solid var(--color-gray-darker);
-}
-
-.Control.flex {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transform: translate(0, -1rem);
+    border-bottom: 1px solid var(--color-gray-darker);
+  }
+  &.flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  & input[type=radio][name=alignment] {
+    appearance: none;
+    width: 0;
+    height: 0;
+    background: none;
+    margin: 0;
+  }
+  & svg {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    &.small {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  & output {
+    text-align: right;
+  }
+  & p {
+    color: var(--color-gray-inactive);
+    font-size: 12px;
+  }
 }
 
 .full {
@@ -96,20 +119,14 @@
 .trbl + .trbl {
   margin-top: 0.5rem;
 }
-.Top {
-  width: 100%;
-  text-align: center;
-}
-.Left {
-  width: 50%;
-  text-align: center;
-}
-.Right {
-  width: 50%;
-  text-align: center;
-}
+.Top,
 .Bottom {
   width: 100%;
+  text-align: center;
+}
+.Left,
+.Right {
+  width: 50%;
   text-align: center;
 }
 
@@ -134,14 +151,6 @@
 
 .draggable {
   cursor: ew-resize !important;
-}
-
-.Control input[type=radio][name=alignment] {
-  appearance: none;
-  width: 0;
-  height: 0;
-  background: none;
-  margin: 0;
 }
 
 input + .hide-checkbox__replacement-input {
@@ -174,16 +183,17 @@ input:checked + .hide-checkbox__replacement-input {
 
 .hide-checkbox {
   display: inline-block;
+  &.list {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+  &.list .hide-checkbox__replacement-input {
+    padding: 0.3rem 0.4rem;
+    border: 1px solid var(--color-gray-dark);
+  }
 }
-.hide-checkbox.list {
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-.hide-checkbox.list .hide-checkbox__replacement-input {
-  padding: 0.3rem 0.4rem;
-  border: 1px solid var(--color-gray-dark);
-}
+
 .hide-checkbox__input {
   width: 0;
   height: 0;
@@ -191,11 +201,10 @@ input:checked + .hide-checkbox__replacement-input {
   margin: 0;
   position: absolute;
   opacity: 0;
-}
-
-.hide-checkbox__input:hover + .hide-checkbox__replacement-input,
-.hide-checkbox__input:focus + .hide-checkbox__replacement-input {
-  background: var(--color-gray-darker);
+  &:hover + .hide-checkbox__replacement-input,
+  &:focus + .hide-checkbox__replacement-input {
+    background: var(--color-gray-darker);
+  }
 }
 
 .font-family {
@@ -203,13 +212,13 @@ input:checked + .hide-checkbox__replacement-input {
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0;
-}
-.font-family input[type=text],
-.font-family .select {
-  width: calc(((100% - 2rem) / 3) * 2 + 1rem);
-  display: block;
-  margin: 0 0 0 1rem;
-  max-width: none;
+  & input[type=text],
+  & .select {
+    width: calc(((100% - 2rem) / 3) * 2 + 1rem);
+    display: block;
+    margin: 0 0 0 1rem;
+    max-width: none;
+  }
 }
 
 input[type=text],
@@ -221,11 +230,10 @@ input[type=number] {
   color: var(--color-white-main);
   border: 1px solid var(--color-gray-dark);
   padding: 0.3rem 0 0.4rem 0.5rem;
-}
-
-input[type=text]:focus,
-input[type=number]:focus {
-  outline: 0.2rem solid var(--color-accent-dull);
+  &:focus,
+  &:focus {
+    outline: 0.2rem solid var(--color-accent-dull);
+  }
 }
 
 input.search {
@@ -248,11 +256,15 @@ input[type=color] {
   padding: 0;
   border: 0;
   opacity: 0;
+  &:focus {
+    outline: none;
+    & + .input--color::after {
+      box-shadow: 0 0 0 0.20rem var(--color-accent-bright) inset,
+                  0 0 0 0.05rem var(--color-accent-bright);
+    }
+  }
 }
 
-input[type=color]:focus {
-  outline: none;
-}
 
 .input--color {
   position: relative;
@@ -266,46 +278,24 @@ input[type=color]:focus {
   vertical-align: middle;
   margin-right: 0.5rem;
   overflow: hidden;
-}
-.input--color::before,
-.input--color::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.input--color::before {
-  background-color: currentColor;
-}
-.input--color::after {
-  border-radius: 1rem;
-  box-shadow: 0 0 0 0.05rem var(--color-gray-inactive) inset,
-              0 0 0 0.05rem var(--color-gray-inactive);
-}
-input[type=color]:focus + .input--color::after {
-  box-shadow: 0 0 0 0.20rem var(--color-accent-bright) inset,
-              0 0 0 0.05rem var(--color-accent-bright);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  &::before {
+    background-color: currentColor;
+  }
+  &::after {
+    border-radius: 1rem;
+    box-shadow: 0 0 0 0.05rem var(--color-gray-inactive) inset,
+                0 0 0 0.05rem var(--color-gray-inactive);
+  }
 }
 
-.Control svg {
-  width: 2rem;
-  height: 2rem;
-  vertical-align: middle;
-}
-
-.Control svg.small {
-  width: 1rem;
-  height: 1rem;
-}
-
-.Control output {
-  text-align: right;
-}
-
-.Control p {
-  color: var(--color-gray-inactive);
-  font-size: 12px;
-}
 
 dl {
   margin: 0;
@@ -356,14 +346,14 @@ dt {
   line-height: 1;
   margin: 0;
   margin-top: -1em;
-}
-.metric::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  border-top: 1px solid var(--color-accent);
-  transform: translateY(50%);
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid var(--color-accent);
+    transform: translateY(50%);
+  }
 }
 
 /*

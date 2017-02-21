@@ -7,28 +7,33 @@
   transition: 0.2s ease;
   display: flex;
   justify-content: space-between;
-}
-.ActionBar button {
-  appearance: none;
-  padding: 0.5rem;
-  color: var(--color-white-pure);
-  background: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: 0.3s ease;
-  transform: translate(0, 0);
-  cursor: pointer;
-  width: 4rem;
-  height: 4rem;
-  border: none;
-}
-.ActionBar button:hover,
-.ActionBar button:focus {
-  background: rgba(255,255,255, 0.2);
-}
-.ActionBar button.open {
-  background: var(--color-accent-dull);
+  & button {
+    appearance: none;
+    padding: 0.5rem;
+    color: var(--color-white-pure);
+    background: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: 0.3s ease;
+    transform: translate(0, 0);
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    &:hover,
+    &:focus {
+      background: rgba(255,255,255, 0.2);
+    }
+    &.open {
+      background: var(--color-accent-dull);
+    }
+  }
+  & svg {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+  }
 }
 
 .TextList {
@@ -63,13 +68,7 @@
   white-space: nowrap;
   cursor: pointer;
   margin: 0 -2rem;
-}
-.TextList__Item:hover{
-  background-color: var(--color-accent-dull);
-}
-
-.ActionBar svg {
-  width: 2rem;
-  height: 2rem;
-  fill: currentColor;
+  &:hover{
+    background-color: var(--color-accent-dull);
+  }
 }

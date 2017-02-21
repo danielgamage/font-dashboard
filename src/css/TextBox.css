@@ -1,36 +1,25 @@
 .TextItem {
   position: relative;
   transition: 0.5s ease;
-}
-
-.TextItem::before {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transition: 0.15s ease;
-  box-shadow: 0 0 0 2px transparent;
-}
-
-.TextItem:hover::before {
-  transition: 0.15s ease;
-  box-shadow: 0 0 0 2px var(--color-white-main);
-}
-
-.TextItem.selected::before {
-  transition: 0.15s ease;
-  box-shadow: 0 0 0 2px var(--color-white-dull);
-}
-
-.text:empty:before{
-  content: attr(placeholder);
-  display: block; /* For Firefox */
-  color: var(--color-gray-light);
-  user-select: none;
-  cursor: text;
+  &::before {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: 0.15s ease;
+    box-shadow: 0 0 0 2px transparent;
+  }
+  &:hover::before {
+    transition: 0.15s ease;
+    box-shadow: 0 0 0 2px var(--color-white-main);
+  }
+  &.selected::before {
+    transition: 0.15s ease;
+    box-shadow: 0 0 0 2px var(--color-white-dull);
+  }
 }
 
 .text {
@@ -41,12 +30,17 @@
   overflow: visible;
   resize: none;
   background: none;
-}
-
-.text:not([contenteditable=true]) {
-  user-select: none;
-}
-
-.text:focus {
-  outline: none;
+  &:not([contenteditable=true]) {
+    user-select: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:empty:before{
+    content: attr(placeholder);
+    display: block; /* For Firefox */
+    color: var(--color-gray-light);
+    user-select: none;
+    cursor: text;
+  }
 }

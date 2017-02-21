@@ -156,6 +156,10 @@ input:checked + .hide-checkbox__replacement-input {
   border-color: var(--color-white-main);
 }
 
+.unequal {
+  margin-left: 0.5rem;
+  color: var(--color-alert);
+}
 .lock.hide-checkbox {
   margin-left: 0.5rem;
 }

@@ -66,6 +66,12 @@ class NumericInput extends Component {
           onTouchStart={this.onMouseDown.bind(this)}
           >
           {this.props.label}
+          {this.props.equal === false &&
+            <span
+              className="unequal"
+              title="Multiple textboxes are selected, and their values are not equal."
+              >≠</span>
+          }
         </label>
         <div className='ControlFlex'>
           <input

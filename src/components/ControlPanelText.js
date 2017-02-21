@@ -11,6 +11,7 @@ import opentypeFeatures from '../data/opentypeFeatures.js'
 
 import readFile from '../utils/readFile.js'
 
+import ControlLabel from './ControlLabel.js'
 import NumericInput from './NumericInput.js'
 
 class ControlPanelText extends Component {
@@ -50,12 +51,19 @@ class ControlPanelText extends Component {
   filterOpentypeFeatures (text) {
     this.setState({ opentypeQuery: text })
   }
+  checkEquality (arr, property) {
+    const equal = arr.every(el => {
+      return el === arr[0]
+    })
+    return equal
+  }
   render () {
     // determine whether an option will display as single value or multi value
     // if this.props.selection.every(el => el.prop == this.props.selection[0].prop)
 
     // grab props for below by first putting the selected object into mem
-    const textBox = this.props.textBoxes && this.props.textBoxes[0]
+    const textBoxes = this.props.textBoxes
+    const textBox = textBoxes && textBoxes[0]
 
     const associatedFont = this.props.fonts.filter(font => {
       if (textBox) {
@@ -93,7 +101,10 @@ class ControlPanelText extends Component {
           <div className='sample'>{textBox ? textBox.text : `Selected text`}</div>
         </div>
         <div className='Control full'>
-          <div className='ControlTitle'>Font File</div>
+          <ControlLabel
+            title='Font File'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.fontFamily))}
+            />
           <label className='font-family'>
             {`font-face:`}
             <input id='font' type='text' value={textBox ? textBox.fontFamily : ''} onChange={(e) => {this.updateFontFamily(e.target.value).bind(this)}}/>
@@ -120,6 +131,7 @@ class ControlPanelText extends Component {
             label='Font Size'
             id='size'
             min='0'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.fontSize.value))}
             value={textBox && textBox.fontSize.value}
             unit={textBox && textBox.fontSize.unit}
             action='UPDATE_FONT_SIZE'
@@ -150,6 +162,7 @@ class ControlPanelText extends Component {
               min='100'
               max='900'
               step='100'
+              equal={textBox && this.checkEquality(textBoxes.map(tb => tb.weight))}
               value={textBox && textBox.weight}
               action='UPDATE_FONT_WEIGHT'
               />
@@ -163,6 +176,7 @@ class ControlPanelText extends Component {
               min='50'
               max='200'
               step='1'
+              equal={textBox && this.checkEquality(textBoxes.map(tb => tb.width))}
               value={textBox && textBox.width}
               action='UPDATE_FONT_WIDTH'
               />
@@ -175,6 +189,7 @@ class ControlPanelText extends Component {
             id='leading'
             append='em'
             min='0'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.leading.value))}
             value={textBox && textBox.leading.value}
             unit={textBox && textBox.leading.unit}
             action='UPDATE_FONT_LEADING'
@@ -185,6 +200,7 @@ class ControlPanelText extends Component {
             label='Tracking'
             id='tracking'
             append='em'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.tracking.value))}
             value={textBox && textBox.tracking.value}
             unit={textBox && textBox.tracking.unit}
             action='UPDATE_FONT_TRACKING'
@@ -195,13 +211,17 @@ class ControlPanelText extends Component {
             label='Word Spacing'
             id='wordSpacing'
             append='em'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.wordSpacing.value))}
             value={textBox && textBox.wordSpacing.value}
             unit={textBox && textBox.wordSpacing.unit}
             action='UPDATE_FONT_WORD_SPACING'
             />
         </div>
         <div className='Control third'>
-          <div className='ControlTitle'>Alignment</div>
+          <ControlLabel
+            title='Alignment'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.alignment))}
+            />
           {['left', 'center', 'right', 'justify'].map((el, index, array) => (
             (textBox && textBox.alignment === el) &&
               <label key={el} className='hide-checkbox' title={`Aligning ${el}. Click to change.`}>
@@ -219,7 +239,10 @@ class ControlPanelText extends Component {
           ))}
         </div>
         <div className='Control third'>
-          <div className='ControlTitle'>Transform</div>
+          <ControlLabel
+            title='Transform'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.textTransform))}
+            />
           {[{key: 'Uppercase', description: 'Uppercase'}, {key: 'Lowercase', description: 'Lowercase'}, {key: 'Capitalize', description: 'Title case'}, {key: 'None', description: 'No transformation'}].map((el, index, array) => (
             (textBox && textBox.textTransform === el.key.toLowerCase()) &&
               <label className='hide-checkbox text-transform' key={el.key} title={`${el.description}. Click to Change.`}>
@@ -237,7 +260,10 @@ class ControlPanelText extends Component {
         </div>
         {orientation === 'vertical' &&
           <div className='Control half'>
-            <div className='ControlTitle'>Orientation</div>
+            <ControlLabel
+              title='Orientation'
+              equal={textBox && this.checkEquality(textBoxes.map(tb => tb.textOrientation))}
+              />
             {[{key: 'upright', description: 'Upright for all letters'}, {key: 'mixed', description: 'Upright for native vertical letters and sideways for letters from horizontal scripts'}, {key: 'sideways', description: 'Sideways for all letters'}].map(el => (
               <label className='hide-checkbox text-transform' key={el.key} title={el.description}>
                 <input
@@ -254,7 +280,10 @@ class ControlPanelText extends Component {
           </div>
         }
         <div className='Control third'>
-          <div className='ControlTitle'>Kerning</div>
+          <ControlLabel
+            title='Kerning'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.kerning))}
+            />
           <label className='hide-checkbox'>
             <input
               className='hide-checkbox__input'
@@ -272,6 +301,7 @@ class ControlPanelText extends Component {
             id='columns'
             min='1'
             max='4'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.columns))}
             value={textBox && textBox.columns}
             action='UPDATE_COLUMNS'
             />
@@ -282,20 +312,34 @@ class ControlPanelText extends Component {
             id='gutter'
             append='rem'
             min='0'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.gutters.value))}
             value={textBox && textBox.gutters.value}
             unit={textBox && textBox.gutters.unit}
             action='UPDATE_GUTTERS'
             />
         </div>
         <div className='Control third'>
-          <div className='ControlTitle'>Text/BG</div>
+          <ControlLabel
+            title='Text/BG'
+            equal={textBox &&
+              ( this.checkEquality(textBoxes.map(tb => tb.color)) &&
+                this.checkEquality(textBoxes.map(tb => tb.backgroundColor)) ) }
+            />
           <label>
-            <input type='color' onChange={(e) => { this.updateProp('UPDATE_COLOR', e.target.value) }}/>
-            <div style={{color: textBox && textBox.color}} className='input--color' />
+            <input
+              type='color'
+              onChange={(e) => { this.updateProp('UPDATE_COLOR', e.target.value) }}/>
+            <div
+              style={{color: textBox && textBox.color}}
+              className='input--color' />
           </label>
           <label>
-            <input type='color' onChange={(e) => { this.updateProp('UPDATE_BACKGROUND_COLOR', e.target.value) }}/>
-            <div style={{color: textBox && textBox.backgroundColor}} className='input--color' />
+            <input
+              type='color'
+              onChange={(e) => { this.updateProp('UPDATE_BACKGROUND_COLOR', e.target.value) }}/>
+            <div
+              style={{color: textBox && textBox.backgroundColor}}
+              className='input--color' />
           </label>
         </div>
         <div className='Control third'>
@@ -305,13 +349,18 @@ class ControlPanelText extends Component {
             append='px'
             step='0.1'
             min='0'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.blur.value))}
             value={textBox && textBox.blur.value}
             unit={textBox && textBox.blur.unit}
             action='UPDATE_BLUR'
             />
         </div>
         <div className='Control third'>
-          <label htmlFor='rendering' className='ControlTitle'>Rendering</label>
+          <ControlLabel
+            title='Rendering'
+            id='rendering'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.rendering))}
+            />
           <div className='select'>
             <select
               id='rendering'
@@ -324,10 +373,11 @@ class ControlPanelText extends Component {
           </div>
         </div>
         <div className='Control third'>
-          <label htmlFor='language' className='ControlTitle'>
-            Language
-            <span className='info-label' title={showingAvailableFeatures ? 'The current font has opentype localizations' : ''}>{showingAvailableFeatures ? '•' : ''}</span>
-          </label>
+          <ControlLabel
+            title='Language'
+            id='language'
+            equal={textBox && this.checkEquality(textBoxes.map(tb => tb.language))}
+            />
           <div className='select'>
             <select
               id='language'
@@ -363,6 +413,7 @@ class ControlPanelText extends Component {
               key={el}
               id={`padding-${el.toLowerCase()}`}
               min='0'
+              equal={textBox && this.checkEquality(textBoxes.map(tb => tb.padding[`${el.toLowerCase()}`].value))}
               value={textBox && textBox.padding[`${el.toLowerCase()}`].value}
               unit={textBox && textBox.padding[`${el.toLowerCase()}`].unit}
               action={`UPDATE_PADDING`}
@@ -390,6 +441,7 @@ class ControlPanelText extends Component {
               label={el}
               key={el}
               id={`margin-${el.toLowerCase()}`}
+              equal={textBox && this.checkEquality(textBoxes.map(tb => tb.margin[`${el.toLowerCase()}`].value))}
               value={textBox && textBox.margin[`${el.toLowerCase()}`].value}
               unit={textBox && textBox.margin[`${el.toLowerCase()}`].unit}
               action={`UPDATE_MARGIN`}
@@ -398,10 +450,12 @@ class ControlPanelText extends Component {
           ))}
         </div>
         <div className='Control full'>
-          <label htmlFor='featureSearch' className='ControlTitle'>
-            OpenType Features
+          <ControlLabel
+            title='OpenType Features'
+            id='featureSearch'
+            >
             <span className='info-label'>{showingAvailableFeatures ? 'Showing Available' : ''}</span>
-          </label>
+          </ControlLabel>
           <input
             id='featureSearch'
             type='text'

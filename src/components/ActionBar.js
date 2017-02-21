@@ -17,7 +17,16 @@ class ActionBar extends Component {
     const dispatch = this.props.dispatch
     return (
       <div className='ActionBar'>
-        <div className='left'>
+        <div className='section left'>
+          <button
+            className='DuplicateButton'
+            onClick={() => {
+              dispatch({
+                type: 'DUPLICATE_TEXTBOX'
+              })
+            }}>
+            Duplicate
+          </button>
           <button
             className='DeleteButton'
             onClick={() => {
@@ -48,7 +57,7 @@ class ActionBar extends Component {
             Reset
           </button>
         </div>
-        <div className='right'>
+        <div className='section right'>
           <button
             onClick={() => {
               dispatch({

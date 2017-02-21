@@ -1,5 +1,6 @@
 import opentypeFeatures from '../data/opentypeFeatures.js'
 import getLanguage from '../utils/getLanguage.js'
+import generateID from '../utils/generateID.js'
 
 const parseValue = (value, valueOrUnit) => {
   if (valueOrUnit === 'value') {
@@ -13,7 +14,7 @@ const textBox = (state, action) => {
   switch (action.type) {
     case 'ADD_TEXTBOX':
       return {
-        id: action.id,
+        id: generateID(),
         color: '#333',
         backgroundColor: 'rgba(255,255,255,0)',
         text: action.text,
@@ -170,6 +171,16 @@ const textBoxes = (state = [], action) => {
         textBox(undefined, action),
         ...state.slice(action.index, state.length)
       ]
+    case 'DUPLICATE_TEXTBOX':
+      let newState = []
+      ;[...state].map((el, index) => {
+        newState.push(el)
+        if (selectedIDs.indexOf(el.id) !== -1) {
+          newState.push({...el, id: generateID() })
+        }
+        return true
+      })
+      return newState
     case 'DESELECT_TEXTBOXES':
       return ([...state].map(el => {
         return { ...el, selected: false }

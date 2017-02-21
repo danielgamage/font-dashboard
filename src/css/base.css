@@ -1,0 +1,48 @@
+:root {
+  --color-accent-bright: #34baec;
+  --color-accent: #039BE5;
+  --color-accent-dull: #236eab;
+  --color-gray-darkest: #31363d;
+  --color-gray-darker: #3d434a;
+  --color-gray-dark: #454a4e;
+  --color-gray-inactive: #72777e;
+  --color-gray-light: #93969a;
+  --color-white-dull: #dad8d6;
+  --color-white-main: #f1efeb;
+  --color-white-pure: #fff;
+  --color-alert: #FF8A65;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+.cursor--lr,
+.cursor--lr label {
+  cursor: ew-resize !important;
+  user-select: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+a {
+  color: inherit;
+}

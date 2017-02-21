@@ -5,7 +5,7 @@ import ControlPanel from './ControlPanel'
 import Layout from './Layout'
 import ActionBar from './ActionBar'
 
-import './App.css'
+import '../style.css'
 
 class App extends Component {
   constructor (props) {

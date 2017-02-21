@@ -5,7 +5,6 @@ import fullscreenIcon from '../icons/fullscreen.svg'
 
 import TextSamples from './TextSamples'
 
-import './ActionBar.css'
 
 class ActionBar extends Component {
   constructor (props) {

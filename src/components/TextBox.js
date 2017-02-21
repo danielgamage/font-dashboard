@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import readFile from '../utils/readFile.js'
 import getStyles from '../utils/getStyles.js'
 
-import './TextBox.css'
-
 class TextBox extends Component {
   render () {
     const item = this.props.textBox

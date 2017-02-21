@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import './AddButton.css'
-
 const AddButton = ({ dispatch, solo, index }) => (
   <div className={'AddContainer' + (solo ? ' solo' : '')}>
     <button

@@ -256,7 +256,7 @@ input[type=color]:focus {
 
 .input--color {
   position: relative;
-  background-image: url('../icons/transparency.svg');
+  background-image: url('icons/transparency.svg');
   background-size: 1rem;
   width: 2rem;
   height: 2rem;

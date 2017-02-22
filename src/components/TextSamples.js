@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import text from '../data/text.js'
 
 const TextSamples = ({ dispatch }) => (
-  <div className='TextList'>
+  <div id='TextList' className='TextList'>
     <h3 className='TextList__Heading'>Select a sample text string</h3>
     <ul className='TextList__List'>
       {text.map(el => (

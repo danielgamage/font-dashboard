@@ -19,10 +19,11 @@ class ControlPanel extends Component {
     // grab props for below by first putting the selected object into mem
     return (
       <div className='ControlPanel'>
-        <div className='TabBar'>
+        <div className='TabBar' role='tablist'>
           {['Text', 'Page', 'Info'].map(tab => (
             <button
               key={tab}
+              role='tab'
               onClick={() => this.switchTabs(tab)}
               className={(this.state.tab === tab) ? 'active' : ''}
             >

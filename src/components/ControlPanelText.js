@@ -96,7 +96,7 @@ class ControlPanelText extends Component {
     const orientation = this.props.page.writingMode === 'horizontal' ? 'horizontal' : 'vertical'
 
     return (
-      <div className={`ControlPanelTab ${this.props.active ? 'active' : ''} ${textBox ? 'textBox' : 'no-textBox'}`}>
+      <div role='tabpanel' className={`ControlPanelTab ${this.props.active ? 'active' : ''} ${textBox ? 'textBox' : 'no-textBox'}`}>
         <div className='Control full'>
           <div className='sample'>{textBox ? textBox.text : `Selected text`}</div>
         </div>
@@ -123,7 +123,10 @@ class ControlPanelText extends Component {
               </select>
             </div>
           </label>
-          <input id='font' type='file' onChange={this.updateFonts.bind(this)} />
+          <input
+            type='file'
+            title='Upload font file'
+            onChange={this.updateFonts.bind(this)} />
           <p>You can also drag your font directly onto the text block you want to apply the font to.</p>
         </div>
         <div className='Control third'>

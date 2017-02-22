@@ -1,4 +1,4 @@
-# Font Dashboard
+# Font Dashboard [![Build Status](https://travis-ci.org/danielgamage/font-dashboard.svg?branch=master)](https://travis-ci.org/danielgamage/font-dashboard)
 An open-source GUI for text layout on the web.
 
 ## Features

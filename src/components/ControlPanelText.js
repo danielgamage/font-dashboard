@@ -287,7 +287,7 @@ class ControlPanelText extends Component {
             title='Kerning'
             equal={textBox && this.checkEquality(textBoxes.map(tb => tb.kerning))}
             />
-          <label className='hide-checkbox'>
+          <label className='hide-checkbox' title='Kerning'>
             <input
               className='hide-checkbox__input'
               type='checkbox'
@@ -328,7 +328,7 @@ class ControlPanelText extends Component {
               ( this.checkEquality(textBoxes.map(tb => tb.color)) &&
                 this.checkEquality(textBoxes.map(tb => tb.backgroundColor)) ) }
             />
-          <label>
+          <label title='Color'>
             <input
               type='color'
               onChange={(e) => { this.updateProp('UPDATE_COLOR', e.target.value) }}/>
@@ -336,7 +336,7 @@ class ControlPanelText extends Component {
               style={{color: textBox && textBox.color}}
               className='input--color' />
           </label>
-          <label>
+          <label title='Background Color'>
             <input
               type='color'
               onChange={(e) => { this.updateProp('UPDATE_BACKGROUND_COLOR', e.target.value) }}/>
@@ -400,7 +400,7 @@ class ControlPanelText extends Component {
         <div className='Control half flex'>
           <div className='ControlTitle'>
             Padding
-            <label className='lock hide-checkbox'>
+            <label className='lock hide-checkbox' title='Lock padding'>
               <input
                 className='hide-checkbox__input'
                 type='checkbox'
@@ -429,7 +429,7 @@ class ControlPanelText extends Component {
         <div className='Control half flex'>
           <div className='ControlTitle'>
             Margin
-            <label className='lock hide-checkbox'>
+            <label className='lock hide-checkbox' title='Lock margin'>
               <input
                 className='hide-checkbox__input'
                 type='checkbox'

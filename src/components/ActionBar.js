@@ -38,8 +38,8 @@ class ActionBar extends Component {
               Delete
             </button>
             <button
-              ariaHaspopup="true"
-              ariaControls="TextList"
+              aria-haspopup="true"
+              aria-controls="samples"
               className={'TextSamplesButton' + (this.state.samplesOpen ? ' open' : '')}
               onClick={() => {
                 this.setState({
@@ -73,7 +73,7 @@ class ActionBar extends Component {
             </button>
           </div>
         </div>
-        { this.state.samplesOpen && <TextSamples/> }
+        <TextSamples active={this.state.samplesOpen} />
       </div>
     )
   }

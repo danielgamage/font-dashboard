@@ -73,6 +73,7 @@ class Layout extends Component {
           // selection intersects with element
           matches.push(this.props.textBoxes[i].id)
         }
+        return true
       })
 
       let operation = false

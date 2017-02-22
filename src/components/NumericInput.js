@@ -33,7 +33,12 @@ class NumericInput extends Component {
 
     // use some opinionated incrementation
     let step
-    units.map(el => { if (el.value === this.props.unit) { step = el.step } })
+    units.map(el => {
+      if (el.value === this.props.unit) {
+        step = el.step
+      }
+      return true
+    })
 
     step = step || this.props.step
     value += (movement * (step || 1))

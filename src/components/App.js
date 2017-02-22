@@ -5,8 +5,6 @@ import ControlPanel from './ControlPanel'
 import Layout from './Layout'
 import ActionBar from './ActionBar'
 
-import '../style.css'
-
 class App extends Component {
   constructor (props) {
     super(props)

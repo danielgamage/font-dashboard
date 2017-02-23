@@ -41,12 +41,10 @@ const readFile = (file) => {
       const family = opentypeFont.names.fullName.en
       const font = new FontFace(family, reader.result)
       document.fonts.add(font)
-      const availableFeatures = parseFeatures(opentypeFont)
-      const availableLanguages = parseLanguages(opentypeFont)
       const data = {
         ...opentypeFont,
-        availableFeatures: availableFeatures,
-        availableLanguages: availableLanguages
+        availableFeatures: parseFeatures(opentypeFont),
+        availableLanguages: parseLanguages(opentypeFont)
       }
       resolve(data)
     }, false)

@@ -8,8 +8,7 @@ const AddButton = ({ dispatch, solo, index }) => (
       onClick={() => {
         dispatch({
           type: 'ADD_TEXTBOX',
-          index: index,
-          text: ''
+          index: index
         })
       }}>
       +

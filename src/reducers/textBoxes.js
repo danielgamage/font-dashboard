@@ -10,48 +10,50 @@ const parseValue = (value, valueOrUnit) => {
   }
 }
 
+const defaultTextBox = {
+  id: generateID(),
+  color: '#333',
+  backgroundColor: 'rgba(255,255,255,0)',
+  text: '',
+  selected: false,
+  fontFamily: 'sans-serif',
+  fontSize: { value: 1, unit: 'rem' },
+  weight: 400,
+  width: 100,
+  tracking: { value: 0, unit: 'em' },
+  kerning: true,
+  textOrientation: "upright",
+  wordSpacing: { value: 0, unit: 'em' },
+  leading: { value: 1.5, unit: 'em' },
+  columns: 1,
+  gutters: { value: 1, unit: 'rem' },
+  alignment: 'left',
+  textTransform: 'none',
+  padding: {
+    top: { value: 0, unit: 'px' },
+    right: { value: 0, unit: 'px' },
+    bottom: { value: 0, unit: 'px' },
+    left: { value: 0, unit: 'px' },
+    lock: false
+  },
+  margin: {
+    top: { value: 0, unit: 'px' },
+    right: { value: 0, unit: 'px' },
+    bottom: { value: 0, unit: 'px' },
+    left: { value: 0, unit: 'px' },
+    lock: false
+  },
+  blur: { value: 0, unit: 'px' },
+  rendering: 'Subpixel',
+  opentype: opentypeFeatures.map(el => ({key: el.value, value: false})),
+  language: getLanguage('ENG') && getLanguage('ENG').subtag[0],
+  variations: []
+}
+
 const textBox = (state, action) => {
   switch (action.type) {
     case 'ADD_TEXTBOX':
-      return {
-        id: generateID(),
-        color: '#333',
-        backgroundColor: 'rgba(255,255,255,0)',
-        text: action.text,
-        selected: false,
-        fontFamily: 'sans-serif',
-        fontSize: { value: 1, unit: 'rem' },
-        weight: 400,
-        width: 100,
-        tracking: { value: 0, unit: 'em' },
-        kerning: true,
-        textOrientation: "upright",
-        wordSpacing: { value: 0, unit: 'em' },
-        leading: { value: 1.5, unit: 'em' },
-        columns: 1,
-        gutters: { value: 1, unit: 'rem' },
-        alignment: 'left',
-        textTransform: 'none',
-        padding: {
-          top: { value: 0, unit: 'px' },
-          right: { value: 0, unit: 'px' },
-          bottom: { value: 0, unit: 'px' },
-          left: { value: 0, unit: 'px' },
-          lock: false
-        },
-        margin: {
-          top: { value: 0, unit: 'px' },
-          right: { value: 0, unit: 'px' },
-          bottom: { value: 0, unit: 'px' },
-          left: { value: 0, unit: 'px' },
-          lock: false
-        },
-        blur: { value: 0, unit: 'px' },
-        rendering: 'Subpixel',
-        opentype: opentypeFeatures.map(el => ({key: el.value, value: false})),
-        language: getLanguage('ENG') && getLanguage('ENG').subtag[0],
-        variations: []
-      }
+      return defaultTextBox
     case 'UPDATE_FONT_SIZE':
       state.fontSize[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
       return state
@@ -115,6 +117,7 @@ const textBox = (state, action) => {
       state.rendering = action.value
       return state
     case 'UPDATE_PADDING':
+      const updatedPadding = parseValue(action.value, action.valueOrUnit)
       if (state.padding.lock) {
         state.padding.top[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
         state.padding.right[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)

@@ -1,11 +1,20 @@
 const getStyles = (item) => {
   let fontSmoothing
   if (item.rendering === 'Grayscale') {
-    fontSmoothing = { WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }
+    fontSmoothing = {
+      WebkitFontSmoothing: 'antialiased',
+      MozOsxFontSmoothing: 'grayscale'
+    }
   } else if (item.rendering === 'None') {
-    fontSmoothing = { WebkitFontSmoothing: 'none', MozOsxFontSmoothing: 'none'}
+    fontSmoothing = {
+      WebkitFontSmoothing: 'none',
+      MozOsxFontSmoothing: 'none'
+    }
   } else {
-    fontSmoothing = { WebkitFontSmoothing: 'subpixel-antialiased', MozOsxFontSmoothing: 'auto' }
+    fontSmoothing = {
+      WebkitFontSmoothing: 'subpixel-antialiased',
+      MozOsxFontSmoothing: 'auto'
+    }
   }
   const textOrientation = {
     WebkitTextOrientation: item.textOrientation,

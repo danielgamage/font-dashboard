@@ -490,8 +490,8 @@ class ControlPanelText extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const selectedTextBoxes = state.textBoxes.present.filter(el => el.selected)
-  return { textBoxes: selectedTextBoxes, fonts: state.fonts, page: state.page.present }
+  const selectedTextBoxes = state.textBoxes.active.filter(el => el.selected)
+  return { textBoxes: selectedTextBoxes, fonts: state.fonts, page: state.page }
 }
 
 export default connect(mapStateToProps)(ControlPanelText)

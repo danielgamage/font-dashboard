@@ -21,8 +21,8 @@ const getStyles = (item) => {
     MozTextOrientation: item.textOrientation,
     textOrientation: item.textOrientation
   }
-  const opentypeValues = item.opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
-  const variations = item.variations.map(el => (`"${el.key}" ${el.value}`)).join(', ')
+  const opentypeValues = item.opentype && item.opentype.map(el => (`"${el.key}" ${el.value ? 1 : 0}`)).join(', ')
+  const variations = item.variations && item.variations.map(el => (`"${el.key}" ${el.value}`)).join(', ')
 
   const styles = {
     fontFamily: `'${item.fontFamily}'`,

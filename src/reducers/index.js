@@ -6,8 +6,8 @@ import fonts from './fonts'
 import undoable from 'redux-undo'
 
 const todoApp = combineReducers({
-  textBoxes: undoable(textBoxes),
-  page: undoable(page),
+  textBoxes: textBoxes,
+  page: page,
   view: view,
   fonts: fonts
 })

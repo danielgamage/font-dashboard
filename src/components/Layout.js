@@ -74,7 +74,7 @@ class Layout extends Component {
           // selection doesn't intersect with element
         } else {
           // selection intersects with element
-          matches.push(this.props.textBoxes[i].id)
+          matches.push(this.props.textBoxes.active[i].id)
         }
         return true
       })
@@ -120,7 +120,10 @@ class Layout extends Component {
         onMouseLeave={(e) => {
           this.handleMouseUp(e)
         }}
-        >
+        onDragEnter={(e) => {
+          // console.log(e.pageY)
+        }}
+      >
         <div
           style={{
             display: (this.state.x) ? "block" : "none",
@@ -136,11 +139,9 @@ class Layout extends Component {
           className="rect">
         </div>
         <div
-          className='LayoutWrapper'
-          style={pageStyles}
+          className="dragged"
           >
-          <AddButton index={0} solo={(this.props.textBoxes.length === 0)}/>
-          {this.props.textBoxes.map((textbox, i) => (
+          {this.props.textBoxes.dragged.map((textbox, i) => (
             <div key={i}>
               <TextBox
                 key={textbox.id}
@@ -148,7 +149,21 @@ class Layout extends Component {
               <AddButton index={i + 1} />
             </div>
           ))}
-          {(this.props.textBoxes.length === 0) &&
+        </div>
+        <div
+          className='LayoutWrapper'
+          style={pageStyles}
+          >
+          <AddButton index={0} solo={(this.props.textBoxes.active.length === 0)}/>
+          {this.props.textBoxes.active.map((textbox, i) => (
+            <div key={i}>
+              <TextBox
+                key={textbox.id}
+                textBox={textbox} />
+              <AddButton index={i + 1} />
+            </div>
+          ))}
+          {(this.props.textBoxes.active.length === 0) &&
             <p className='Layout__instructions'>To get started, add a text block with the add button above. Then you can select it and change properties using the panel on the right ☞, or perform actions on the text block using the panel below ☟.</p>
           }
         </div>
@@ -158,8 +173,8 @@ class Layout extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  textBoxes: state.textBoxes.present,
-  page: state.page.present
+  textBoxes: state.textBoxes,
+  page: state.page
 })
 
 export default connect(mapStateToProps)(Layout)

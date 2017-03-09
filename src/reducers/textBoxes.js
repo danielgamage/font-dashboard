@@ -158,35 +158,40 @@ const textBox = (state, action) => {
   }
 }
 
-const textBoxes = (state = [], action) => {
+const defaultState = {
+  active: [],
+  dragged: []
+}
+
+const textBoxes = (state = defaultState, action) => {
   let selectedIDs
-  if (state.length > 0) {
-    const selectedObjects = [...state].filter(el => el.selected)
+  if (state.active.length > 0) {
+    const selectedObjects = [...state.active].filter(el => el.selected)
     selectedIDs = selectedObjects.length && selectedObjects.map(el => el.id)
   }
   switch (action.type) {
     case 'ADD_TEXTBOX':
-      return [
-        ...state.slice(0, action.index),
+      return { ...state, active: [
+        ...state.active.slice(0, action.index),
         textBox(undefined, action),
-        ...state.slice(action.index, state.length)
-      ]
+        ...state.active.slice(action.index, state.length)
+      ]}
     case 'DUPLICATE_TEXTBOX':
       let newState = []
-      ;[...state].map((el, index) => {
+      ;[...state.active].map((el, index) => {
         newState.push(el)
         if (selectedIDs.indexOf(el.id) !== -1) {
           newState.push({...el, id: generateID() })
         }
         return true
       })
-      return newState
+      return { ...state, active: newState }
     case 'DESELECT_TEXTBOXES':
-      return ([...state].map(el => {
+      return {...state, active: [...state.active].map(el => {
         return { ...el, selected: false }
-      }))
+      })}
     case 'SELECT_TEXTBOXES':
-      return ([...state].map(el => {
+      return {...state, active: [...state.active].map(el => {
         if (action.operation === "ADD") {
           if (action.ids.indexOf(el.id) !== -1) {
             el = { ...el, selected: true }
@@ -199,9 +204,26 @@ const textBoxes = (state = [], action) => {
           el = { ...el, selected: action.ids.indexOf(el.id) !== -1 }
         }
         return { ...el }
-      }))
+      })}
     case 'DELETE_TEXTBOX':
-      return ([...state].filter(el => (selectedIDs.indexOf(el.id) === -1) ))
+      return { ...state, active:
+        [...state.active].filter(el => (selectedIDs.indexOf(el.id) === -1) )
+      }
+    case 'DRAG_TEXTBOXES':
+      console.log(selectedIDs);
+      return {
+        dragged: state.active.filter(el => (selectedIDs.indexOf(el.id) !== -1)),
+        active: state.active.filter(el => (selectedIDs.indexOf(el.id) === -1))
+      }
+    case 'DROP_TEXTBOXES':
+      return {
+        dragged: [],
+        active: [
+          ...state.active.slice(0, action.index),
+          ...state.dragged,
+          ...state.active.slice(action.index, state.length)
+        ]
+      }
     case 'UPDATE_TEXT':
     case 'UPDATE_FONT_SIZE':
     case 'UPDATE_FONT_WEIGHT':
@@ -229,16 +251,16 @@ const textBoxes = (state = [], action) => {
     case 'UPDATE_MARGIN_LOCK':
     case 'UPDATE_OPENTYPE':
     case 'UPDATE_LANGUAGE':
-      return ([...state].map(el => {
+      return {...state, active: [...state.active].map(el => {
         if ((selectedIDs && selectedIDs.indexOf(el.id) !== -1) || el.id === action.id) {
           el = textBox(el, action)
         }
-        if (el === false) {
+        if (el === false) { // why did i add this? probably for a good reason
           return false
         } else {
           return el
         }
-      }))
+      })}
     default:
       return state
   }

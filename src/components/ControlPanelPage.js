@@ -86,7 +86,7 @@ class ControlPanelPage extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { page: state.page.present }
+  return { page: state.page }
 }
 
 export default connect(mapStateToProps)(ControlPanelPage)

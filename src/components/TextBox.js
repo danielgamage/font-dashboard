@@ -29,13 +29,12 @@ class TextBox extends Component {
         }}
         onDragEnd={(e) => {
           const boxes = document.querySelectorAll('.TextItem')
-          const scrollPosition = window.pageYOffset
           let dragIndex
           ;[...boxes].some((box, i) => { // use some to return as soon as a match is found
             dragIndex = i
             const bounds = box.getBoundingClientRect()
             const midline = bounds.top + (bounds.height / 2)
-            return e.pageY < (bounds.top + (bounds.height / 2))
+            return e.pageY < midline
           })
           console.log(`dragIndex: ${dragIndex}`)
           this.props.dispatch({

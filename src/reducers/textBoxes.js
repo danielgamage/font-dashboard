@@ -117,7 +117,6 @@ const textBox = (state, action) => {
       state.rendering = action.value
       return state
     case 'UPDATE_PADDING':
-      const updatedPadding = parseValue(action.value, action.valueOrUnit)
       if (state.padding.lock) {
         state.padding.top[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)
         state.padding.right[action.valueOrUnit] = parseValue(action.value, action.valueOrUnit)

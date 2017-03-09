@@ -201,12 +201,7 @@ const textBoxes = (state = [], action) => {
         return { ...el }
       }))
     case 'DELETE_TEXTBOX':
-      return ([...state].filter(el => {
-        if (selectedIDs.indexOf(el.id) !== -1) {
-          return false
-        }
-        return true
-      }))
+      return ([...state].filter(el => (selectedIDs.indexOf(el.id) === -1) ))
     case 'UPDATE_TEXT':
     case 'UPDATE_FONT_SIZE':
     case 'UPDATE_FONT_WEIGHT':

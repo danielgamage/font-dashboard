@@ -13,11 +13,11 @@ module.exports = {
 	"watch": __DEV__,
   "map": __DEV__,
   "postcss-cssnext": {
-    // "features": {
-    //   "customProperties": {
-    //     "preserve": true
-    //   }
-    // },
+    "features": {
+      "customProperties": {
+        "preserve": true
+      }
+    },
     "browsers": "> 2%"
   },
   "cssnano" : {

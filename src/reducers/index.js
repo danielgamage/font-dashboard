@@ -3,7 +3,6 @@ import textBoxes from './textBoxes'
 import page from './page'
 import view from './view'
 import fonts from './fonts'
-import undoable from 'redux-undo'
 
 const todoApp = combineReducers({
   textBoxes: textBoxes,

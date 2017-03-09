@@ -67,7 +67,10 @@ class Layout extends Component {
       let matches = []
       ;[...elements].map((textBox, i) => {
         const box = textBox.getBoundingClientRect()
-        if (this.state.x + this.state.w < box.left || box.left + box.width < this.state.x || this.state.y + this.state.h < box.top || box.top + box.height < this.state.y) {
+        if (this.state.x + this.state.w < box.left
+         || box.left + box.width < this.state.x
+         || this.state.y + this.state.h < box.top
+         || box.top + box.height < this.state.y) {
           // selection doesn't intersect with element
         } else {
           // selection intersects with element

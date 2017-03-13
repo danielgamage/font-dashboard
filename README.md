@@ -28,5 +28,11 @@ Supports subpixel, grayscale, and aliased rendering methods (depending on browse
 ### Select and Edit Multiple Textfields at Once
 You can box-select any textbox, using `shift` and `alt` keys as additive and subtractive modifiers, and edit properties of those textboxes in parallel.
 
+## Credits
+
+Inspiration from
+http://typeshiftapp.com/ for making web editors beautiful,
+http://www.impallari.com/testing/ for making web testing an essential part of font development.
+
 ## WIP
 There's a lot of updating that needs to be done under the hood, as well as on the front-end, but if you're curious to try, you can test at https://danielgamage.github.io/font-dashboard/

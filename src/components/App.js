@@ -22,6 +22,11 @@ class App extends Component {
         type: 'TOGGLE_FULLSCREEN'
       })
     }
+    if (e.keyCode === 46) {
+      this.props.dispatch({
+        type: 'DELETE_TEXTBOX'
+      })
+    }
   }
   render () {
     return (

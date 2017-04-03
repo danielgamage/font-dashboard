@@ -151,8 +151,6 @@ const textBox = (state, action) => {
     case 'UPDATE_LANGUAGE':
       state.language = action.value
       return state
-    case 'DELETE_TEXTBOX':
-      return false
     default:
       return state
   }
@@ -205,12 +203,11 @@ const textBoxes = (state = defaultState, action) => {
         }
         return { ...el }
       })}
-    case 'DELETE_TEXTBOX':
+    case 'DELETE_TEXTBOXES':
       return { ...state, active:
         [...state.active].filter(el => (selectedIDs.indexOf(el.id) === -1) )
       }
     case 'DRAG_TEXTBOXES':
-      console.log(selectedIDs);
       return {
         dragged: state.active.filter(el => (selectedIDs.indexOf(el.id) !== -1)),
         active: state.active.filter(el => (selectedIDs.indexOf(el.id) === -1))

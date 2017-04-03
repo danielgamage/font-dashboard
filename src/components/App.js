@@ -8,24 +8,28 @@ import ActionBar from './ActionBar'
 class App extends Component {
   constructor (props) {
     super(props)
-    this.handleEsc = this.handleEsc.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
   }
   componentDidMount () {
-    document.addEventListener('keydown', this.handleEsc)
+    document.addEventListener('keydown', this.handleKeyDown)
   }
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleEsc)
+    document.removeEventListener('keydown', this.handleKeyDown)
   }
-  handleEsc(e) {
+  handleKeyDown(e) {
+    console.log(e.keyCode)
     if (e.keyCode === 27 && this.props.view.fullscreen) {
       this.props.dispatch({
         type: 'TOGGLE_FULLSCREEN'
       })
     }
-    if (e.keyCode === 46) {
-      this.props.dispatch({
-        type: 'DELETE_TEXTBOX'
-      })
+    if (e.keyCode === 46 || e.keyCode === 8) { // DELETE or BACKSPACE
+      // prevent accidental deletion if focused
+      if (document.activeElement.contentEditable !== 'true' && document.activeElement.nodeName !== 'INPUT') {
+        this.props.dispatch({
+          type: 'DELETE_TEXTBOXES'
+        })
+      }
     }
   }
   render () {

@@ -32,7 +32,7 @@ class ActionBar extends Component {
               className='DeleteButton'
               onClick={() => {
                 dispatch({
-                  type: 'DELETE_TEXTBOX'
+                  type: 'DELETE_TEXTBOXES'
                 })
               }}>
               Delete
